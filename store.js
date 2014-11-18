@@ -55,14 +55,14 @@
 		}
 	},
 	store=function (key, data){
-		return (function(){
+		var storet = function(){
 			if (arguments.length === 0){ return store.getAll(); }
             if (data !== undefined){ return store.set(key, data, overwrite); }
             if (typeof key === "string"){ return store.get(key); }
             if (!key){ return store.clear(); }
             return store.setAll(key, data);
-		})();
-		return storet();
+		};
+		return storet(key, data);
 	}
 	store.__proto__ = Store.storageAPI;
 	window.store = store;
