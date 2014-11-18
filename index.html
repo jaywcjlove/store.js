@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>JSLite.store 本地存储</title>
+	<script type="text/javascript" src="store.js"></script>
+</head>
+<body>
+
+<pre>
+## 本地存储APIs
+```js
+store(key, data);                 //单个存字符串数据
+store({key: data, key2: data2});  //批量存储多个字符串数据
+store(key);                       //获取key的字符串数据
+store();                          //获取所有key/data
+store(false);                     //清空所有key/data
+
+store.set(key, data[, overwrite]);//=== store(key, data);
+store.setAll(data[, overwrite]);  //=== store({key: data, key2: data});
+store.get(key[, alt]);            //=== store(key);
+store.getAll();                   //=== store();
+store.clear();                    //=== store(false);
+store.forEach(callback);             //循环遍历，返回false结束遍历
+store.keys();                     //返回所有key的数组
+
+store.has(key);         //⇒判断是否存在返回true/false          
+store.remove(key);      //⇒删除key包括key的字符串数据   
+```
+
+
+### forEach
+循环遍历，返回false结束遍历
+```js
+store.forEach(function(k,d){
+    console.log(k,d)
+    if (k== 3) return false
+})
+```
+</pre>
+
+</body>
+</html>
