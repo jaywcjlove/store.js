@@ -1,3 +1,8 @@
+/**
+ * Copyright © kacper.wang 
+ * http://jaywcjlove.github.io
+ * 小弟来自【热璞科技】
+ */
 ;(function(window){
 	var storage = window['localStorage'],
 	Store = {
@@ -55,15 +60,20 @@
 		}
 	},
 	store=function (key, data){
-		var storet = function(){
-			if (arguments.length === 0){ return store.getAll(); }
-            if (data !== undefined){ return store.set(key, data, overwrite); }
+		var argm = arguments,
+		storet = function(){
+			if (argm.length === 0){ return store.getAll(); }
+            if (data !== undefined){ return store.set(key, data); }
             if (typeof key === "string"){ return store.get(key); }
             if (!key){ return store.clear(); }
             return store.setAll(key, data);
 		};
 		return storet(key, data);
-	}
+	};
+	//IE不提供这个__proto__原型对象，可以这里判断
 	store.__proto__ = Store.storageAPI;
-	window.store = store;
+	//如果有 JSLite ，则同样扩展到 JSLite ?类似jQuery
+	// http://jaywcjlove.github.io/JSLite/
+	if( window.JSLite ) window.JSLite.store = store;
+	else window.store = store
 })(window);
