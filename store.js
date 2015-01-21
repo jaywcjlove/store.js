@@ -76,5 +76,5 @@
 	//如果有 JSLite ，则同样扩展到 JSLite ?类似jQuery
 	// http://jaywcjlove.github.io/JSLite/
 	if( window.JSLite ) window.JSLite.store = store;
-	else window.store = store
+	if(!window.store) window.store = store
 })(window);
