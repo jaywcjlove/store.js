@@ -70,7 +70,9 @@
 		};
 		return storet(key, data);
 	};
-	for (var a in Store.storageAPI) storet[a]=Store.storageAPI[a];
+	//IE不提供这个__proto__原型对象，可以这里判断
+	// store.__proto__ = Store.storageAPI;
+	for (var a in Store.storageAPI) store[a]=Store.storageAPI[a];
 	//如果有 JSLite ，则同样扩展到 JSLite ?类似jQuery
 	// http://jaywcjlove.github.io/JSLite/
 	if( window.JSLite ) window.JSLite.store = store;
