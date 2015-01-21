@@ -70,7 +70,7 @@
 		};
 		return storet(key, data);
 	};
-	for (var a in Store.storageAPI) cookie[a]=Store.storageAPI[a];
+	for (var a in Store.storageAPI) storet[a]=Store.storageAPI[a];
 	//如果有 JSLite ，则同样扩展到 JSLite ?类似jQuery
 	// http://jaywcjlove.github.io/JSLite/
 	if( window.JSLite ) window.JSLite.store = store;
