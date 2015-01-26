@@ -64,7 +64,7 @@
 		storet = function(){
 			if (argm.length === 0){ return store.getAll(); }
             if (data !== undefined){ return store.set(key, data); }
-            if (typeof key === "string"){ return store.get(key); }
+            if (key){ return store.get(key);}
             if (!key){ return store.clear(); }
             return store.setAll(key, data);
 		};
