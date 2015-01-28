@@ -62,7 +62,9 @@
 	store=function (key, data){
 		var argm = arguments,
 		storet = function(){
+			console.log(data===false)
 			if (argm.length === 0){ return store.getAll(); }
+            if (data===false){ return store.remove(key); }
             if (data !== undefined){ return store.set(key, data); }
             if (key){ return store.get(key);}
             if (!key){ return store.clear(); }
