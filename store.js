@@ -13,16 +13,16 @@
 				return val
 			},
 			setAll: function(data){
-	            var changed, val;
-	            for (var key in data) {
-	                val = data[key];
-	                if (this.set(key, val) !== val) {
-	                    changed = true;
-	                }
-	            }
-	            return changed;
+				var changed, val;
+				for (var key in data) {
+					val = data[key];
+					if (this.set(key, val) !== val) {
+						changed = true;
+					}
+				}
+				return changed;
 			},
-			get: function(key, val){
+			get: function(key){
 				return Store.deserialize(storage.getItem(key)) 
 			},
 			getAll: function(){
@@ -56,19 +56,18 @@
 			catch(e) { return value || undefined }
 		},
 		stringify: function(val) {
-            return val === undefined || typeof val === "function" ? val+'' : JSON.stringify(val);
+			return val === undefined || typeof val === "function" ? val+'' : JSON.stringify(val);
 		}
 	},
 	store=function (key, data){
 		var argm = arguments,
 		storet = function(){
-			console.log(data===false)
 			if (argm.length === 0){ return store.getAll(); }
-            if (data===false){ return store.remove(key); }
-            if (data !== undefined){ return store.set(key, data); }
-            if (key){ return store.get(key);}
-            if (!key){ return store.clear(); }
-            return store.setAll(key, data);
+			if (data===false){ return store.remove(key); }
+			if (data !== undefined){ return store.set(key, data); }
+			if (key){ return store.get(key);}
+			if (!key){ return store.clear(); }
+			return store.setAll(key, data);
 		};
 		return storet(key, data);
 	};
