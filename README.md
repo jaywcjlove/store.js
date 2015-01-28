@@ -80,7 +80,7 @@ store(false)  //功能同上
 
 ### keys
 返回所有key的数组<br/>
-`store.clear()`<br/>
+`store.keys()`<br/>
 
 ```js
 store.keys() //⇒["w1", "w2", "w3"]
@@ -99,9 +99,9 @@ store.has("w1"); //⇒true
 `store.remove(key)`<br/> 
 
 ```js
-store.has("w1"); //删除w1
+store.remove("w1"); //删除w1 返回 w1的value
 
-store.set("w1") //这样也是 删除w1
+store("w1",false) //这样也是 删除w1
 ```
 
 ### forEach
