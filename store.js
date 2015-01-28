@@ -32,8 +32,12 @@
 				})
 				return ret
 			},
-			clear: function(key, val){return storage.clear()},
-			remove: function(key) {storage.removeItem(key) },
+			clear: function(){return storage.clear()},
+			remove: function(key) {
+				var val = this.get(key)
+				storage.removeItem(key)
+				return val
+			},
 			has:function(key){return storage.hasOwnProperty(key)},
 			keys:function(){
 				var d=[]
