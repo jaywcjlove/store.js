@@ -113,3 +113,35 @@ store.forEach(function(k,d){
     if (k== 3) return false
 })
 ```
+
+### 定时清除
+(做个笔记，未来将定时清除封装起来，有思路)
+```js
+if (+new Date() > +new Date(2014, 11, 30)) {
+    localStorage.removeItem("c");    //清除c的值
+    // or localStorage.clear();
+}
+```
+
+## storage事件
+HTML5的本地存储，还提供了一个storage事件，可以对键值对的改变进行监听，使用方法如下：
+
+```js
+if(window.addEventListener){
+     window.addEventListener("storage",handle_storage,false);
+}else if(window.attachEvent){
+    window.attachEvent("onstorage",handle_storage);
+}
+function handle_storage(e){
+    if(!e){e=window.event;}
+    //showStorage();
+}
+```
+
+对于事件变量e，是一个StorageEvent对象，提供了一些实用的属性，可以很好的观察键值对的变化，如下表：
+| Property|Type|Description|
+|--|--|--|
+|key|String|The named key that was added, removed, or moddified|
+|oldValue|Any|The previous value(now overwritten), or null if a new item was added|
+|newValue|Any|The new value, or null if an item was added|
+|url/uri|String|The page that called the method that triggered this change|
