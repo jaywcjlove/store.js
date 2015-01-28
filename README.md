@@ -139,8 +139,9 @@ function handle_storage(e){
 ```
 
 对于事件变量e，是一个StorageEvent对象，提供了一些实用的属性，可以很好的观察键值对的变化，如下表：
-| Property|Type|Description|
-|--|--|--|
+
+| Property | Type | Description |
+| ----- | ---- | ---- |
 |key|String|The named key that was added, removed, or moddified|
 |oldValue|Any|The previous value(now overwritten), or null if a new item was added|
 |newValue|Any|The new value, or null if an item was added|
