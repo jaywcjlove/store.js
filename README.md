@@ -4,15 +4,15 @@ store(key, data);                 //单个存储字符串数据
 store({key: data, key2: data2});  //批量存储多个字符串数据
 store(key);                       //获取key的字符串数据
 store();                          //获取所有key/data
-store(false);                     //清空所有key/data
+//store(false);（弃用）                     //清空所有key/data
 store(key,false);                 //删除key包括key的字符串数据
 
 store.set(key, data[, overwrite]);//=== store(key, data);
 store.setAll(data[, overwrite]);  //=== store({key: data, key2: data});
 store.get(key[, alt]);            //=== store(key);
 store.getAll();                   //=== store();
-store.clear();                    //=== store(false);
 store.remove(key);                //===store(key,false)
+store.clear();                    //清空所有key/data
 store.keys();                     //返回所有key的数组
 store.forEach(callback);          //循环遍历，返回false结束遍历
 
@@ -21,9 +21,9 @@ store.has(key);         //⇒判断是否存在返回true/false
 
 
 ### set
-单个存储或删除字符串数据<br/>
-`store.set(key, data[, overwrite]); `<br/>
-效果相同`store(key, data);`<br/>
+单个存储或删除字符串数据  
+`store.set(key, data[, overwrite]); `  
+效果相同`store(key, data);`  
 
 ```js
 store.set("wcj","1")   //⇒  1
@@ -31,9 +31,9 @@ store.set("wcj")       //⇒  删除wcj及字符串数据
 ```
 
 ### setAll
-批量存储多个字符串数据<br/>
-`store.setAll(data[, overwrite]) `<br/>
-效果相同`store({key: data, key2: data});`<br/>
+批量存储多个字符串数据  
+`store.setAll(data[, overwrite]) `  
+效果相同`store({key: data, key2: data});`  
 
 ```js
 store.setAll({
@@ -49,9 +49,9 @@ store.setAll(["w1","w2","w3"])
 ```
 
 ### get
-获取key的字符串数据<br/>
-`store.get(key[, alt]) `<br/>
-效果相同`store(key)`<br/>
+获取key的字符串数据  
+`store.get(key[, alt]) `  
+效果相同`store(key)`  
 
 ```js
 store.get("wcj1") //获取wcj1的字符串数据
@@ -59,9 +59,9 @@ store("wcj1") //功能同上
 ```
 
 ### getAll
-获取所有key/data<br/>
-`store.getAll()`<br/>
-效果相同`store()`<br/>
+获取所有key/data  
+`store.getAll()`  
+效果相同`store()`  
 
 ```js
 store.getAll() //⇒JSON
@@ -69,34 +69,35 @@ store() //功能同上
 ```
 
 ### clear
-清空所有key/data<br/>
-`store.clear()`<br/>
-效果相同`store(false)`<br/>
+清空所有key/data  
+`store.clear()`  
+
+弃用 ~~store(false)~~ 因为传入空值 或者报错很容易清空库
+
 
 ```js
 store.clear() //
-store(false)  //功能同上
 ```
 
 ### keys
-返回所有key的数组<br/>
-`store.keys()`<br/>
+返回所有key的数组  
+`store.keys()`  
 
 ```js
 store.keys() //⇒["w1", "w2", "w3"]
 ```
 
 ### has
-判断是否存在返回true/false<br/>
-`store.has(key)`<br/>
+判断是否存在返回true/false  
+`store.has(key)`  
 
 ```js
 store.has("w1"); //⇒true
 ```
 
 ### remove
-删除key包括key的字符串数据<br/>
-`store.remove(key)`<br/> 
+删除key包括key的字符串数据
+`store.remove(key)`
 
 ```js
 store.remove("w1"); //删除w1 返回 w1的value
@@ -116,6 +117,7 @@ store.forEach(function(k,d){
 
 ### 定时清除
 (做个笔记，未来将定时清除封装起来，有思路)
+
 ```js
 if (+new Date() > +new Date(2014, 11, 30)) {
     localStorage.removeItem("c");    //清除c的值

@@ -70,7 +70,7 @@
 			if (data===false){ return store.remove(key); }
 			if (data !== undefined){ return store.set(key, data); }
 			if (key){ return store.get(key);}
-			if (!key){ return store.clear(); }
+			// if (!key){ return store.clear(); }
 			return store.setAll(key, data);
 		};
 		return storet(key, data);
