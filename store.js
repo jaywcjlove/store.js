@@ -59,6 +59,9 @@
 			try { return JSON.parse(value) }
 			catch(e) { return value || undefined }
 		},
+		isJSON: function(obj) {
+			return typeof(obj) == "object" && Object.prototype.toString.call(obj).toLowerCase() && !obj.length
+		},
 		stringify: function(val) {
 			return val === undefined || typeof val === "function" ? val+'' : JSON.stringify(val);
 		}
@@ -66,6 +69,8 @@
 	store=function (key, data){
 		var argm = arguments,
 		storet = function(){
+			console.log("单个存字符串数据:",Store.isJSON(key))
+			if (Store.isJSON(key)) return store.setAll(key)
 			if (argm.length === 0){ return store.getAll(); }
 			if (data===false){ return store.remove(key); }
 			if (data !== undefined){ return store.set(key, data); }
