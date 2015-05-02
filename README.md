@@ -150,3 +150,18 @@ function handle_storage(e){
 |oldValue|Any|The previous value(now overwritten), or null if a new item was added|
 |newValue|Any|The new value, or null if an item was added|
 |url/uri|String|The page that called the method that triggered this change|
+
+
+
+## 兼容
+
+| 特性 | Chrome | Firefox (Gecko) | Internet Explorer |  Opera  | Safari (WebKit)|
+| ----- | ----- | ----- | ----- | ----- | ----- |
+|localStorage|4|3.5 8|10.50|4|
+
+
+## 本地存储大小
+
+`JSON.stringify(localStorage).length` 当前占用多大容量  
+
+[检测localstore容量上限](https://arty.name/localstorage.html)  
