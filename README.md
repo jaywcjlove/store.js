@@ -6,7 +6,7 @@
 ### bower
 
 ```
-$ bower info storejs
+$ bower install storejs
 ```
 
 
