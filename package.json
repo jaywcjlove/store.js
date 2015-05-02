@@ -1,0 +1,19 @@
+{
+  "name": "store.js",
+  "version": "1.0.1",
+  "description": "Local storage localstorage package provides a simple API",
+  "homepage": "https://github.com/jaywcjlove/store.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jaywcjlove/store.js.git"
+  },
+  "keywords": [
+    "storejs"
+  ],
+  "author": "kenny wang <wowohoo@qq.com> ",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jaywcjlove/store.js/issues"
+  },
+  "homepage": "https://github.com/jaywcjlove/store.js"
+}
