@@ -173,7 +173,8 @@ function handle_storage(e){
 
 | 特性 | Chrome | Firefox (Gecko) | Internet Explorer |  Opera  | Safari (WebKit)|
 | ----- | ----- | ----- | ----- | ----- | ----- |
-|localStorage|4|3.5 8|10.50|4|
+|localStorage|4|3.5| 8|10.50|4|
+|sessionStorage|5|2| 8|10.50|4|
 
 
 ## 本地存储大小
