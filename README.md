@@ -172,7 +172,7 @@ function handle_storage(e){
 
 来源：[sessionStorage](https://developer.mozilla.org/en-US/docs/Web/API/Window/sessionStorage) [localStorage](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage)
 
-| 特性 | Chrome | Firefox (Gecko) | Internet Explorer |  Opera  | Safari (WebKit)| iPhone(IOS) | Android | Opera Mobile | Opera Mobile |
+| 特性 | Chrome | Firefox (Gecko) | Internet Explorer |  Opera  | Safari (WebKit)| iPhone(IOS) | Android | Opera Mobile | Window Phone |
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
 |localStorage|4+|3.5+| 8+ |10.50+|4+| 3.2+ | 2.1+ | 11+ | 8+ |
 |sessionStorage|5+|2+| 8+ |10.50+|4+| 3.2+ | 2.1+ | 11+ | 8+ |
