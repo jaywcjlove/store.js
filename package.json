@@ -15,5 +15,11 @@
   "bugs": {
     "url": "https://github.com/jaywcjlove/store.js/issues"
   },
-  "homepage": "https://github.com/jaywcjlove/store.js"
+  "homepage": "https://github.com/jaywcjlove/store.js",
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-contrib-jshint": "^0.11.2",
+    "grunt-contrib-uglify": "^0.9.1",
+    "grunt-contrib-watch": "^0.6.1"
+  }
 }
