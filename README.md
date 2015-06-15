@@ -41,6 +41,12 @@ store("test",function(arr){
     console.log(arr)//这里处理 通过test获取的数据
     return [3,4,5]//返回数据并存储
 })
+
+store(["key","key2"],function(arr){
+    //获取多个key的数据处理，return 并保存；
+    console.log("arr:",arr)
+    return "逐个更改数据"
+})
 ```
 
 
