@@ -1,0 +1,21 @@
+{
+    "name": "store.js",
+    "version": "0.0.1",
+    "description": "",
+    "keywords": [
+        ""
+    ],
+    "homepage": "http://JSLite.io",
+    "author": "jaywcjlove <398188662@qq.com>",
+    "repository": {
+        "type": "git",
+        "url": ""
+    },
+    "licenses": "MIT",
+    "idoc": {
+        "theme": "default",
+        "md": [
+            "首页.md"
+        ]
+    }
+}

@@ -1,43 +1,220 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<title>JSLite.store 本地存储</title>
-	<script type="text/javascript" src="store.js"></script>
+    <meta charset="UTF-8">
+    <title>store.js</title>
+    <link rel="stylesheet" type="text/css" href="css/main.css">
 </head>
 <body>
-
-<pre>
-## 本地存储APIs
-```js
-store(key, data);                 //单个存字符串数据
-store({key: data, key2: data2});  //批量存储多个字符串数据
-store(key);                       //获取key的字符串数据
-store();                          //获取所有key/data
-store(false);                     //清空所有key/data
-
-store.set(key, data[, overwrite]);//=== store(key, data);
-store.setAll(data[, overwrite]);  //=== store({key: data, key2: data});
-store.get(key[, alt]);            //=== store(key);
-store.getAll();                   //=== store();
-store.clear();                    //=== store(false);
-store.forEach(callback);             //循环遍历，返回false结束遍历
-store.keys();                     //返回所有key的数组
-
-store.has(key);         //⇒判断是否存在返回true/false          
-store.remove(key);      //⇒删除key包括key的字符串数据   
-```
+<div class="nav">
+<div class="logo">store.js</div>
+<ul><li class="active"><a href="index.html">首页</a></li></ul></div>
 
 
-### forEach
-循环遍历，返回false结束遍历
-```js
-store.forEach(function(k,d){
-    console.log(k,d)
-    if (k== 3) return false
+<div class="warpper">
+
+    <div class="page-toc">
+        <ul><li><a href="#安装">安装</a><ul><li><a href="#bower">bower</a></li><li><a href="#npm">npm</a></li></ul></li><li><a href="#本地存储APIs">本地存储APIs</a><ul><li><a href="#set">set</a></li><li><a href="#setAll">setAll</a></li><li><a href="#get">get</a></li><li><a href="#getAll">getAll</a></li><li><a href="#clear">clear</a></li><li><a href="#keys">keys</a></li><li><a href="#has">has</a></li><li><a href="#remove">remove</a></li><li><a href="#forEach">forEach</a></li><li><a href="#定时清除">定时清除</a></li></ul></li><li><a href="#storage事件">storage事件</a></li><li><a href="#兼容">兼容</a></li><li><a href="#本地存储大小">本地存储大小</a></li></ul>
+    </div>
+    
+    <div class="content markdown-body">
+        <p><a href="https://github.com/jaywcjlove/store.js/issues"><img src="https://img.shields.io/github/issues/jaywcjlove/store.js.svg" alt="GitHub issues"></a> <a href="https://github.com/jaywcjlove/store.js/network"><img src="https://img.shields.io/github/forks/jaywcjlove/store.js.svg" alt="GitHub forks"></a> <a href="https://github.com/jaywcjlove/store.js/stargazers"><img src="https://img.shields.io/github/stars/jaywcjlove/store.js.svg" alt="GitHub stars"></a> <a href="https://github.com/jaywcjlove/store.js/releases"><img src="https://img.shields.io/github/release/jaywcjlove/store.js.svg" alt=""></a></p>
+<h2 id="&#x5B89;&#x88C5;">&#x5B89;&#x88C5; <a href="#&#x5B89;&#x88C5;"> # </a></h2>
+<h3 id="bower">bower <a href="#bower"> # </a></h3>
+<pre><code>$ bower install storejs
+</code></pre><h3 id="npm">npm <a href="#npm"> # </a></h3>
+<pre><code>$ npm install storejs
+</code></pre><h2 id="&#x672C;&#x5730;&#x5B58;&#x50A8;APIs">&#x672C;&#x5730;&#x5B58;&#x50A8;APIs <a href="#&#x672C;&#x5730;&#x5B58;&#x50A8;APIs"> # </a></h2>
+<pre><code class="lang-js">store(key, data);                 <span class="hljs-comment">//&#x5355;&#x4E2A;&#x5B58;&#x50A8;&#x5B57;&#x7B26;&#x4E32;&#x6570;&#x636E;</span>
+store({key: data, key2: data2});  <span class="hljs-comment">//&#x6279;&#x91CF;&#x5B58;&#x50A8;&#x591A;&#x4E2A;&#x5B57;&#x7B26;&#x4E32;&#x6570;&#x636E;</span>
+store(key);                       <span class="hljs-comment">//&#x83B7;&#x53D6;key&#x7684;&#x5B57;&#x7B26;&#x4E32;&#x6570;&#x636E;</span>
+store();                          <span class="hljs-comment">//&#x83B7;&#x53D6;&#x6240;&#x6709;key/data</span>
+<span class="hljs-comment">//store(false);&#xFF08;&#x5F03;&#x7528;&#xFF09;&#x1F52B;          //&#x56E0;&#x4E3A;&#x4F20;&#x5165;&#x7A7A;&#x503C; &#x6216;&#x8005;&#x62A5;&#x9519;&#x5F88;&#x5BB9;&#x6613;&#x6E05;&#x7A7A;&#x5E93;</span>
+store(key,<span class="hljs-literal">false</span>);                 <span class="hljs-comment">//&#x5220;&#x9664;key&#x5305;&#x62EC;key&#x7684;&#x5B57;&#x7B26;&#x4E32;&#x6570;&#x636E;</span>
+
+store.set(key, data[, overwrite]);<span class="hljs-comment">//=== store(key, data);</span>
+store.setAll(data[, overwrite]);  <span class="hljs-comment">//=== store({key: data, key2: data});</span>
+store.get(key[, alt]);            <span class="hljs-comment">//=== store(key);</span>
+store.getAll();                   <span class="hljs-comment">//=== store();</span>
+store.remove(key);                <span class="hljs-comment">//===store(key,false)</span>
+store.clear();                    <span class="hljs-comment">//&#x6E05;&#x7A7A;&#x6240;&#x6709;key/data</span>
+store.keys();                     <span class="hljs-comment">//&#x8FD4;&#x56DE;&#x6240;&#x6709;key&#x7684;&#x6570;&#x7EC4;</span>
+store.forEach(callback);          <span class="hljs-comment">//&#x5FAA;&#x73AF;&#x904D;&#x5386;&#xFF0C;&#x8FD4;&#x56DE;false&#x7ED3;&#x675F;&#x904D;&#x5386;</span>
+
+store.has(key);         <span class="hljs-comment">//&#x21D2;&#x5224;&#x65AD;&#x662F;&#x5426;&#x5B58;&#x5728;&#x8FD4;&#x56DE;true/false          </span>
+
+
+<span class="hljs-comment">//&#x21D2; &#x63D0;&#x4F9B;callback&#x65B9;&#x6CD5;&#x5904;&#x7406;&#x6570;&#x636E;</span>
+store(<span class="hljs-string">&quot;test&quot;</span>,<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">arr</span>)</span>{
+    <span class="hljs-built_in">console</span>.log(arr)<span class="hljs-comment">//&#x8FD9;&#x91CC;&#x5904;&#x7406; &#x901A;&#x8FC7;test&#x83B7;&#x53D6;&#x7684;&#x6570;&#x636E;</span>
+    <span class="hljs-keyword">return</span> [<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>]<span class="hljs-comment">//&#x8FD4;&#x56DE;&#x6570;&#x636E;&#x5E76;&#x5B58;&#x50A8;</span>
 })
-```
-</pre>
+
+store([<span class="hljs-string">&quot;key&quot;</span>,<span class="hljs-string">&quot;key2&quot;</span>],<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">arr</span>)</span>{
+    <span class="hljs-comment">//&#x83B7;&#x53D6;&#x591A;&#x4E2A;key&#x7684;&#x6570;&#x636E;&#x5904;&#x7406;&#xFF0C;return &#x5E76;&#x4FDD;&#x5B58;&#xFF1B;</span>
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;arr:&quot;</span>,arr)
+    <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;&#x9010;&#x4E2A;&#x66F4;&#x6539;&#x6570;&#x636E;&quot;</span>
+})
+</code></pre>
+<h3 id="set">set <a href="#set"> # </a></h3>
+<p>&#x5355;&#x4E2A;&#x5B58;&#x50A8;&#x6216;&#x5220;&#x9664;&#x5B57;&#x7B26;&#x4E32;&#x6570;&#x636E;<br><code>store.set(key, data[, overwrite]);</code><br>&#x6548;&#x679C;&#x76F8;&#x540C;<code>store(key, data);</code>  </p>
+<pre><code class="lang-js">store.set(<span class="hljs-string">&quot;wcj&quot;</span>,<span class="hljs-string">&quot;1&quot;</span>)   <span class="hljs-comment">//&#x21D2;  1</span>
+store.set(<span class="hljs-string">&quot;wcj&quot;</span>)       <span class="hljs-comment">//&#x21D2;  &#x5220;&#x9664;wcj&#x53CA;&#x5B57;&#x7B26;&#x4E32;&#x6570;&#x636E;</span>
+</code></pre>
+<h3 id="setAll">setAll <a href="#setAll"> # </a></h3>
+<p>&#x6279;&#x91CF;&#x5B58;&#x50A8;&#x591A;&#x4E2A;&#x5B57;&#x7B26;&#x4E32;&#x6570;&#x636E;<br><code>store.setAll(data[, overwrite])</code><br>&#x6548;&#x679C;&#x76F8;&#x540C;<code>store({key: data, key2: data});</code>  </p>
+<pre><code class="lang-js">store.setAll({
+    <span class="hljs-string">&quot;wcj1&quot;</span>:<span class="hljs-number">123</span>,
+    <span class="hljs-string">&quot;wcj2&quot;</span>:<span class="hljs-number">345</span>
+}) <span class="hljs-comment">//&#x5B58;&#x50A8;&#x4E24;&#x6761;&#x5B57;&#x7B26;&#x4E32;&#x6570;&#x636E;</span>
+
+store.setAll([<span class="hljs-string">&quot;w1&quot;</span>,<span class="hljs-string">&quot;w2&quot;</span>,<span class="hljs-string">&quot;w3&quot;</span>]) 
+<span class="hljs-comment">//&#x5B58;&#x50A8;&#x4E09;&#x6761;&#x5B57;&#x7B26;&#x4E32;&#x6570;&#x636E; </span>
+<span class="hljs-comment">//  0&#x21D2; &quot;w1&quot;</span>
+<span class="hljs-comment">//  1&#x21D2; &quot;w2&quot;</span>
+<span class="hljs-comment">//  2&#x21D2; &quot;w3&quot;</span>
+</code></pre>
+<h3 id="get">get <a href="#get"> # </a></h3>
+<p>&#x83B7;&#x53D6;key&#x7684;&#x5B57;&#x7B26;&#x4E32;&#x6570;&#x636E;<br><code>store.get(key[, alt])</code><br>&#x6548;&#x679C;&#x76F8;&#x540C;<code>store(key)</code>  </p>
+<pre><code class="lang-js">store.get(<span class="hljs-string">&quot;wcj1&quot;</span>) <span class="hljs-comment">//&#x83B7;&#x53D6;wcj1&#x7684;&#x5B57;&#x7B26;&#x4E32;&#x6570;&#x636E;</span>
+store(<span class="hljs-string">&quot;wcj1&quot;</span>) <span class="hljs-comment">//&#x529F;&#x80FD;&#x540C;&#x4E0A;</span>
+</code></pre>
+<h3 id="getAll">getAll <a href="#getAll"> # </a></h3>
+<p>&#x83B7;&#x53D6;&#x6240;&#x6709;key/data<br><code>store.getAll()</code><br>&#x6548;&#x679C;&#x76F8;&#x540C;<code>store()</code>  </p>
+<pre><code class="lang-js">store.getAll() <span class="hljs-comment">//&#x21D2;JSON</span>
+store() <span class="hljs-comment">//&#x529F;&#x80FD;&#x540C;&#x4E0A;</span>
+</code></pre>
+<h3 id="clear">clear <a href="#clear"> # </a></h3>
+<p>&#x6E05;&#x7A7A;&#x6240;&#x6709;key/data<br><code>store.clear()</code>  </p>
+<p>&#x5F03;&#x7528; <del>store(false)</del> &#x56E0;&#x4E3A;&#x4F20;&#x5165;&#x7A7A;&#x503C; &#x6216;&#x8005;&#x62A5;&#x9519;&#x5F88;&#x5BB9;&#x6613;&#x6E05;&#x7A7A;&#x5E93;</p>
+<pre><code class="lang-js">store.clear() <span class="hljs-comment">//</span>
+</code></pre>
+<h3 id="keys">keys <a href="#keys"> # </a></h3>
+<p>&#x8FD4;&#x56DE;&#x6240;&#x6709;key&#x7684;&#x6570;&#x7EC4;<br><code>store.keys()</code>  </p>
+<pre><code class="lang-js">store.keys() <span class="hljs-comment">//&#x21D2;[&quot;w1&quot;, &quot;w2&quot;, &quot;w3&quot;]</span>
+</code></pre>
+<h3 id="has">has <a href="#has"> # </a></h3>
+<p>&#x5224;&#x65AD;&#x662F;&#x5426;&#x5B58;&#x5728;&#x8FD4;&#x56DE;true/false<br><code>store.has(key)</code>  </p>
+<pre><code class="lang-js">store.has(<span class="hljs-string">&quot;w1&quot;</span>); <span class="hljs-comment">//&#x21D2;true</span>
+</code></pre>
+<h3 id="remove">remove <a href="#remove"> # </a></h3>
+<p>&#x5220;&#x9664;key&#x5305;&#x62EC;key&#x7684;&#x5B57;&#x7B26;&#x4E32;&#x6570;&#x636E;
+<code>store.remove(key)</code></p>
+<pre><code class="lang-js">store.remove(<span class="hljs-string">&quot;w1&quot;</span>); <span class="hljs-comment">//&#x5220;&#x9664;w1 &#x8FD4;&#x56DE; w1&#x7684;value</span>
+
+store(<span class="hljs-string">&quot;w1&quot;</span>,<span class="hljs-literal">false</span>) <span class="hljs-comment">//&#x8FD9;&#x6837;&#x4E5F;&#x662F; &#x5220;&#x9664;w1</span>
+</code></pre>
+<h3 id="forEach">forEach <a href="#forEach"> # </a></h3>
+<p>&#x5FAA;&#x73AF;&#x904D;&#x5386;&#xFF0C;&#x8FD4;&#x56DE;false&#x7ED3;&#x675F;&#x904D;&#x5386;</p>
+<pre><code class="lang-js">store.forEach(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">k,d</span>)</span>{
+    <span class="hljs-built_in">console</span>.log(k,d)
+    <span class="hljs-keyword">if</span> (k== <span class="hljs-number">3</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>
+})
+</code></pre>
+<h3 id="&#x5B9A;&#x65F6;&#x6E05;&#x9664;">&#x5B9A;&#x65F6;&#x6E05;&#x9664; <a href="#&#x5B9A;&#x65F6;&#x6E05;&#x9664;"> # </a></h3>
+<p>(&#x505A;&#x4E2A;&#x7B14;&#x8BB0;&#xFF0C;&#x672A;&#x6765;&#x5C06;&#x5B9A;&#x65F6;&#x6E05;&#x9664;&#x5C01;&#x88C5;&#x8D77;&#x6765;&#xFF0C;&#x6709;&#x601D;&#x8DEF;)</p>
+<pre><code class="lang-js"><span class="hljs-keyword">if</span> (+<span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>() &gt; +<span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>(<span class="hljs-number">2014</span>, <span class="hljs-number">11</span>, <span class="hljs-number">30</span>)) {
+    localStorage.removeItem(<span class="hljs-string">&quot;c&quot;</span>);    <span class="hljs-comment">//&#x6E05;&#x9664;c&#x7684;&#x503C;</span>
+    <span class="hljs-comment">// or localStorage.clear();</span>
+}
+</code></pre>
+<h2 id="storage&#x4E8B;&#x4EF6;">storage&#x4E8B;&#x4EF6; <a href="#storage&#x4E8B;&#x4EF6;"> # </a></h2>
+<p>HTML5&#x7684;&#x672C;&#x5730;&#x5B58;&#x50A8;&#xFF0C;&#x8FD8;&#x63D0;&#x4F9B;&#x4E86;&#x4E00;&#x4E2A;storage&#x4E8B;&#x4EF6;&#xFF0C;&#x53EF;&#x4EE5;&#x5BF9;&#x952E;&#x503C;&#x5BF9;&#x7684;&#x6539;&#x53D8;&#x8FDB;&#x884C;&#x76D1;&#x542C;&#xFF0C;&#x4F7F;&#x7528;&#x65B9;&#x6CD5;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code class="lang-js"><span class="hljs-keyword">if</span>(<span class="hljs-built_in">window</span>.addEventListener){
+     <span class="hljs-built_in">window</span>.addEventListener(<span class="hljs-string">&quot;storage&quot;</span>,handle_storage,<span class="hljs-literal">false</span>);
+}<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(<span class="hljs-built_in">window</span>.attachEvent){
+    <span class="hljs-built_in">window</span>.attachEvent(<span class="hljs-string">&quot;onstorage&quot;</span>,handle_storage);
+}
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">handle_storage</span>(<span class="hljs-params">e</span>)</span>{
+    <span class="hljs-keyword">if</span>(!e){e=<span class="hljs-built_in">window</span>.event;}
+    <span class="hljs-comment">//showStorage();</span>
+}
+</code></pre>
+<p>&#x5BF9;&#x4E8E;&#x4E8B;&#x4EF6;&#x53D8;&#x91CF;e&#xFF0C;&#x662F;&#x4E00;&#x4E2A;StorageEvent&#x5BF9;&#x8C61;&#xFF0C;&#x63D0;&#x4F9B;&#x4E86;&#x4E00;&#x4E9B;&#x5B9E;&#x7528;&#x7684;&#x5C5E;&#x6027;&#xFF0C;&#x53EF;&#x4EE5;&#x5F88;&#x597D;&#x7684;&#x89C2;&#x5BDF;&#x952E;&#x503C;&#x5BF9;&#x7684;&#x53D8;&#x5316;&#xFF0C;&#x5982;&#x4E0B;&#x8868;&#xFF1A;</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>key</td>
+<td>String</td>
+<td>The named key that was added, removed, or moddified</td>
+</tr>
+<tr>
+<td>oldValue</td>
+<td>Any</td>
+<td>The previous value(now overwritten), or null if a new item was added</td>
+</tr>
+<tr>
+<td>newValue</td>
+<td>Any</td>
+<td>The new value, or null if an item was added</td>
+</tr>
+<tr>
+<td>url/uri</td>
+<td>String</td>
+<td>The page that called the method that triggered this change</td>
+</tr>
+</tbody>
+</table>
+<h2 id="&#x517C;&#x5BB9;">&#x517C;&#x5BB9; <a href="#&#x517C;&#x5BB9;"> # </a></h2>
+<p>&#x6765;&#x6E90;&#xFF1A;<a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/sessionStorage">sessionStorage</a> <a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage">localStorage</a></p>
+<table>
+<thead>
+<tr>
+<th>&#x7279;&#x6027;</th>
+<th>Chrome</th>
+<th>Firefox (Gecko)</th>
+<th>Internet Explorer</th>
+<th>Opera</th>
+<th>Safari (WebKit)</th>
+<th>iPhone(IOS)</th>
+<th>Android</th>
+<th>Opera Mobile</th>
+<th>Window Phone</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>localStorage</td>
+<td>4+</td>
+<td>3.5+</td>
+<td>8+</td>
+<td>10.50+</td>
+<td>4+</td>
+<td>3.2+</td>
+<td>2.1+</td>
+<td>11+</td>
+<td>8+</td>
+</tr>
+<tr>
+<td>sessionStorage</td>
+<td>5+</td>
+<td>2+</td>
+<td>8+</td>
+<td>10.50+</td>
+<td>4+</td>
+<td>3.2+</td>
+<td>2.1+</td>
+<td>11+</td>
+<td>8+</td>
+</tr>
+</tbody>
+</table>
+<h2 id="&#x672C;&#x5730;&#x5B58;&#x50A8;&#x5927;&#x5C0F;">&#x672C;&#x5730;&#x5B58;&#x50A8;&#x5927;&#x5C0F; <a href="#&#x672C;&#x5730;&#x5B58;&#x50A8;&#x5927;&#x5C0F;"> # </a></h2>
+<p><code>JSON.stringify(localStorage).length</code> &#x5F53;&#x524D;&#x5360;&#x7528;&#x591A;&#x5927;&#x5BB9;&#x91CF;  </p>
+<p><a href="https://arty.name/localstorage.html">&#x68C0;&#x6D4B;localstore&#x5BB9;&#x91CF;&#x4E0A;&#x9650;</a>  </p>
+
+        <div class="copyright">Powered by <a href="https://github.com/jaywcjlove/idoc" target="_blank">idoc</a>. Dependence <a href="https://nodejs.org">Node.js</a> run.</div>
+    </div>
+    
+</div>
+
 
 </body>
 </html>
