@@ -162,7 +162,7 @@ if (+new Date() > +new Date(2014, 11, 30)) {
 
 ## storage事件
 
-不知为毛不支持参看下面 [onStorage](#onStorage) =><s>HTML5的本地存储，还提供了一个storage事件，可以对键值对的改变进行监听，使用方法如下：</s>
+不知为毛不支持参看下面 [onStorage](#onstorage) =><s>HTML5的本地存储，还提供了一个storage事件，可以对键值对的改变进行监听，使用方法如下：</s>
 
 ```js
 if(window.addEventListener){
