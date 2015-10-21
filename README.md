@@ -47,6 +47,11 @@ store(["key","key2"],function(arr){
     console.log("arr:",arr)
     return "逐个更改数据"
 })
+
+// 即创建/更新/删除数据项时，触发该事件
+store.onStorage(function(key,val){
+    console.log('onStorage:',key,val)
+})
 ```
 
 
@@ -156,7 +161,8 @@ if (+new Date() > +new Date(2014, 11, 30)) {
 ```
 
 ## storage事件
-HTML5的本地存储，还提供了一个storage事件，可以对键值对的改变进行监听，使用方法如下：
+
+不知为毛不支持参看下面 [onStorage](#onStorage) =><s>HTML5的本地存储，还提供了一个storage事件，可以对键值对的改变进行监听，使用方法如下：</s>
 
 ```js
 if(window.addEventListener){
@@ -179,7 +185,15 @@ function handle_storage(e){
 |newValue|Any|The new value, or null if an item was added|
 |url/uri|String|The page that called the method that triggered this change|
 
+## onStorage
 
+即创建/更新/删除数据项时，触发该事件
+
+```js
+store.onStorage(function(key,val){
+    console.log('onStorage:',key,val)
+})
+```
 
 ## 兼容
 
