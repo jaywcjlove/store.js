@@ -160,6 +160,7 @@ if (+new Date() > +new Date(2014, 11, 30)) {
 }
 ```
 
+
 ## storage事件
 
 不知为毛不支持参看下面 [onStorage](#onstorage) =><s>HTML5的本地存储，还提供了一个storage事件，可以对键值对的改变进行监听，使用方法如下：</s>
@@ -190,9 +191,26 @@ function handle_storage(e){
 即创建/更新/删除数据项时，触发该事件
 
 ```js
-store.onStorage(function(key,val){
-    console.log('onStorage:',key,val)
+store.onStorage(function(type,key,val){
+   console.log("event:",type,key,val)
 })
+
+store({"a":1,"v":undefined})
+//⇒ event: set a 1
+//⇒ event: remove v 
+```
+
+## 链式书写
+
+```js
+store.set('ad',234).get('ad')
+
+store.onStorage(function(type){
+ console.log('type:',type)
+}).set('wcj',12).clear().setAll({"a":1,b:2}).get('wcj')
+//⇒ type: set
+//⇒ type: clear
+//⇒ type: set
 ```
 
 ## 兼容
