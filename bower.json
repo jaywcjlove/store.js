@@ -1,7 +1,7 @@
 {
   "name": "store.js",
   "main": "lib/store.js",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "authors": [
     "(kenny.wang <wowohoo@qq.co>)"
   ],
@@ -11,7 +11,11 @@
     "node"
   ],
   "keywords": [
-    "storejs"
+    "storejs",
+    "store",
+    "storage",
+    "local",
+    "localstorage"
   ],
   "license": "MIT",
   "ignore": [
