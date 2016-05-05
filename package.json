@@ -3,10 +3,17 @@
   "version": "1.0.8",
   "description": "Local storage localstorage package provides a simple API",
   "homepage": "https://github.com/jaywcjlove/store.js",
-  "main": "lib/store.js",
+  "main": "dist/store.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/jaywcjlove/store.js.git"
+    "url": "git+https://github.com/jaywcjlove/store.js.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build:min": "umd store lib/store.js | uglifyjs > dist/store.min.js",
+    "build:dist": "umd store lib/store.js | uglifyjs -b beautify=true --comments 'all' > dist/store.js",
+    "build": "npm run build:min && npm run build:dist",
+    "watch": "onchange 'lib/store.js' -v -- npm run build"
   },
   "keywords": [
     "storejs",
@@ -15,16 +22,14 @@
     "local",
     "localstorage"
   ],
-  "author": "kenny wang <wowohoo@qq.com> ",
+  "author": "kenny wang <wowohoo@qq.com>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/jaywcjlove/store.js/issues"
   },
-  "homepage": "https://github.com/jaywcjlove/store.js",
-  "devDependencies": {
-    "grunt": "^0.4.5",
-    "grunt-contrib-jshint": "^0.11.2",
-    "grunt-contrib-uglify": "^0.9.1",
-    "grunt-contrib-watch": "^0.6.1"
+  "dependencies": {
+    "onchange": "^2.4.0",
+    "uglify-js": "^2.6.2",
+    "umd": "^3.0.1"
   }
 }

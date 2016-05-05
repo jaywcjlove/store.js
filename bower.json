@@ -1,6 +1,6 @@
 {
   "name": "store.js",
-  "main": "lib/store.js",
+  "main": "dist/store.js",
   "version": "1.0.7",
   "authors": [
     "(kenny.wang <wowohoo@qq.co>)"
