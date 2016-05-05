@@ -1,3 +1,12 @@
+/*!
+ * storejs v1.0.8
+ * Copyright (c) 2016 kenny wang <wowohoo@qq.com>
+ * Licensed under the MIT license.
+ * 
+ * Local storage localstorage package provides a simple API
+ * https://github.com/jaywcjlove/store.js
+ * 
+ */
 (function(f) {
     if (typeof exports === "object" && typeof module !== "undefined") {
         module.exports = f();

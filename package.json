@@ -6,12 +6,12 @@
   "main": "dist/store.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jaywcjlove/store.js.git"
+    "url": "https://github.com/jaywcjlove/store.js.git"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build:min": "umd store lib/store.js | uglifyjs > dist/store.min.js",
-    "build:dist": "umd store lib/store.js | uglifyjs -b beautify=true --comments 'all' > dist/store.js",
+    "build:min": "umd store lib/store.js | bannerjs -o | uglifyjs > dist/store.min.js ",
+    "build:dist": "umd store lib/store.js | bannerjs -m | uglifyjs -b beautify=true --comments 'all' > dist/store.js ",
     "build": "npm run build:min && npm run build:dist",
     "watch": "onchange 'lib/store.js' -v -- npm run build"
   },
@@ -28,6 +28,7 @@
     "url": "https://github.com/jaywcjlove/store.js/issues"
   },
   "dependencies": {
+    "bannerjs": "^1.0.0",
     "onchange": "^2.4.0",
     "uglify-js": "^2.6.2",
     "umd": "^3.0.1"
