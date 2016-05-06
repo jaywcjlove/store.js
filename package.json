@@ -10,7 +10,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build:min": "umd store lib/store.js | uglifyjs | bannerjs -o > dist/store.min.js",
+    "build:min": "umd store lib/store.js | uglifyjs -c | bannerjs -o > dist/store.min.js",
     "build:dist": "umd store lib/store.js | bannerjs -m | uglifyjs -b beautify=true --comments 'all' > dist/store.js ",
     "build": "npm run build:min && npm run build:dist",
     "watch": "onchange 'lib/store.js' -v -- npm run build"
