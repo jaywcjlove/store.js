@@ -14,6 +14,12 @@ $ bower install storejs
 $ npm install storejs
 ```
 
+生成压缩文件和开发模式
+
+```bash
+$ npm run build    # 生成带UMD的js原文件 以及 min.js
+$ npm run watch    # 监听文件改变自动压缩生成js
+```
 
 ## 本地存储APIs
 ```js
