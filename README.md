@@ -1,6 +1,6 @@
 # store.js 
 
-[![GitHub issues](https://img.shields.io/github/issues/jaywcjlove/store.js.svg)](https://github.com/jaywcjlove/store.js/issues) [![GitHub forks](https://img.shields.io/github/forks/jaywcjlove/store.js.svg)](https://github.com/jaywcjlove/store.js/network) [![GitHub stars](https://img.shields.io/github/stars/jaywcjlove/store.js.svg)](https://github.com/jaywcjlove/store.js/stargazers) [![](https://img.shields.io/github/release/jaywcjlove/store.js.svg)](https://github.com/jaywcjlove/store.js/releases)
+[![GitHub issues](https://img.shields.io/github/issues/jaywcjlove/store.js.svg)](https://github.com/jaywcjlove/store.js/issues) [![GitHub forks](https://img.shields.io/github/forks/jaywcjlove/store.js.svg)](https://github.com/jaywcjlove/store.js/network) [![GitHub stars](https://img.shields.io/github/stars/jaywcjlove/store.js.svg)](https://github.com/jaywcjlove/store.js/stargazers) [![](https://img.shields.io/github/release/jaywcjlove/store.js.svg)](https://github.com/jaywcjlove/store.js/releases) [![](https://jaywcjlove.github.io/sb/ico/npm.svg)](https://github.com/jaywcjlove/store.js.git)
 
 
 本地存储localstorage的封装，提供简单的API
@@ -26,7 +26,33 @@ $ npm run build    # 生成带UMD的js原文件 以及 min.js
 $ npm run watch    # 监听文件改变自动压缩生成js
 ```
 
+## 测试
+
+```bash
+$ npm test
+$ npm run ssr
+
+# 浏览器打开 http://localhost:1987/test/test.html
+```
+
+# 使用
+
+```html
+<script type="text/javascript" src="dist/store.js"></script>
+<script type="text/javascript">
+store("test","tank",1800)
+</script>
+```
+
+or 
+
+```js 
+var store = require('storejs')
+store("test","tank",1800)
+```
+
 ## 本地存储APIs
+
 ```js
 store(key, data);                 //单个存储字符串数据
 store({key: data, key2: data2});  //批量存储多个字符串数据
@@ -77,7 +103,10 @@ store.set("wcj","1")   //⇒  1
 store.set("wcj")       //⇒  删除wcj及字符串数据
 ```
 
-### setAll
+### <del>setAll</del> 🔫
+
+> 使用 `store.set({key: data, key2: data2})` 代替
+
 批量存储多个字符串数据  
 `store.setAll(data[, overwrite]) `  
 效果相同`store({key: data, key2: data});`  
@@ -105,7 +134,10 @@ store.get("wcj1") //获取wcj1的字符串数据
 store("wcj1") //功能同上
 ```
 
-### getAll
+### <del>getAll</del> 🔫
+
+> `store()`和`store.get()` 代替
+
 获取所有key/data  
 `store.getAll()`  
 效果相同`store()`  
