@@ -53,6 +53,7 @@ if (typeof(window)==='object') {
         }),'store([Arary],function)测试');
         t.deepEqual(store.get("key"),"keytest",'测试store(Array,function)存储key是否成功！');
         t.deepEqual(store.get("key2"),"逐个更改数据",'测试store(Array,function)存储key2是否成功！');
+        t.deepEqual(store.set('ad',234).get('ad'),234,'链式调用测试');
     
     });
 
