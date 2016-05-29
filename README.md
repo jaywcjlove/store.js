@@ -1,6 +1,6 @@
 # store.js 
 
-[![Build Status](https://travis-ci.org/jaywcjlove/store.js.svg?branch=master)](https://travis-ci.org/jaywcjlove/store.js) [![GitHub issues](https://img.shields.io/github/issues/jaywcjlove/store.js.svg)](https://github.com/jaywcjlove/store.js/issues) [![GitHub forks](https://img.shields.io/github/forks/jaywcjlove/store.js.svg)](https://github.com/jaywcjlove/store.js/network) [![GitHub stars](https://img.shields.io/github/stars/jaywcjlove/store.js.svg)](https://github.com/jaywcjlove/store.js/stargazers) [![](https://img.shields.io/github/release/jaywcjlove/store.js.svg)](https://github.com/jaywcjlove/store.js/releases) [![](https://jaywcjlove.github.io/sb/ico/npm.svg)](https://github.com/jaywcjlove/store.js.git)
+[![Build Status](https://travis-ci.org/jaywcjlove/store.js.svg?branch=master)](https://travis-ci.org/jaywcjlove/store.js) [![GitHub issues](https://img.shields.io/github/issues/jaywcjlove/store.js.svg)](https://github.com/jaywcjlove/store.js/issues) [![GitHub forks](https://img.shields.io/github/forks/jaywcjlove/store.js.svg)](https://github.com/jaywcjlove/store.js/network) [![GitHub stars](https://img.shields.io/github/stars/jaywcjlove/store.js.svg)](https://github.com/jaywcjlove/store.js/stargazers) [![](https://img.shields.io/github/release/jaywcjlove/store.js.svg)](https://github.com/jaywcjlove/store.js/releases) [![](https://jaywcjlove.github.io/sb/ico/npm.svg)](https://www.npmjs.com/package/storejs)
 
 
 本地存储localstorage的封装，提供简单的API
