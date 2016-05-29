@@ -257,10 +257,11 @@ store.onStorage(function(type){
 //⇒ type: set
 ```
 
-# TODO
- 
+## TODO
+
 - [ ] `store.get([key,key2])` 获取方法，返回json
 - [ ] `store([key,key2])` 获取方法，返回json
+- [ ] `onStorage` 方法测试用例，以及实现
 
 ## 兼容
 
