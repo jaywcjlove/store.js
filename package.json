@@ -1,6 +1,6 @@
 {
   "name": "storejs",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "Local storage localstorage package provides a simple API",
   "homepage": "https://github.com/jaywcjlove/store.js",
   "main": "dist/store.js",
@@ -9,10 +9,13 @@
     "url": "https://github.com/jaywcjlove/store.js.git"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "npm run build:test",
+    "ssr": "ssr",
+    "test:ssr": "npm run test && npm run ssr",
+    "build:test": "browserify test/store.js > test/store.test.js",
     "build:min": "umd store lib/store.js | uglifyjs -c | bannerjs -o > dist/store.min.js",
     "build:dist": "umd store lib/store.js | bannerjs -m | uglifyjs -b beautify=true --comments 'all' > dist/store.js ",
-    "build": "npm run build:min && npm run build:dist",
+    "build": "npm run build:min && npm run build:dist && npm run build:test",
     "watch": "onchange 'lib/store.js' -v -- npm run build"
   },
   "keywords": [
@@ -27,10 +30,14 @@
   "bugs": {
     "url": "https://github.com/jaywcjlove/store.js/issues"
   },
-  "dependencies": {
-    "bannerjs": "^1.0.0",
-    "onchange": "^2.4.0",
-    "uglify-js": "^2.6.2",
-    "umd": "^3.0.1"
+  "devDependencies": {
+    "bannerjs": "~1.0.0",
+    "browserify": "~13.0.1",
+    "onchange": "~2.4.0",
+    "tape": "~4.5.1",
+    "tape-chai": "^1.1.0",
+    "tape-dom": "~0.0.10",
+    "uglify-js": "~2.6.2",
+    "umd": "~3.0.1"
   }
 }

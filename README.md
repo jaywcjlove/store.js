@@ -1,4 +1,9 @@
+# store.js 
+
 [![GitHub issues](https://img.shields.io/github/issues/jaywcjlove/store.js.svg)](https://github.com/jaywcjlove/store.js/issues) [![GitHub forks](https://img.shields.io/github/forks/jaywcjlove/store.js.svg)](https://github.com/jaywcjlove/store.js/network) [![GitHub stars](https://img.shields.io/github/stars/jaywcjlove/store.js.svg)](https://github.com/jaywcjlove/store.js/stargazers) [![](https://img.shields.io/github/release/jaywcjlove/store.js.svg)](https://github.com/jaywcjlove/store.js/releases)
+
+
+本地存储localstorage的封装，提供简单的API
 
 ## 安装
 
@@ -30,27 +35,28 @@ store();                          //获取所有key/data
 //store(false);（弃用）🔫          //因为传入空值 或者报错很容易清空库
 store(key,false);                 //删除key包括key的字符串数据
 
-store.set(key, data[, overwrite]);//=== store(key, data);
-store.setAll(data[, overwrite]);  //=== store({key: data, key2: data});
-store.get(key[, alt]);            //=== store(key);
-store.getAll();                   //=== store();
-store.remove(key);                //===store(key,false)
-store.clear();                    //清空所有key/data
-store.keys();                     //返回所有key的数组
-store.forEach(callback);          //循环遍历，返回false结束遍历
+store.set(key, data[, overwrite]);     //=== store(key, data);
+store.set({key: data, key2: data2})    //=== store({key: data, key2: data});
+//store.setAll({key: data});(弃用)🔫   //=== 保持简单 set方法可以实现
+store.get(key[, alt]);                 //=== store(key);
+//store.getAll();(弃用)🔫              //=== store()和store.get()都可以实现获取所有数据
+store.remove(key);                  //===store(key,false)
+store.clear();                      //清空所有key/data
+store.keys();                       //返回所有key的数组
+store.forEach(callback);            //循环遍历，返回false结束遍历
 
 store.has(key);         //⇒判断是否存在返回true/false          
 
 
 //⇒ 提供callback方法处理数据
-store("test",function(arr){
-    console.log(arr)//这里处理 通过test获取的数据
+store("test",function(key,val){
+    console.log(val)//这里处理 通过test获取的数据
     return [3,4,5]//返回数据并存储
 })
 
-store(["key","key2"],function(arr){
+store(["key","key2"],function(key){
     //获取多个key的数据处理，return 并保存；
-    console.log("arr:",arr)
+    console.log("key:",key)
     return "逐个更改数据"
 })
 

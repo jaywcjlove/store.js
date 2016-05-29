@@ -1,11 +1,11 @@
 /*!
- * storejs v1.0.8
- * Copyright (c) 2016 kenny wang <wowohoo@qq.com>
- * Licensed under the MIT license.
- * 
+ * storejs v1.0.10
  * Local storage localstorage package provides a simple API
+ * 
+ * Copyright (c) 2016 kenny wang <wowohoo@qq.com>
  * https://github.com/jaywcjlove/store.js
  * 
+ * Licensed under the MIT license.
  */
 (function(f) {
     if (typeof exports === "object" && typeof module !== "undefined") {
@@ -48,38 +48,36 @@
     function isFunction(value) {
         return {}.toString.call(value) === "[object Function]";
     }
-    function isString(obj) {
-        return typeof obj === "string";
-    }
     function isArray(value) {
         return value instanceof Array;
     }
-    _api = {
+    function Store() {
+        if (!(this instanceof Store)) {
+            return new Store();
+        }
+    }
+    Store.prototype = {
         set: function(key, val) {
-            if (val === undefined) {
+            if (!val && !key) {
                 return this.remove(key);
             }
-            storage.setItem(key, stringify(val));
             even_storage("set", key, val);
-            return this;
-        },
-        setAll: function(data) {
-            var changed, val;
-            for (var key in data) {
-                val = data[key];
-                if (this.set(key, val) !== val) changed = true;
+            if (key && val) {
+                storage.setItem(key, stringify(val));
+            } else if (key && isJSON(key) && !val) {
+                for (var a in key) this.set(a, key[a]);
             }
             return this;
         },
         get: function(key) {
+            if (!key) {
+                var ret = {};
+                this.forEach(function(key, val) {
+                    ret[key] = val;
+                });
+                return ret;
+            }
             return deserialize(storage.getItem(key));
-        },
-        getAll: function() {
-            var ret = {};
-            this.forEach(function(key, val) {
-                ret[key] = val;
-            });
-            return ret;
         },
         clear: function() {
             this.forEach(function(key, val) {
@@ -120,38 +118,29 @@
         }
     };
     store = function(key, data) {
-        var argm = arguments, dt = null, _store = function(key, data) {
-            if (isFunction(data)) {
-                if (isString(key)) {
-                    dt = data(store.get(key));
-                    return dt ? store.set(key, dt) : undefined;
-                }
-                if (isArray(key)) for (var a in key) {
-                    dt = data(store.get(key[a]));
-                    if (dt) store.set(key[a], dt);
-                }
-                return;
+        var argm = arguments, _Store = Store(), dt = null;
+        if (argm.length === 0) return _Store.get();
+        if (argm.length === 1) {
+            if (typeof key === "string") return _Store.get(key);
+            if (isJSON(key)) return _Store.set(key);
+        }
+        if (argm.length === 2 && typeof key === "string") {
+            if (!data) return _Store.remove(key);
+            if (data && typeof data === "string") return _Store.set(key, data);
+            if (data && isFunction(data)) {
+                dt = null;
+                dt = data(key, _Store.get(key));
+                return dt ? store.set(key, dt) : store;
             }
-            if (isJSON(key)) return store.setAll(key);
-            if (argm.length === 0) {
-                return store.getAll();
+        }
+        if (argm.length === 2 && isArray(key) && isFunction(data)) {
+            for (var i = 0; i < key.length; i++) {
+                dt = data(key[i], _Store.get(key[i]));
+                store.set(key[i], dt);
             }
-            if (data === false) {
-                return store.remove(key);
-            }
-            if (data !== undefined) {
-                return store.set(key, data);
-            }
-            if (key) {
-                return store.get(key);
-            }
-            // if (!key){ return store.clear(); }
-            return store.setAll(key, data);
-        };
-        return _store(key, data);
+            return store;
+        }
     };
-    //IE不提供这个__proto__原型对象，可以这里判断
-    // store.__proto__ = _api;
-    for (var a in _api) store[a] = _api[a];
+    for (var a in Store.prototype) store[a] = Store.prototype[a];
     return store;
 });
