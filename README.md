@@ -40,7 +40,7 @@ $ npm run ssr
 ```html
 <script type="text/javascript" src="dist/store.js"></script>
 <script type="text/javascript">
-store("test","tank",1800)
+store("test","tank")
 </script>
 ```
 
@@ -48,7 +48,7 @@ or
 
 ```js 
 var store = require('storejs')
-store("test","tank",1800)
+store("test","tank")
 ```
 
 ## 本地存储APIs
