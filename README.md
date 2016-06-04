@@ -70,6 +70,7 @@ store.remove(key);                  //===store(key,false)
 store.clear();                      //清空所有key/data
 store.keys();                       //返回所有key的数组
 store.forEach(callback);            //循环遍历，返回false结束遍历
+store.search(string)                //搜索方法
 
 store.has(key);         //⇒判断是否存在返回true/false          
 
@@ -164,6 +165,14 @@ store.clear() //
 
 ```js
 store.keys() //⇒["w1", "w2", "w3"]
+```
+
+### search
+
+搜索方法 `store.search(string)`
+
+```js 
+store.search('key') //⇒ {"key":"keytest","key1":{"a":1},"key2":"逐个更改数据"}
 ```
 
 ### has
