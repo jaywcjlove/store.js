@@ -112,6 +112,13 @@
             }
             return this;
         },
+        search: function(str) {
+            var arr = this.keys(), dt = {};
+            for (var i = 0; i < arr.length; i++) {
+                if (arr[i].indexOf(str) > -1) dt[arr[i]] = this.get(arr[i]);
+            }
+            return dt;
+        },
         onStorage: function(cb) {
             if (cb && isFunction(cb)) even_storage = cb;
             return this;
