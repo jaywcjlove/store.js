@@ -48,12 +48,12 @@ if (typeof(window)==='object') {
         t.isFunction(store(["key","key2"],function(key,val){
             //获取多个key的数据处理，return 并保存；
             if(key&&key == 'key') return "keytest";
-            console.log("key:",key)
             return "逐个更改数据"
         }),'store([Arary],function)测试');
         t.deepEqual(store.get("key"),"keytest",'测试store(Array,function)存储key是否成功！');
         t.deepEqual(store.get("key2"),"逐个更改数据",'测试store(Array,function)存储key2是否成功！');
         t.deepEqual(store.set('ad',234).get('ad'),234,'链式调用测试');
+        t.deepEqual(store.search('key'),{"key":"keytest","key1":{"a":1},"key2":"逐个更改数据"},'搜索方法测试');
     
     });
 
