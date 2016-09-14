@@ -1,5 +1,5 @@
 /*!
- * storejs v1.0.10
+ * storejs v1.0.11
  * Local storage localstorage package provides a simple API
  * 
  * Copyright (c) 2016 kenny wang <wowohoo@qq.com>
@@ -58,11 +58,8 @@
     }
     Store.prototype = {
         set: function(key, val) {
-            if (!val && !key) {
-                return this.remove(key);
-            }
             even_storage("set", key, val);
-            if (key && val) {
+            if (key && !isJSON(key)) {
                 storage.setItem(key, stringify(val));
             } else if (key && isJSON(key) && !val) {
                 for (var a in key) this.set(a, key[a]);
