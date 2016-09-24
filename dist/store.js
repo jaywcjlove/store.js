@@ -1,5 +1,5 @@
 /*!
- * storejs v1.0.11
+ * storejs v1.0.12
  * Local storage localstorage package provides a simple API
  * 
  * Copyright (c) 2016 kenny wang <wowohoo@qq.com>
@@ -30,7 +30,7 @@
     if (!window.localStorage) return;
     var storage = window.localStorage, store, _api, even_storage = function() {};
     function isJSON(obj) {
-        return typeof obj === "object" && Object.prototype.toString.call(obj).toLowerCase() && !obj.length;
+        return typeof obj === "object" && Object.prototype.toString.call(obj).toLowerCase() === "[object object]" && !obj.length;
     }
     function stringify(val) {
         return val === undefined || typeof val === "function" ? val + "" : JSON.stringify(val);
