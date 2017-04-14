@@ -1,8 +1,8 @@
 /*!
- * storejs v1.0.12
+ * storejs v1.0.14
  * Local storage localstorage package provides a simple API
  * 
- * Copyright (c) 2016 kenny wang <wowohoo@qq.com>
+ * Copyright (c) 2017 kenny wang <wowohoo@qq.com>
  * https://github.com/jaywcjlove/store.js
  * 
  * Licensed under the MIT license.
@@ -73,6 +73,9 @@
                     ret[key] = val;
                 });
                 return ret;
+            }
+            if (key.charAt(0) === "?") {
+                return this.has(key.substr(1));
             }
             return deserialize(storage.getItem(key));
         },
