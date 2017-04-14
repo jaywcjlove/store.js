@@ -11,6 +11,7 @@ if (typeof(window)==='object') {
 
         t.isFunction(store.clear(),"测试清空方法：store.clear()")
         t.isFalse(store.has("key"),'判断key不存在返回值：store.has("key")')
+        t.isFalse(store("?key"),'判断key不存在返回值：store("?key")')
         t.deepEqual(store(),{},"测试存储方法：store()")
         t.isUndefined(store("key1"),'测试数据为空取值返回为空：store("String")')
         t.isObject(store({
@@ -30,7 +31,8 @@ if (typeof(window)==='object') {
             "key":"val1",
             "key2":"val2",
         }),'批量储存方法：store.set({"key":"val1", "key2":"val2"})'); 
-        t.isTrue(store.has("key"),'判断key存在返回值：store.has("key")')
+        t.isTrue(store.has("key"),'判断key存在返回值：store.has("key")');
+        t.isTrue(store.get("?key"),'判断key存在返回值：store.get("?key")');
         t.isFunction(store.set("key","121"),'存储存String值方法：store.set("key","121")');
         t.isFunction(store.set("key1",{"a":1}),'存储存JSON值方法：store.set("key",{"a":1})');
         t.deepEqual(store.get("key1"),{a:1},'存储取值方法：store.get("key")');
