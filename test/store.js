@@ -9,9 +9,16 @@ if (typeof(window)==='object') {
 
     tape('  localstorage 单元测试', function (t) {
 
-        t.isFunction(store.clear(),"测试清空方法：store.clear()")
+        store.set("key","121");
+        t.isFunction(store.clear(),"测试清空方法：store()");
+        
+        store.set({"keyt1":"val", "keyt2":"val1", "keyt3":"val2", })
+        t.deepEqual(store.keys().length,3,'返回所有key的数组方法：store.keys()');
+        t.deepEqual(store.keys().indexOf('keyt2')>-1,true,'返回所有key的数组方法：store.keys()');
+
         t.isFalse(store.has("key"),'判断key不存在返回值：store.has("key")')
         t.isFalse(store("?key"),'判断key不存在返回值：store("?key")')
+        store.clear()
         t.deepEqual(store(),{},"测试存储方法：store()")
         t.isUndefined(store("key1"),'测试数据为空取值返回为空：store("String")')
         t.isObject(store({
@@ -36,7 +43,6 @@ if (typeof(window)==='object') {
         t.isFunction(store.set("key","121"),'存储存String值方法：store.set("key","121")');
         t.isFunction(store.set("key1",{"a":1}),'存储存JSON值方法：store.set("key",{"a":1})');
         t.deepEqual(store.get("key1"),{a:1},'存储取值方法：store.get("key")');
-        t.deepEqual(store.keys(),["key","key1","key2"],'返回所有key的数组方法：store.keys()');
         t.isFunction(store.forEach(function(key,val){
             t.isString(key,'forEach方法测试：store.forEach()');
         }),"forEach方法测试");
