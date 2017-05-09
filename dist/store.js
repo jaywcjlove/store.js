@@ -93,11 +93,12 @@
             return val;
         },
         has: function(key) {
-            return storage.hasOwnProperty(key);
+            return ({}).hasOwnProperty.call(this.get(), key);
         },
         keys: function() {
             var d = [];
             this.forEach(function(k, list) {
+                console.log("kkk->",k)
                 d.push(k);
             });
             return d;
