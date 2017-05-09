@@ -7,16 +7,11 @@
 
 ## 安装
 
-### bower
-
-```
-$ bower install storejs
-```
-
-### npm
-
-```
-$ npm install storejs
+```bash
+# bower 安装
+bower install storejs
+# npm 安装
+npm install storejs
 ```
 
 生成压缩文件和开发模式
