@@ -1,5 +1,5 @@
 /*!
- * storejs v1.0.14
+ * storejs v1.0.16
  * Local storage localstorage package provides a simple API
  * 
  * Copyright (c) 2017 kenny wang <wowohoo@qq.com>
@@ -51,11 +51,46 @@
     function isArray(value) {
         return value instanceof Array;
     }
+    function dealIncognito(storage) {
+        var _KEY = "_Is_Incognit", _VALUE = "yes";
+        try {
+            storage.setItem(_KEY, _VALUE);
+        } catch (e) {
+            if (e.name === "QuotaExceededError") {
+                var _nothing = function() {};
+                storage.__proto__ = {
+                    setItem: _nothing,
+                    getItem: _nothing,
+                    removeItem: _nothing,
+                    clear: _nothing
+                };
+            }
+        } finally {
+            if (storage.getItem(_KEY) === _VALUE) storage.removeItem(_KEY);
+        }
+        return storage;
+    }
+    // deal QuotaExceededError if user use incognito mode in browser
+    storage = dealIncognito(storage);
     function Store() {
         if (!(this instanceof Store)) {
             return new Store();
         }
     }
+    // function dealIncognito (storage) {
+    //   var _KEY = '_Is_Incognit', _VALUE = 'yes';
+    //   try { storage.setItem(_KEY, _VALUE) }
+    //   catch (e) {
+    //     if (e.name === 'QuotaExceededError') {
+    //       var _nothing = function () {};
+    //       storage.__proto__ = { setItem: _nothing, getItem: _nothing, removeItem: _nothing, clear: _nothing };
+    //     }
+    //   }
+    //   finally { if (storage.getItem(_KEY) === _VALUE) storage.removeItem(_KEY); }
+    //   return storage;
+    // }
+    // // deal QuotaExceededError if user use incognito mode in browser
+    // storage = dealIncognito(storage);
     Store.prototype = {
         set: function(key, val) {
             even_storage("set", key, val);
@@ -93,12 +128,11 @@
             return val;
         },
         has: function(key) {
-            return ({}).hasOwnProperty.call(this.get(), key);
+            return {}.hasOwnProperty.call(this.get(), key);
         },
         keys: function() {
             var d = [];
             this.forEach(function(k, list) {
-                console.log("kkk->",k)
                 d.push(k);
             });
             return d;
