@@ -35,15 +35,21 @@ $ npm run ssr
 ```html
 <script type="text/javascript" src="dist/store.js"></script>
 <script type="text/javascript">
-store("test","tank")
+  store("test","tank");
 </script>
 ```
 
 or 
 
 ```js 
-var store = require('storejs')
-store("test","tank")
+var store = require('storejs');
+store("test","tank");
+```
+
+⚠️  原生方法调用获取数据，因为为了存储 JSON 对象，所以会先通过 JSON.stringify() 方法，将对象转换为一个 JSON 字符串
+
+```js
+JSON.parse(localStorage.getItem('test'))
 ```
 
 ## 本地存储APIs
@@ -67,26 +73,25 @@ store.remove(key);                  //===store(key,false)
 store.clear();                      //清空所有key/data
 store.keys();                       //返回所有key的数组
 store.forEach(callback);            //循环遍历，返回false结束遍历
-store.search(string)                //搜索方法
+store.search(string);                //搜索方法
 
 store.has(key);         //⇒判断是否存在返回true/false          
 
-
 //⇒ 提供callback方法处理数据
 store("test",function(key,val){
-    console.log(val)//这里处理 通过test获取的数据
-    return [3,4,5]//返回数据并存储
+  console.log(val)//这里处理 通过test获取的数据
+  return [3,4,5]//返回数据并存储
 })
 
 store(["key","key2"],function(key){
-    //获取多个key的数据处理，return 并保存；
-    console.log("key:",key)
-    return "逐个更改数据"
+  //获取多个key的数据处理，return 并保存；
+  console.log("key:",key)
+  return "逐个更改数据"
 })
 
 // 即创建/更新/删除数据项时，触发该事件
 store.onStorage(function(key,val){
-    console.log('onStorage:',key,val)
+  console.log('onStorage:',key,val)
 })
 ```
 
@@ -97,8 +102,8 @@ store.onStorage(function(key,val){
 效果相同`store(key, data);`  
 
 ```js
-store.set("wcj","1")   //⇒  1
-store.set("wcj")       //⇒  删除wcj及字符串数据
+store.set("wcj","1");   //⇒  1
+store.set("wcj");       //⇒  删除wcj及字符串数据
 ```
 
 ### <del>setAll</del> 🔫
@@ -113,10 +118,10 @@ store.set("wcj")       //⇒  删除wcj及字符串数据
 store.setAll({
     "wcj1":123,
     "wcj2":345
-}) //存储两条字符串数据
+}); // 存储两条字符串数据
 
-store.setAll(["w1","w2","w3"]) 
-//存储三条字符串数据 
+store.setAll(["w1","w2","w3"]);
+// 存储三条字符串数据 
 //  0⇒ "w1"
 //  1⇒ "w2"
 //  2⇒ "w3"
@@ -124,44 +129,43 @@ store.setAll(["w1","w2","w3"])
 
 ### get
 获取key的字符串数据  
-`store.get(key[, alt]) `  
+`store.get(key[, alt])`  
 效果相同`store(key)`  
 
 ```js
-store.get("wcj1") //获取wcj1的字符串数据
-store("wcj1") //功能同上
+store.get("wcj1"); // 获取wcj1的字符串数据
+store("wcj1"); // 功能同上
 ```
 
 ### <del>getAll</del> 🔫
 
-> `store()`和`store.get()` 代替
+> `store()` 和 `store.get()` 代替
 
-获取所有key/data  
-`store.getAll()`  
-效果相同`store()`  
+获取所有 key/data `store.getAll()`  
+与效果相同`store()`  
 
 ```js
-store.getAll() //⇒JSON
-store() //功能同上
+store.getAll(); //⇒JSON
+store(); //功能同上
 ```
 
 ### clear
-清空所有key/data  
-`store.clear()`  
 
-弃用 ~~store(false)~~ 因为传入空值 或者报错很容易清空库
+清空所有 `key/data` `store.clear()`  
+
+⚠️ 弃用 ~~store(false)~~ 因为传入空值 或者报错很容易清空库
 
 
 ```js
-store.clear() //
+store.clear(); //
 ```
 
 ### keys
-返回所有key的数组  
-`store.keys()`  
+
+返回所有 `key` 的数组 `store.keys()`  
 
 ```js
-store.keys() //⇒["w1", "w2", "w3"]
+store.keys(); //⇒["w1", "w2", "w3"]
 ```
 
 ### search
@@ -173,40 +177,42 @@ store.search('key') //⇒ {"key":"keytest","key1":{"a":1},"key2":"逐个更改�
 ```
 
 ### has
-判断是否存在返回true/false  
-`store.has(key)`  
+
+判断是否存在返回 `true/false` `store.has(key)`  
 
 ```js
 store.has("w1"); //⇒true
 ```
 
 ### remove
-删除key包括key的字符串数据
-`store.remove(key)`
+
+删除key包括key的字符串数据 `store.remove(key)`
 
 ```js
 store.remove("w1"); //删除w1 返回 w1的value
 
-store("w1",false) //这样也是 删除w1
+store("w1", false); //这样也是 删除w1
 ```
 
 ### forEach
-循环遍历，返回false结束遍历
+
+循环遍历，返回 `false` 结束遍历
 
 ```js
 store.forEach(function(k,d){
-    console.log(k,d)
-    if (k== 3) return false
+  console.log(k, d);
+  if (k== 3) return false;
 })
 ```
 
 ### 定时清除
+
 (做个笔记，未来将定时清除封装起来，有思路)
 
 ```js
 if (+new Date() > +new Date(2014, 11, 30)) {
-    localStorage.removeItem("c");    //清除c的值
-    // or localStorage.clear();
+  localStorage.removeItem("c");    //清除c的值
+  // or localStorage.clear();
 }
 ```
 
@@ -217,13 +223,13 @@ if (+new Date() > +new Date(2014, 11, 30)) {
 
 ```js
 if(window.addEventListener){
-     window.addEventListener("storage",handle_storage,false);
+  window.addEventListener("storage",handle_storage,false);
 }else if(window.attachEvent){
-    window.attachEvent("onstorage",handle_storage);
+  window.attachEvent("onstorage",handle_storage);
 }
 function handle_storage(e){
-    if(!e){e=window.event;}
-    //showStorage();
+  if(!e){e=window.event;}
+  //showStorage();
 }
 ```
 
