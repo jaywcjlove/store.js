@@ -1,6 +1,6 @@
 {
   "name": "storejs",
-  "version": "1.0.17",
+  "version": "1.0.18",
   "description": "Local storage localstorage package provides a simple API",
   "homepage": "https://github.com/jaywcjlove/store.js",
   "main": "dist/store.js",
@@ -9,14 +9,10 @@
     "url": "https://github.com/jaywcjlove/store.js.git"
   },
   "scripts": {
-    "test": "npm run build:test",
-    "ssr": "ssr",
-    "test:ssr": "npm run test && npm run ssr",
-    "build:test": "browserify test/store.js > test/store.test.js",
-    "build:min": "umd store lib/store.js | uglifyjs -c | bannerjs -o > dist/store.min.js",
-    "build:dist": "umd store lib/store.js | bannerjs -m | uglifyjs -b beautify=true --comments 'all' > dist/store.js ",
-    "build": "npm run build:min && npm run build:dist && npm run build:test",
-    "watch": "onchange 'lib/store.js' -v -- npm run build"
+    "build": "node scripts/build.js",
+    "watch": "node scripts/watch.js",
+    "test": "npm run build:test && ssr",
+    "build:test": "browserify test/store.js > test/store.test.js"
   },
   "keywords": [
     "storejs",
@@ -31,13 +27,31 @@
     "url": "https://github.com/jaywcjlove/store.js/issues"
   },
   "devDependencies": {
-    "bannerjs": "~1.0.0",
+    "babel-core": "^6.26.3",
+    "babel-eslint": "^8.2.6",
+    "babel-plugin-external-helpers": "^6.22.0",
+    "babel-plugin-transform-async-to-generator": "^6.24.1",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "bannerjs": "^1.0.5",
     "browserify": "~13.0.1",
+    "colors-cli": "^1.0.17",
     "onchange": "~2.4.0",
+    "rollup": "^0.63.4",
+    "rollup-plugin-babel": "^3.0.7",
+    "rollup-plugin-commonjs": "^9.1.3",
+    "rollup-plugin-node-resolve": "^3.3.0",
+    "ssr": "^1.1.1",
     "tape": "~4.5.1",
     "tape-chai": "^1.1.0",
     "tape-dom": "~0.0.10",
-    "uglify-js": "~2.6.2",
-    "umd": "~3.0.1"
-  }
+    "uglify-js": "^3.4.5",
+    "zlib": "^1.0.5"
+  },
+  "dependencies": {}
 }
