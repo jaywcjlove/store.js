@@ -3,13 +3,11 @@
 [![Build Status](https://travis-ci.org/jaywcjlove/store.js.svg?branch=master)](https://travis-ci.org/jaywcjlove/store.js) [![GitHub issues](https://img.shields.io/github/issues/jaywcjlove/store.js.svg)](https://github.com/jaywcjlove/store.js/issues) [![GitHub forks](https://img.shields.io/github/forks/jaywcjlove/store.js.svg)](https://github.com/jaywcjlove/store.js/network) [![GitHub stars](https://img.shields.io/github/stars/jaywcjlove/store.js.svg)](https://github.com/jaywcjlove/store.js/stargazers) [![](https://img.shields.io/github/release/jaywcjlove/store.js.svg)](https://github.com/jaywcjlove/store.js/releases) [![](https://jaywcjlove.github.io/sb/ico/npm.svg)](https://www.npmjs.com/package/storejs)
 
 
-本地存储localstorage的封装，提供简单的API
+本地存储localstorage的封装，提供简单的API，没有依赖，压缩只有 2.48kb(gzipped: 1.07kb)。
 
 ## 安装
 
 ```bash
-# bower 安装
-bower install storejs
 # npm 安装
 npm install storejs
 ```
@@ -33,7 +31,7 @@ $ npm run ssr
 # 使用
 
 ```html
-<script type="text/javascript" src="dist/store.js"></script>
+<script src="https://unpkg.com/storejs/dist/store.min.js"></script>
 <script type="text/javascript">
   store("test","tank");
 </script>

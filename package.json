@@ -3,7 +3,8 @@
   "version": "1.0.18",
   "description": "Local storage localstorage package provides a simple API",
   "homepage": "https://github.com/jaywcjlove/store.js",
-  "main": "dist/store.js",
+  "main": "dist/hotkeys.common.js",
+  "module": "dist/store.esm.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/jaywcjlove/store.js.git"

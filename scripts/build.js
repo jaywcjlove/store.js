@@ -46,6 +46,14 @@ async function build() {
 
   const umdMinified = `${banner.onebanner()}\n${uglify.minify(umd.code, uglifyOption).code}`;
 
+
+  const common = await bundle.generate({
+    format: 'cjs',
+    name: 'hotkeys',
+    banner: banner.multibanner(),
+  });
+  const commonMinified = `${banner.onebanner()}\n${uglify.minify(common.code, uglifyOption).code}`;
+
   const es = await bundle.generate({
     format: 'es',
     name: 'store',
@@ -54,6 +62,8 @@ async function build() {
 
   write('dist/store.js', umd.code)
     .then(() => write('dist/store.min.js', umdMinified, true))
+    .then(() => write('dist/hotkeys.common.js', common.code))
+    .then(() => write('dist/hotkeys.common.min.js', commonMinified, true))
     .then(() => write('dist/store.esm.js', es.code));
 }
 
