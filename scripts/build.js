@@ -62,8 +62,8 @@ async function build() {
 
   write('dist/store.js', umd.code)
     .then(() => write('dist/store.min.js', umdMinified, true))
-    .then(() => write('dist/hotkeys.common.js', common.code))
-    .then(() => write('dist/hotkeys.common.min.js', commonMinified, true))
+    .then(() => write('dist/store.common.js', common.code))
+    .then(() => write('dist/store.common.min.js', commonMinified, true))
     .then(() => write('dist/store.esm.js', es.code));
 }
 
