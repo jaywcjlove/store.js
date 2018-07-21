@@ -30,6 +30,9 @@ $ npm run ssr
 
 # 使用
 
+
+或者在您的HTML中手动下载并引入 **store.min.js**，你也可以通过 [UNPKG](https://unpkg.com/storejs/dist/) 进行下载：
+
 ```html
 <script src="https://unpkg.com/storejs/dist/store.min.js"></script>
 <script type="text/javascript">
