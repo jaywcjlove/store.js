@@ -1,9 +1,9 @@
 test/
+scripts
 lib
 bower.json
 MIT-LICENSE
 node_modules/
-.travis.yml
 .gitignore
 .cache
 .travis.yml
