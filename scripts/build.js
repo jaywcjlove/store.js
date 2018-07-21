@@ -49,7 +49,7 @@ async function build() {
 
   const common = await bundle.generate({
     format: 'cjs',
-    name: 'hotkeys',
+    name: 'store',
     banner: banner.multibanner(),
   });
   const commonMinified = `${banner.onebanner()}\n${uglify.minify(common.code, uglifyOption).code}`;
