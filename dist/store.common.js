@@ -1,13 +1,3 @@
-/*!
- * storejs v1.0.20
- * Local storage localstorage package provides a simple API
- * 
- * Copyright (c) 2018 kenny wang <wowohoo@qq.com>
- * https://github.com/jaywcjlove/store.js
- * 
- * Licensed under the MIT license.
- */
-
 'use strict';
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) {
@@ -138,10 +128,11 @@ Store.prototype = {
   }
 };
 
+var _Store = null;
 function store(key, data) {
-  var argm = arguments,
-      _Store = Store(),
-      dt = null;
+  var argm = arguments;
+  var dt = null;
+  if (!_Store) _Store = Store();
   if (argm.length === 0) return _Store.get();
   if (argm.length === 1) {
     if (typeof key === "string") return _Store.get(key);
