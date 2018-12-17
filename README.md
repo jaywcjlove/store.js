@@ -12,7 +12,7 @@ A simple, lightweight JavaScript API for handling browser [localStorage](https:/
 🌱 Works in all browsers  
 🔥 Heavily tested  
 📦 Supports AMD/CommonJS  
-💥 [cookie.min.js](dist/cookie.min.js) 2.36kb(gzipped: 1.04kb)  
+💥 [store.min.js](dist/store.min.js) 2.36kb(gzipped: 1.04kb)  
 
 ## Usage
 
