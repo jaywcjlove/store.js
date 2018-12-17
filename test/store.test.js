@@ -63,9 +63,18 @@ test('Get all the keys of localstorage', () => {
 });
 
 test('Test localstorage forEach', () => {
-  store.forEach((item) => {
+  store.forEach((item, val) => {
     expect(store.has(item)).toBeTruthy();
   });
+  expect(store()).toEqual({ "name4": "value4", "name5": "value5" });
+
+  store({ 'forEach': 'forEachvalue1' })
+  expect(store('forEach', (key) => {
+    expect(key).toEqual('forEach');
+    return '111';
+  })).toEqual(store);
+  expect(store()).toEqual({ "forEach": "111", "name4": "value4", "name5": "value5" });
+  expect(store.remove('forEach')).toEqual('111');
 });
 
 test('Get localstorage', () => {
@@ -116,17 +125,4 @@ test('Test Change localstorage', () => {
     return [3, 4, 5]
   })).toEqual(store);
   expect(store.get()).toEqual({ "name6": 123, "name6,name7": "keytest", "test": [3, 4, 5] });
-});
-
-
-test('Test onstorage', async () => {
-  // window.attachEvent("onstorage", () => {});
-  // console.log('window:', window);
-  await window.addEventListener('storage', (e) => {
-    console.log('e:', e);
-  });
-  setTimeout(() => {
-    console.log('e:');
-    expect(store.set({ 'name6': 123 })).toEqual(store)
-  }, 2000);
 });
