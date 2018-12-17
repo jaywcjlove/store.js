@@ -1,7 +1,7 @@
 JavaScript localStorage
 ---
 
-[![Build Status](https://travis-ci.org/jaywcjlove/store.js.svg?branch=master)](https://travis-ci.org/jaywcjlove/store.js) [![Coverage Status](https://coveralls.io/repos/github/jaywcjlove/store.js/badge.svg?branch=master)](https://coveralls.io/github/jaywcjlove/store.js?branch=master) [![GitHub issues](https://img.shields.io/github/issues/jaywcjlove/store.js.svg)](https://github.com/jaywcjlove/store.js/issues) [![GitHub forks](https://img.shields.io/github/forks/jaywcjlove/store.js.svg)](https://github.com/jaywcjlove/store.js/network) [![GitHub stars](https://img.shields.io/github/stars/jaywcjlove/store.js.svg)](https://github.com/jaywcjlove/store.js/stargazers) [![](https://img.shields.io/github/release/jaywcjlove/store.js.svg)](https://github.com/jaywcjlove/store.js/releases) [![](https://jaywcjlove.github.io/sb/ico/npm.svg)](https://www.npmjs.com/package/storejs)
+[![Build Status](https://travis-ci.org/jaywcjlove/store.js.svg?branch=master)](https://travis-ci.org/jaywcjlove/store.js) [![Coverage Status](https://coveralls.io/repos/github/jaywcjlove/store.js/badge.svg?branch=master)](https://coveralls.io/github/jaywcjlove/store.js?branch=master) [![GitHub issues](https://img.shields.io/github/issues/jaywcjlove/store.js.svg)](https://github.com/jaywcjlove/store.js/issues) [![GitHub forks](https://img.shields.io/github/forks/jaywcjlove/store.js.svg)](https://github.com/jaywcjlove/store.js/network) [![GitHub stars](https://img.shields.io/github/stars/jaywcjlove/store.js.svg)](https://github.com/jaywcjlove/store.js/stargazers) [![](https://img.shields.io/github/release/jaywcjlove/store.js.svg)](https://github.com/jaywcjlove/store.js/releases) [![store.js](https://jaywcjlove.github.io/sb/lang/chinese.svg)](./README-zh.md)
 
 A simple, lightweight JavaScript API for handling browser [localStorage](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage)
 , it is easy to pick up and use, has a reasonable footprint 2.36kb(gzipped: 1.04kb), and has no dependencies. It should not interfere with any JavaScript libraries or frameworks.
@@ -16,7 +16,7 @@ A simple, lightweight JavaScript API for handling browser [localStorage](https:/
 
 ## Usage
 
-Installed via npm. You will need Node.js installed on your system.
+Installed via [npm](https://www.npmjs.com/package/storejs). You will need `Node.js` installed on your system.
 
 ```bash
 $ npm install storejs --save
