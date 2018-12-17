@@ -1,3 +1,4 @@
 npm-debug.log
+coverage
 node_modules/
 test/store.test.js

@@ -243,20 +243,6 @@ function handle_storage(e){
 |newValue|Any|The new value, or null if an item was added|
 |url/uri|String|The page that called the method that triggered this change|
 
-## onStorage
-
-即创建/更新/删除数据项时，触发该事件
-
-```js
-store.onStorage(function(type,key,val){
-   console.log("event:",type,key,val)
-})
-
-store({"a":1,"v":undefined})
-//⇒ event: set a 1
-//⇒ event: remove v 
-```
-
 ## 链式书写
 
 ```js
@@ -264,7 +250,7 @@ store.set('ad',234).get('ad')
 
 store.onStorage(function(type){
  console.log('type:',type)
-}).set('wcj',12).clear().setAll({"a":1,b:2}).get('wcj')
+}).set('wcj',12).clear().get('wcj')
 //⇒ type: set
 //⇒ type: clear
 //⇒ type: set

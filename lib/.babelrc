@@ -1,13 +1,22 @@
 {
   "presets": [
     [
-      "env",
+      "@babel/preset-env",
       {
-        "modules": false
+        "targets": {
+          "browsers": [
+            "last 2 versions"
+          ]
+        }
       }
     ]
   ],
   "plugins": [
-    "external-helpers"
+    "@babel/plugin-proposal-class-properties",
+    "@babel/plugin-transform-async-to-generator",
+    ["@babel/plugin-proposal-object-rest-spread", {
+        "loose": true,
+        "useBuiltIns": true
+    }]
   ]
 }
