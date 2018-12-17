@@ -12,8 +12,8 @@
   "scripts": {
     "build": "node scripts/build.js",
     "watch": "node scripts/watch.js",
-    "test": "jest test --coverage -t *.test.js",
-    "test:watch": "jest test --coverage --watch"
+    "test": "jest --coverage",
+    "test:watch": "jest --coverage --watch"
   },
   "keywords": [
     "storejs",
@@ -26,6 +26,9 @@
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/jaywcjlove/store.js/issues"
+  },
+  "jest": {
+    "testMatch": ["**/test/**/?(*.)+(spec|test).js?(x)"]
   },
   "devDependencies": {
     "@babel/cli": "^7.1.0",
