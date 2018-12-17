@@ -27,9 +27,6 @@
   "bugs": {
     "url": "https://github.com/jaywcjlove/store.js/issues"
   },
-  "jest": {
-    "testMatch": ["**/?(*.)+(spec|test).js?(x)"]
-  },
   "devDependencies": {
     "@babel/cli": "^7.1.0",
     "@babel/core": "^7.1.0",
