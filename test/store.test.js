@@ -1,4 +1,4 @@
-const store = require('../../dist/store');
+const store = require('../dist/store');
 
 test('Set localstorage', () => {
   expect(store()).toEqual({})
