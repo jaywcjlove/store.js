@@ -1,5 +1,5 @@
 /*!
- * storejs v1.0.22
+ * storejs v1.0.23
  * Local storage localstorage package provides a simple API
  * 
  * Copyright (c) 2018 kenny wang <wowohoo@qq.com>
@@ -49,8 +49,10 @@ function isFunction(value) {
 }
 
 function isArray(value) {
-  return value instanceof Array;
-}
+  return Object.prototype.toString.call(value) === "[object Array]";
+} // https://github.com/jaywcjlove/store.js/pull/8
+// Error: QuotaExceededError
+
 
 function dealIncognito(storage) {
   var _KEY = '_Is_Incognit',
