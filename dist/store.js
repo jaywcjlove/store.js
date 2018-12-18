@@ -1,5 +1,5 @@
 /*!
- * storejs v1.0.21
+ * storejs v1.0.22
  * Local storage localstorage package provides a simple API
  * 
  * Copyright (c) 2018 kenny wang <wowohoo@qq.com>
@@ -93,7 +93,6 @@
 
   Store.prototype = {
     set: function set(key, val) {
-
       if (key && !isJSON(key)) {
         storage.setItem(key, stringify(val));
       } else if (key && isJSON(key) && !val) {
@@ -120,8 +119,6 @@
       return deserialize(storage.getItem(key));
     },
     clear: function clear() {
-      this.forEach(function (key, val) {
-      });
       storage.clear();
       return this;
     },
