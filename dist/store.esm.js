@@ -126,7 +126,7 @@ Store.prototype = {
     return d;
   },
   forEach: function forEach(callback) {
-    for (var i = 0; i < storage.length; i++) {
+    for (var i = 0, len = storage.length; i < len; i++) {
       var key = storage.key(i);
       callback(key, this.get(key));
     }
@@ -137,7 +137,7 @@ Store.prototype = {
     var arr = this.keys(),
         dt = {};
 
-    for (var i = 0; i < arr.length; i++) {
+    for (var i = 0, len = arr.length; i < len; i++) {
       if (arr[i].indexOf(str) > -1) dt[arr[i]] = this.get(arr[i]);
     }
 
@@ -169,7 +169,7 @@ function store(key, data) {
   }
 
   if (argm.length === 2 && isArray(key) && isFunction(data)) {
-    for (var i = 0; i < key.length; i++) {
+    for (var i = 0, len = key.length; i < len; i++) {
       dt = data(key[i], _Store.get(key[i]));
       store.set(key[i], dt);
     }
