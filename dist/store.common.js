@@ -10,7 +10,59 @@
 
 'use strict';
 
-var storage = window.localStorage;
+var storage = window.localStorage,
+    _inMemoryStorage = {},
+    _length = 0; // deal QuotaExceededError if user use incognito mode in browser
+
+(function () {
+  function isSupported() {
+    var _KEY = '_Is_Incognit',
+        _VALUE = 'yes';
+
+    try {
+      storage.setItem(_KEY, _VALUE);
+      storage.removeItem(_KEY);
+      return true;
+    } catch (error) {
+      return false;
+    }
+  }
+
+  if (!isSupported()) {
+    storage.__proto__ = {
+      setItem: function setItem(key, value) {
+        _inMemoryStorage[key] = '' + value;
+
+        if (!_inMemoryStorage.hasOwnProperty(key)) {
+          _length++;
+        }
+      },
+      getItem: function getItem(key) {
+        if (key in _inMemoryStorage) {
+          return _inMemoryStorage[key];
+        }
+
+        return null;
+      },
+      removeItem: function removeItem(key) {
+        if (_inMemoryStorage.hasOwnProperty(key)) {
+          delete _inMemoryStorage[key];
+          _length--;
+        }
+      },
+      clear: function clear() {
+        _inMemoryStorage = {};
+        _length = 0;
+      },
+      length: function length() {
+        return _length;
+      },
+      key: function key(index) {
+        return Object.keys(_inMemoryStorage)[index] || null;
+      }
+    };
+  }
+})();
 
 function isJSON(obj) {
   obj = JSON.stringify(obj);
@@ -44,36 +96,7 @@ function isFunction(value) {
 
 function isArray(value) {
   return Object.prototype.toString.call(value) === "[object Array]";
-} // https://github.com/jaywcjlove/store.js/pull/8
-// Error: QuotaExceededError
-
-
-function dealIncognito(storage) {
-  var _KEY = '_Is_Incognit',
-      _VALUE = 'yes';
-
-  try {
-    storage.setItem(_KEY, _VALUE);
-  } catch (e) {
-    if (e.name === 'QuotaExceededError') {
-      var _nothing = function _nothing() {};
-
-      storage.__proto__ = {
-        setItem: _nothing,
-        getItem: _nothing,
-        removeItem: _nothing,
-        clear: _nothing
-      };
-    }
-  } finally {
-    if (storage.getItem(_KEY) === _VALUE) storage.removeItem(_KEY);
-  }
-
-  return storage;
-} // deal QuotaExceededError if user use incognito mode in browser
-
-
-storage = dealIncognito(storage);
+}
 
 function Store() {
   if (!(this instanceof Store)) {
