@@ -1,5 +1,5 @@
 /*!
- * storejs v1.0.23
+ * storejs v1.0.24
  * Local storage localstorage package provides a simple API
  * 
  * Copyright (c) 2018 kenny wang <wowohoo@qq.com>
@@ -14,24 +14,16 @@
   (global.store = factory());
 }(this, (function () { 'use strict';
 
-  function _typeof(obj) {
-    if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
-      _typeof = function (obj) {
-        return typeof obj;
-      };
-    } else {
-      _typeof = function (obj) {
-        return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
-      };
-    }
-
-    return _typeof(obj);
-  }
-
   var storage = window.localStorage;
 
   function isJSON(obj) {
-    return _typeof(obj) === "object" && Object.prototype.toString.call(obj).toLowerCase() === "[object object]" && !obj.length;
+    obj = JSON.stringify(obj);
+
+    if (!/^\{[\s\S]*\}$/.test(obj)) {
+      return false;
+    }
+
+    return true;
   }
 
   function stringify(val) {
@@ -46,7 +38,7 @@
     try {
       return JSON.parse(value);
     } catch (e) {
-      return value || undefined;
+      return value;
     }
   }
 
@@ -97,7 +89,7 @@
     set: function set(key, val) {
       if (key && !isJSON(key)) {
         storage.setItem(key, stringify(val));
-      } else if (key && isJSON(key) && !val) {
+      } else if (isJSON(key)) {
         for (var a in key) {
           this.set(a, key[a]);
         }
@@ -142,7 +134,7 @@
     forEach: function forEach(callback) {
       for (var i = 0; i < storage.length; i++) {
         var key = storage.key(i);
-        if (callback(key, this.get(key)) === false) break;
+        callback(key, this.get(key));
       }
 
       return this;
@@ -178,7 +170,7 @@
       if (data && isFunction(data)) {
         dt = null;
         dt = data(key, _Store.get(key));
-        return dt ? store.set(key, dt) : store;
+        store.set(key, dt);
       }
     }
 
@@ -187,9 +179,9 @@
         dt = data(key[i], _Store.get(key[i]));
         store.set(key[i], dt);
       }
-
-      return store;
     }
+
+    return store;
   }
 
   for (var a in Store.prototype) {
