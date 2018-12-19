@@ -126,3 +126,11 @@ test('Test Change localstorage', () => {
   })).toEqual(store);
   expect(store.get()).toEqual({ "name6": 123, "name6,name7": "keytest", "test": [3, 4, 5] });
 });
+
+test('Test Throw QuotaExceededError', () => {
+  function throwTestCode () {
+    var value = 'a'.repeat(50 * 1024 * 1024);
+    store.set('test', value);
+  }
+  expect(throwTestCode).toThrowError('storage quota has been exceeded.');
+});

@@ -8,7 +8,33 @@
  * Licensed under the MIT license.
  */
 
-var storage = window.localStorage;
+var storage = window.localStorage; // https://github.com/jaywcjlove/store.js/pull/8
+// Error: QuotaExceededError
+
+function dealIncognito(storage) {
+  var _KEY = '_Is_Incognit',
+      _VALUE = 'yes';
+
+  try {
+    storage.setItem(_KEY, _VALUE);
+  } catch (e) {
+    var _nothing = function _nothing() {};
+
+    storage.__proto__ = {
+      setItem: _nothing,
+      getItem: _nothing,
+      removeItem: _nothing,
+      clear: _nothing
+    };
+  } finally {
+    if (storage.getItem(_KEY) === _VALUE) storage.removeItem(_KEY);
+  }
+
+  return storage;
+} // deal QuotaExceededError if user use incognito mode in browser
+
+
+storage = dealIncognito(storage);
 
 function isJSON(obj) {
   obj = JSON.stringify(obj);
@@ -42,36 +68,7 @@ function isFunction(value) {
 
 function isArray(value) {
   return Object.prototype.toString.call(value) === "[object Array]";
-} // https://github.com/jaywcjlove/store.js/pull/8
-// Error: QuotaExceededError
-
-
-function dealIncognito(storage) {
-  var _KEY = '_Is_Incognit',
-      _VALUE = 'yes';
-
-  try {
-    storage.setItem(_KEY, _VALUE);
-  } catch (e) {
-    if (e.name === 'QuotaExceededError') {
-      var _nothing = function _nothing() {};
-
-      storage.__proto__ = {
-        setItem: _nothing,
-        getItem: _nothing,
-        removeItem: _nothing,
-        clear: _nothing
-      };
-    }
-  } finally {
-    if (storage.getItem(_KEY) === _VALUE) storage.removeItem(_KEY);
-  }
-
-  return storage;
-} // deal QuotaExceededError if user use incognito mode in browser
-
-
-storage = dealIncognito(storage);
+}
 
 function Store() {
   if (!(this instanceof Store)) {
