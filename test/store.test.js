@@ -1,10 +1,10 @@
-const store = require('../dist/store');
+const store = require('../dist/store.common');
 
 test('Set localstorage', () => {
   expect(store()).toEqual({})
   expect(store('name1', 'value1')).toEqual({})
   expect(store('name1')).toEqual('value1')
-  store.set('name3', 'value3')
+  expect(store.set('name3', 'value3')).toEqual(store);
   expect(store('name3')).toEqual('value3')
 });
 
@@ -90,7 +90,7 @@ test('Get all localstorage', () => {
 
 test('Chained function call test', () => {
   expect(store.set('ad', 234).get('ad')).toEqual(234);
-  expect(store('ad', 234)).toBeUndefined();
+  expect(store('ad', 234)).toEqual(store);
   expect(store('ad')).toEqual(234);
   expect(store.forEach((item) => {
     expect(store.has(item)).toBeTruthy();
