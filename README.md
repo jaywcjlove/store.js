@@ -40,7 +40,6 @@ Or manually download and link `storejs` in your HTML, It can also be downloaded 
 ## Basic Usage
 
 ```js
-
 store(key, data);                 // Single storage string data
 store({key: data, key2: data2});  // Bulk storage of multiple string data
 store(key);             // Get `key` string data
@@ -53,6 +52,7 @@ store.set(key, data[, overwrite]);    // === store(key, data);
 store.set({key: data, key2: data2})   // === store({key: data, key2: data});
 store.get(key[, alt]);                // === store(key);
 store.get("?key");                    // Determine if the `key` exists
+store.get("key1", "key2", "key3");    // Get `key1`,`key2`,`key3` data
 store.remove(key);                    // ===store(key,false)
 store.clear();                      // Clean all key/data
 store.keys();                       // Returns an array of all the keys

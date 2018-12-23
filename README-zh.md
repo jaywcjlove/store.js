@@ -64,12 +64,11 @@ store();                  //获取所有key/data
 //store(false);🔫         //（弃用）因为传入空值 或者报错很容易清空库
 //store(key,false); 🔫    //（弃用）删除key包括key的字符串数据, 当val 为 0的时候无法存储...
 
-store.set(key, data[, overwrite]);    //=== store(key, data);
-store.set({key: data, key2: data2})   //=== store({key: data, key2: data});
-//store.setAll({key: data});(弃用)🔫   //=== 保持简单 set方法可以实现
-store.get(key[, alt]);                //=== store(key);
-store.get("?key");                    //判断key是否存在
-//store.getAll();(弃用)🔫              //=== store()和store.get()都可以实现获取所有数据
+store.set(key, data[, overwrite]);    // === store(key, data);
+store.set({key: data, key2: data2})   // === store({key: data, key2: data});
+store.get(key[, alt]);                // === store(key);
+store.get("?key");                    // 判断key是否存在
+store.get("key1", "key2", "key3");    // 获取 `key1`,`key2`,`key3` 数据
 store.remove(key);                  //===store(key,false)
 store.clear();                      //清空所有key/data
 store.keys();                       //返回所有key的数组
