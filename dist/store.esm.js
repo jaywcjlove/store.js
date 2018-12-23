@@ -104,6 +104,22 @@ Store.prototype = {
       return this.has(key.substr(1));
     }
 
+    var args = arguments;
+
+    if (args.length > 1) {
+      var dt = {};
+
+      for (var i = 0, len = args.length; i < len; i++) {
+        var value = deserialize(storage.getItem(args[i]));
+
+        if (value) {
+          dt[args[i]] = value;
+        }
+      }
+
+      return dt;
+    }
+
     return deserialize(storage.getItem(key));
   },
   clear: function clear() {
