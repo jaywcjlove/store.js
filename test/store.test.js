@@ -84,6 +84,7 @@ test('Get localstorage', () => {
   expect(store.get('name4', 'nameeee')).toEqual({ "name4": 'value4' });
   expect(store.get('name4', 'name5')).toEqual({ "name4": 'value4', "name5": "value5" });
   expect(store.get('nameeee11', 'nameeee222')).toEqual({});
+  expect(store.get('name4322323')).toBeUndefined();
 });
 
 test('Get all localstorage', () => {
