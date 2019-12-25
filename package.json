@@ -24,6 +24,9 @@
     "local",
     "localstorage"
   ],
+  "files": [
+    "dist/*.js"
+  ],
   "author": "kenny wang <wowohoo@qq.com>",
   "license": "MIT",
   "bugs": {
