@@ -1,8 +1,8 @@
 /*!
- * storejs v1.0.24
+ * storejs v1.0.26
  * Local storage localstorage package provides a simple API
  * 
- * Copyright (c) 2018 kenny wang <wowohoo@qq.com>
+ * Copyright (c) 2019 kenny wang <wowohoo@qq.com>
  * https://github.com/jaywcjlove/store.js
  * 
  * Licensed under the MIT license.
