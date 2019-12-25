@@ -1,13 +1,10 @@
-const fs = require('fs');
-const path = require('path');
 const rollup = require('rollup');
 const babel = require('rollup-plugin-babel');
-const nodeResolve = require('rollup-plugin-node-resolve');
-const commonjs = require('rollup-plugin-commonjs');
+const nodeResolve = require('@rollup/plugin-node-resolve');
+const commonjs = require('@rollup/plugin-commonjs');
+const { terser } = require('rollup-plugin-terser');
 const banner = require('bannerjs');
 const zlib = require('zlib');
-// const pkg = require('../package.json');
-const uglify = require('uglify-js');
 require('colors-cli/toxic');
 
 // see below for details on the options
@@ -22,73 +19,49 @@ const inputOptions = {
   ],
 };
 
-async function build() {
-  // create a bundle
+(async () => {
   const bundle = await rollup.rollup(inputOptions);
-
-  const uglifyOption = {
-    compress: {
-      pure_getters: true,
-      unsafe: true,
-      unsafe_comps: true,
-      warnings: false,
-    },
-    output: {
-      ascii_only: true,
-    },
-  };
-
-  const umd = await bundle.generate({
+  const umd = await bundle.write({
+    file: 'dist/store.js',
     format: 'umd',
     name: 'store',
     banner: banner.multibanner(),
   });
+  report(umd, 'dist/store.js');
 
-  const umdMinified = `${banner.onebanner()}\n${uglify.minify(umd.code, uglifyOption).code}`;
+  const iife = await bundle.write({
+    file: 'dist/store.min.js',
+    name: 'store',
+    banner: banner.onebanner(),
+    format: 'iife',
+    plugins: [terser()]
+  });
+  report(iife, 'dist/store.min.js');
 
+  const esm = await bundle.write({
+    file: 'dist/store.esm.js',
+    format: 'esm',
+    name: 'store',
+    banner: banner.multibanner(),
+  });
+  report(esm, 'dist/store.esm.js');
 
-  const common = await bundle.generate({
+  const cjs = await bundle.write({
+    file: 'dist/store.cjs.js',
     format: 'cjs',
     name: 'store',
     banner: banner.multibanner(),
   });
-  const commonMinified = `${banner.onebanner()}\n${uglify.minify(common.code, uglifyOption).code}`;
+  report(cjs, 'dist/store.cjs.js');
 
-  const es = await bundle.generate({
-    format: 'es',
-    name: 'store',
-    banner: banner.multibanner(),
-  });
+})();
 
-  write('dist/store.js', umd.code)
-    .then(() => write('dist/store.min.js', umdMinified, true))
-    .then(() => write('dist/store.common.js', common.code))
-    .then(() => write('dist/store.common.min.js', commonMinified, true))
-    .then(() => write('dist/store.esm.js', es.code));
-}
-
-build();
-
-function write(dest, code, zip) {
-  return new Promise((resolve, reject) => {
-    function report(extra) {
-      console.log(`${(path.relative(process.cwd(), dest)).blue_bt} ${getSize(code).green_bt + (extra || '')}`);
-      resolve();
-    }
-    if (!fs.existsSync(path.dirname(dest))) {
-      fs.mkdirSync(path.dirname(dest));
-    }
-    fs.writeFile(dest, code, (err) => {
-      if (err) return reject(err);
-      if (zip) {
-        zlib.gzip(code, (_err, zipped) => {
-          if (_err) return reject(_err);
-          report(`(gzipped: ${getSize(zipped).green_bt})`);
-        });
-      } else {
-        report();
-      }
-    });
+function report(result, outpath, extra) {
+  const code = result.output[0].code;
+  zlib.gzip(code, (_err, zipped) => {
+    if (_err) return reject(_err);
+    extra = `(gzipped: ${getSize(zipped).green_bt})`;
+    console.log(`${(outpath).blue_bt} ${getSize(code).green_bt + (extra || '')}`);
   });
 }
 

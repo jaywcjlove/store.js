@@ -1,8 +1,9 @@
 const path = require('path');
 const rollup = require('rollup');
 const babel = require('rollup-plugin-babel');
-const nodeResolve = require('rollup-plugin-node-resolve');
-const commonjs = require('rollup-plugin-commonjs');
+const nodeResolve = require('@rollup/plugin-node-resolve');
+const commonjs = require('@rollup/plugin-commonjs');
+const { terser } = require('rollup-plugin-terser');
 const banner = require('bannerjs');
 require('colors-cli/toxic');
 
@@ -12,6 +13,13 @@ const watchOptions = {
     { file: 'dist/store.common.js', name: 'store', format: 'cjs', banner: banner.multibanner() },
     { file: 'dist/store.js', name: 'store', format: 'umd', banner: banner.multibanner() },
     { file: 'dist/store.esm.js', name: 'store', format: 'es', banner: banner.multibanner() },
+    {
+      file: 'dist/store.min.js',
+      name: 'store',
+      banner: banner.onebanner(),
+      format: 'iife',
+      plugins: [terser()]
+    },
   ],
   plugins: [
     nodeResolve(), // so Rollup can find `ms`
