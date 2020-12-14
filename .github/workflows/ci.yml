@@ -15,7 +15,11 @@ jobs:
         node-version: '10.x'
 
     - run: npm install
-    - run: npm install coveralls
     - run: npm run build
     - run: npm run test
-    - run: cat ./coverage/lcov.info | ./node_modules/.bin/coveralls
+
+    - name: Coveralls
+      uses: coverallsapp/github-action@master
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+        parallel: true
