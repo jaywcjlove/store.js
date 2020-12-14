@@ -1,8 +1,8 @@
-// jest.config.js
 module.exports = {
-  verbose: true,
-  testPathIgnorePatterns: ['/node_modules/', '/types/'],
-  collectCoverageFrom: [
-    "**/dist/store.common.js"
+  "bail": true,
+  "verbose": true,
+  "testMatch": [
+    "**/__tests__/**/*.js?(x)",
+    "**/?(*.)+(spec|test).js?(x)"
   ]
 };

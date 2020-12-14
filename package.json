@@ -34,14 +34,6 @@
   "bugs": {
     "url": "https://github.com/jaywcjlove/store.js/issues"
   },
-  "jset": {
-    "bail": true,
-    "verbose": true,
-    "testMatch": [
-      "**/__tests__/**/*.js?(x)",
-      "**/?(*.)+(spec|test).js?(x)"
-    ]
-  },
   "devDependencies": {
     "@babel/cli": "^7.7.7",
     "@babel/core": "^7.7.7",
@@ -54,7 +46,7 @@
     "@type-challenges/utils": "^0.1.1",
     "bannerjs": "^1.0.7",
     "colors-cli": "^1.0.26",
-    "jest": "^24.9.0",
+    "jest": "^26.6.3",
     "rollup": "^1.27.14",
     "rollup-plugin-babel": "^4.3.3",
     "rollup-plugin-terser": "^5.1.3",
