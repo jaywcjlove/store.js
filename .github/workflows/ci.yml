@@ -15,8 +15,7 @@ jobs:
         node-version: '10.x'
 
     - run: npm install
-    - run: npm install codecov.io coveralls
+    - run: npm install coveralls
     - run: npm run build
     - run: npm run test
-    - run: cat ./coverage/lcov.info | ./node_modules/.bin/codecov
     - run: cat ./coverage/lcov.info | ./node_modules/.bin/coveralls
