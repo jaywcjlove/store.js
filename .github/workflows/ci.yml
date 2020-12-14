@@ -18,5 +18,5 @@ jobs:
     - run: npm install codecov.io coveralls
     - run: npm run build
     - run: npm run test
-    - run: cat ./coverage/lcov.info | ./node_modules/codecov.io/bin/codecov.io.js
-    - run: cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
+    - run: cat ./coverage/lcov.info | ./node_modules/.bin/codecov
+    - run: cat ./coverage/lcov.info | ./node_modules/.bin/coveralls
