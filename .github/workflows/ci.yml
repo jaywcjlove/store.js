@@ -4,7 +4,7 @@ on:
     branches:
       - master
 jobs:
-  build-uiw:
+  build-storejs:
     runs-on: ubuntu-18.04
     steps:
     - uses: actions/checkout@master
