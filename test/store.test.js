@@ -78,13 +78,31 @@ test('Test localstorage forEach', () => {
 });
 
 test('Get localstorage', () => {
+  store.set('namef', false);
+  store.set('namenull', null);
   expect(store('name4')).toEqual('value4');
+  expect(store.get('namef')).toEqual(false);
   expect(store.get('name4')).toEqual('value4');
-  expect(store.get()).toEqual({ 'name4': 'value4', 'name5': 'value5' });
-  expect(store.get('name4', 'nameeee')).toEqual({ "name4": 'value4' });
+  expect(store.get()).toEqual({
+    'name4': 'value4',
+    'name5': 'value5',
+    'namef': false,
+    'namenull': null,
+    'nameundefined': undefined
+  });
+  expect(store.get('name4', 'nameeee', 'namef', 'namenull', 'nameundefined')).toEqual({
+    "name4": 'value4',
+    'namef': false,
+    'namenull': null,
+    'nameundefined': undefined
+  });
   expect(store.get('name4', 'name5')).toEqual({ "name4": 'value4', "name5": "value5" });
   expect(store.get('nameeee11', 'nameeee222')).toEqual({});
   expect(store.get('name4322323')).toBeUndefined();
+
+  store.remove('namef');
+  store.remove('namenull');
+  store.remove('nameundefined');
 });
 
 test('Get all localstorage', () => {
