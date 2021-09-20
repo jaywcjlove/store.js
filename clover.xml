@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1632161299939" clover="3.2.0">
-  <project timestamp="1632161299939" name="All files">
+<coverage generated="1632161473238" clover="3.2.0">
+  <project timestamp="1632161473238" name="All files">
     <metrics statements="81" coveredstatements="78" conditionals="59" coveredconditionals="55" methods="19" coveredmethods="18" elements="159" coveredelements="151" complexity="0" loc="81" ncloc="81" packages="1" files="1" classes="1"/>
     <file name="main.js" path="/home/runner/work/store.js/store.js/src/main.js">
       <metrics statements="81" coveredstatements="78" conditionals="59" coveredconditionals="55" methods="19" coveredmethods="18"/>
