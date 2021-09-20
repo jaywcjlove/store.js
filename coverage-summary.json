@@ -1,2 +1,3 @@
-{"total": {"lines":{"total":0,"covered":0,"skipped":0,"pct":"Unknown"},"statements":{"total":0,"covered":0,"skipped":0,"pct":"Unknown"},"functions":{"total":0,"covered":0,"skipped":0,"pct":"Unknown"},"branches":{"total":0,"covered":0,"skipped":0,"pct":"Unknown"}}
+{"total": {"lines":{"total":81,"covered":78,"skipped":0,"pct":96.3},"statements":{"total":105,"covered":102,"skipped":0,"pct":97.14},"functions":{"total":19,"covered":18,"skipped":0,"pct":94.74},"branches":{"total":59,"covered":55,"skipped":0,"pct":93.22}}
+,"/home/runner/work/store.js/store.js/src/main.js": {"lines":{"total":81,"covered":78,"skipped":0,"pct":96.3},"functions":{"total":19,"covered":18,"skipped":0,"pct":94.74},"statements":{"total":105,"covered":102,"skipped":0,"pct":97.14},"branches":{"total":59,"covered":55,"skipped":0,"pct":93.22}}
 }
