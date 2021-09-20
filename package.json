@@ -33,18 +33,6 @@
     "dist/*.js",
     "types/index.d.ts"
   ],
-  "jest": {
-    "testMatch": [
-      "**/__tests__/**/*.js?(x)",
-      "**/?(*.)+(spec|test).js?(x)"
-    ],
-    "collectCoverageFrom": [
-      "**/*.{js}",
-      "!**/*.{js,d.ts}",
-      "!**/node_modules/**",
-      "!<rootDir>/coverage/**"
-    ]
-  },
   "devDependencies": {
     "@babel/cli": "7.15.7",
     "@babel/core": "7.15.5",
