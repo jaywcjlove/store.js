@@ -17,7 +17,7 @@
     "prepare": "npm run build",
     "build": "node scripts/build.js",
     "watch": "node scripts/watch.js",
-    "types": "&& tsc -p ./types",
+    "types": "tsc -p ./types",
     "test": "tsbb test",
     "coverage": "tsbb test --coverage && npm run types"
   },
