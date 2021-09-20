@@ -18,6 +18,7 @@
     "build": "node scripts/build.js",
     "watch": "node scripts/watch.js",
     "types": "tsc -p ./types",
+    "doc": "node scripts/doc.mjs",
     "test": "tsbb test",
     "coverage": "tsbb test --coverage && npm run types"
   },
