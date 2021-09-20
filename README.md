@@ -2,7 +2,7 @@ JavaScript localStorage
 ---
 
 [![Downloads](https://img.shields.io/npm/dm/storejs.svg?style=flat)](https://www.npmjs.com/package/storejs)
-[![Coverage Status](https://coveralls.io/repos/github/jaywcjlove/store.js/badge.svg?branch=master)](https://coveralls.io/github/jaywcjlove/store.js?branch=master) [![GitHub issues](https://img.shields.io/github/issues/jaywcjlove/store.js.svg)](https://github.com/jaywcjlove/store.js/issues) [![GitHub forks](https://img.shields.io/github/forks/jaywcjlove/store.js.svg)](https://github.com/jaywcjlove/store.js/network) [![GitHub stars](https://img.shields.io/github/stars/jaywcjlove/store.js.svg)](https://github.com/jaywcjlove/store.js/stargazers) [![](https://img.shields.io/github/release/jaywcjlove/store.js.svg)](https://github.com/jaywcjlove/store.js/releases) [![store.js](https://jaywcjlove.github.io/sb/lang/chinese.svg)](./README-zh.md)
+[![Coverage Status](https://coveralls.io/repos/github/jaywcjlove/store.js/badge.svg?branch=master)](https://coveralls.io/github/jaywcjlove/store.js?branch=master) [![GitHub stars](https://img.shields.io/github/stars/jaywcjlove/store.js.svg)](https://github.com/jaywcjlove/store.js/stargazers) [![](https://img.shields.io/github/release/jaywcjlove/store.js.svg)](https://github.com/jaywcjlove/store.js/releases) [![store.js](https://jaywcjlove.github.io/sb/lang/chinese.svg)](./README-zh.md)
 
 A simple, lightweight JavaScript API for handling browser [localStorage](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage)
 , it is easy to pick up and use, has a reasonable footprint 2.08kb(gzipped: 0.97kb), and has no dependencies. It should not interfere with any JavaScript libraries or frameworks.
@@ -92,11 +92,11 @@ function handle_storage(e){
 ```
 
 | Property | Type | Description |
-| ----- | ---- | ---- |
-|key|String|The named key that was added, removed, or moddified|
-|oldValue|Any|The previous value(now overwritten), or null if a new item was added|
-|newValue|Any|The new value, or null if an item was added|
-|url/uri|String|The page that called the method that triggered this change|
+| ----- | ----- | ----- |
+| key | String | The named key that was added, removed, or moddified |
+| oldValue | Any | The previous value(now overwritten), or null if a new item was added |
+| newValue | Any | The new value, or null if an item was added |
+| url/uri | String | The page that called the method that triggered this change |
 
 ## Chained Call
 

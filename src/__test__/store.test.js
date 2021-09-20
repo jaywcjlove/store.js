@@ -1,4 +1,7 @@
-const store = require('../dist/store.cjs');
+/**
+ * @jest-environment jsdom
+ */
+import store from '../main.js';
 
 test('Set localstorage', () => {
   expect(store()).toEqual({})

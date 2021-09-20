@@ -1,8 +1,8 @@
-/*!
+/**!
  * storejs v1.1.0
  * Local storage localstorage package provides a simple API
  * 
- * Copyright (c) 2020 kenny wang <wowohoo@qq.com>
+ * Copyright (c) 2021 kenny wang <wowohoo@qq.com>
  * https://github.com/jaywcjlove/store.js
  * 
  * Licensed under the MIT license.
@@ -11,7 +11,7 @@
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
   typeof define === 'function' && define.amd ? define(factory) :
-  (global = global || self, global.store = factory());
+  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.store = factory());
 }(this, (function () { 'use strict';
 
   var storage = window.localStorage;

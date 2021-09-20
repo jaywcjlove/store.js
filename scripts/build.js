@@ -1,5 +1,5 @@
 const rollup = require('rollup');
-const babel = require('rollup-plugin-babel');
+const babel = require('@rollup/plugin-babel');
 const nodeResolve = require('@rollup/plugin-node-resolve');
 const commonjs = require('@rollup/plugin-commonjs');
 const { terser } = require('rollup-plugin-terser');
@@ -9,12 +9,13 @@ require('colors-cli/toxic');
 
 // see below for details on the options
 const inputOptions = {
-  input: 'lib/main.js',
+  input: 'src/main.js',
   plugins: [
-    nodeResolve(), // so Rollup can find `ms`
+    nodeResolve.default(), // so Rollup can find `ms`
     commonjs(), // so Rollup can convert `ms` to an ES module
-    babel({
-      exclude: 'node_modules/**', // 只编译我们的源代码
+    babel.default({
+      babelHelpers: 'bundled'
+      // exclude: 'node_modules/**', // 只编译我们的源代码
     }),
   ],
 };
@@ -33,7 +34,7 @@ const inputOptions = {
     file: 'dist/store.min.js',
     name: 'store',
     banner: banner.onebanner(),
-    format: 'iife',
+    format: 'umd',
     plugins: [terser()]
   });
   report(iife, 'dist/store.min.js');
@@ -50,6 +51,7 @@ const inputOptions = {
     file: 'dist/store.cjs.js',
     format: 'cjs',
     name: 'store',
+    exports: 'default',
     banner: banner.multibanner(),
   });
   report(cjs, 'dist/store.cjs.js');
