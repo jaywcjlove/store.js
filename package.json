@@ -34,10 +34,6 @@
     "types/index.d.ts"
   ],
   "jest": {
-    "coverageReporters": [
-      "lcov",
-      "json-summary"
-    ],
     "testMatch": [
       "**/__tests__/**/*.js?(x)",
       "**/?(*.)+(spec|test).js?(x)"
@@ -78,7 +74,7 @@
     "rollup": "2.56.3",
     "rollup-plugin-terser": "7.0.2",
     "typescript": "4.4.3",
-    "tsbb": "3.2.1",
+    "tsbb": "3.3.0",
     "zlib": "1.0.5"
   },
   "dependencies": {}

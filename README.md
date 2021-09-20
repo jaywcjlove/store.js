@@ -2,7 +2,7 @@ JavaScript localStorage
 ---
 
 [![Downloads](https://img.shields.io/npm/dm/storejs.svg?style=flat)](https://www.npmjs.com/package/storejs)
-[![Coverage Status](https://coveralls.io/repos/github/jaywcjlove/store.js/badge.svg?branch=master)](https://coveralls.io/github/jaywcjlove/store.js?branch=master) [![GitHub stars](https://img.shields.io/github/stars/jaywcjlove/store.js.svg)](https://github.com/jaywcjlove/store.js/stargazers) [![](https://img.shields.io/github/release/jaywcjlove/store.js.svg)](https://github.com/jaywcjlove/store.js/releases) [![store.js](https://jaywcjlove.github.io/sb/lang/chinese.svg)](./README-zh.md)
+[![Coverage Status](https://jaywcjlove.github.io/store.js/badges.svg)](https://jaywcjlove.github.io/store.js/lcov-report/) [![GitHub stars](https://img.shields.io/github/stars/jaywcjlove/store.js.svg)](https://github.com/jaywcjlove/store.js/stargazers) [![](https://img.shields.io/github/release/jaywcjlove/store.js.svg)](https://github.com/jaywcjlove/store.js/releases) [![store.js](https://jaywcjlove.github.io/sb/lang/chinese.svg)](./README-zh.md)
 
 A simple, lightweight JavaScript API for handling browser [localStorage](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage)
 , it is easy to pick up and use, has a reasonable footprint 2.08kb(gzipped: 0.97kb), and has no dependencies. It should not interfere with any JavaScript libraries or frameworks.
