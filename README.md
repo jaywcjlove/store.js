@@ -110,6 +110,10 @@ store.set('ad', 234).get('ad')
 - [ ] `store([key,key2])` Get method, return json
 - [ ] `onStorage` Method test cases, and implementation
 
+## Related
+
+- [cookiejs](https://github.com/jaywcjlove/cookie.js) 🍪 A simple, lightweight JavaScript API for handling browser cookies , it is easy to pick up and use, has a reasonable footprint(~2kb, gzipped: 0.95kb), and has no dependencies. It should not interfere with any JavaScript libraries or frameworks.
+
 ### License
 
 Licensed under the MIT License.
