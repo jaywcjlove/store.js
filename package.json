@@ -44,7 +44,7 @@
     "@rollup/plugin-commonjs": "20.0.0",
     "@rollup/plugin-node-resolve": "13.0.4",
     "@type-challenges/utils": "0.1.1",
-    "@types/fs-extra": "9.0.12",
+    "@types/fs-extra": "9.0.13",
     "@mapbox/rehype-prism": "0.7.0",
     "unified": "10.1.0",
     "fs-extra": "10.0.0",
