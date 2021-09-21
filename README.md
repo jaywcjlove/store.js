@@ -44,22 +44,22 @@ Or manually download and link `storejs` in your HTML, It can also be downloaded 
 ```js
 store(key, data);                 // Single storage string data
 store({key: data, key2: data2});  // Bulk storage of multiple string data
-store(key);             // Get `key` string data
-store("?key");          // Determine if the `key` exists
-store();                // Get all key/data
-//store(false);🔫       // (Deprecated) because it is easy to empty the storage because of a null value or an error
+store(key);              // Get `key` string data
+store('?key');           // Determine if the `key` exists
+store();                 // Get all key/data
+//store(false);🔫        // (Deprecated) because it is easy to empty the storage because of a null value or an error
 //store(key, false); 🔫  // (Deprecated)
 
 store.set(key, data[, overwrite]);    // === store(key, data);
 store.set({key: data, key2: data2})   // === store({key: data, key2: data});
 store.get(key[, alt]);                // === store(key);
-store.get("?key");                    // Determine if the `key` exists
-store.get("key1", "key2", "key3");    // Get `key1`,`key2`,`key3` data
+store.get('?key');                    // Determine if the `key` exists
+store.get('key1', 'key2', 'key3');    // Get `key1`,`key2`,`key3` data
 store.remove(key);                    // ===store(key,false)
-store.clear();                      // Clean all key/data
-store.keys();                       // Returns an array of all the keys
-store.forEach(callback);            // Loop traversal, return false to end traversal
-store.search(string);               // Search method
+store.clear();                        // Clean all key/data
+store.keys();                         // Returns an array of all the keys
+store.forEach(callback);              // Loop traversal, return false to end traversal
+store.search(string);                 // Search method
 
 store.has(key); //⇒ Determine if there is a return true/false
 
@@ -76,18 +76,108 @@ store(['key', 'key2'], (key) => {
 })
 ```
 
+## API
+
+### set
+
+Store or delete string data individually `store.set(key, data[, overwrite]);`. Same effect `store(key, data);`.
+
+```js
+store.set('wcj', '1')   //⇒  1
+store.set('wcj')        //⇒  Delete `wcj` and string data
+```
+
+### get
+Get the string data of the `key` `store.get(key[, alt])`. Same effect `store(key)`.
+
+```js
+store.get('wcj1') // Get the string data of `wcj1`
+store('wcj1')     // Same function as above
+```
+
+### setAll
+
+Bulk storage of multiple string data `store.setAll(data[, overwrite])`. Same effect `store({key: data, key2: data});`.
+
+```js
+store.setAll({
+  "wcj1": 123,
+  "wcj2": 345
+}) // Store two string data
+
+store.setAll(["w1", "w2", "w3"]) 
+// Store three strings of data
+//  0⇒ "w1"
+//  1⇒ "w2"
+//  2⇒ "w3"
+```
+
+### getAll
+
+Get all key/data `store.getAll()`. Same effect `store()`.
+
+```js
+store.getAll() // ⇒ JSON
+store() // Same function as above
+```
+
+### clear
+Clear all key/data. `store.clear()`
+
+Deprecate ~~`store(false)`~~ because it is easy to empty the library because of passing in a null value or reporting an error
+
+```js
+store.clear()
+```
+
+### keys
+
+Return an array of all `keys`. `store.keys()`.
+
+```js
+store.keys() //⇒ ["w1", "w2", "w3"]
+```
+
+### has
+
+Judge whether it exists, return true/false `store.has(key)`.
+
+```js
+store.has('w1'); //⇒ true
+```
+
+### remove
+
+Delete key string data including key `store.remove(key)`
+
+```js
+store.remove('w1');  // Delete w1 and return the value of w1
+store('w1', false)   // So also delete w1
+```
+
+### forEach
+
+Loop traversal, return `false` to end the traversal
+
+```js
+store.forEach((k, d) => {
+  console.log(k, d);
+  if (k== 3) return false
+});
+```
+
 ## Storage Event
 
 Responding to storage changes with the [StorageEvent](https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API/Using_the_Web_Storage_API#Responding_to_storage_changes_with_the_StorageEvent)
 
 ```js
-if(window.addEventListener){
-  window.addEventListener("storage",handle_storage,false);
-}else if(window.attachEvent){
-  window.attachEvent("onstorage",handle_storage);
+if (window.addEventListener) {
+  window.addEventListener('storage', handleStorage,false);
+} else if (window.attachEvent){
+  window.attachEvent('onstorage', handleStorage);
 }
-function handle_storage(e){
-  if(!e){e=window.event;}
+function handleStorage(e) {
+  if(!e) { e=window.event; }
   //showStorage();
 }
 ```
