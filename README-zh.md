@@ -106,7 +106,7 @@ store.set("wcj","1");   //⇒  1
 store.set("wcj");       //⇒  删除wcj及字符串数据
 ```
 
-### <del>setAll</del> 🔫
+### ~~setAll~~ 🔫
 
 > 使用 `store.set({key: data, key2: data2})` 代替
 
@@ -137,7 +137,7 @@ store.get("wcj1"); // 获取wcj1的字符串数据
 store("wcj1"); // 功能同上
 ```
 
-### <del>getAll</del> 🔫
+### ~~getAll~~ 🔫
 
 > `store()` 和 `store.get()` 代替
 

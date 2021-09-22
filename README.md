@@ -112,9 +112,9 @@ store.setAll(["w1", "w2", "w3"])
 //  2⇒ "w3"
 ```
 
-### getAll
+### ~~getAll~~ 🔫
 
-Get all key/data `store.getAll()`. Same effect `store()`.
+Get all key/data ~~`store.getAll()`~~. Same effect `store()`.
 
 ```js
 store.getAll() // ⇒ JSON
@@ -124,7 +124,7 @@ store() // Same function as above
 ### clear
 Clear all key/data. `store.clear()`
 
-Deprecate ~~`store(false)`~~ because it is easy to empty the library because of passing in a null value or reporting an error
+⚠️ Deprecate ~~`store(false)`~~ because it is easy to empty the library because of passing in a null value or reporting an error
 
 ```js
 store.clear()
