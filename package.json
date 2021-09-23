@@ -54,7 +54,7 @@
     "rehype-format": "4.0.0",
     "rehype-wrap": "1.0.10",
     "rehype-rewrite": "2.1.2",
-    "remark-rehype": "9.0.0",
+    "remark-rehype": "9.1.0",
     "remark-parse": "10.0.0",
     "remark-gfm": "2.0.0",
     "bannerjs": "2.0.1",
