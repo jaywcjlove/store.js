@@ -15,10 +15,12 @@ jobs:
     - run: npm install
     - run: npm run build
     - run: npm run coverage
-    - run: node scripts/doc.mjs
 
     - run: npm i coverage-badges-cli -g
     - run: coverage-badges
+
+    - run: npm i markdown-to-html-cli -g
+    - run: markdown-to-html --output coverage/index.html
 
     - name: Deploy
       uses: peaceiris/actions-gh-pages@v3
