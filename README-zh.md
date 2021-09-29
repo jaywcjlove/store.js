@@ -1,6 +1,10 @@
-# store.js 
+JavaScript localStorage
+===
 
-[![Build and test storejs](https://github.com/jaywcjlove/store.js/workflows/Build%20and%20test%20storejs/badge.svg)](https://github.com/jaywcjlove/store.js/actions) [![Coverage Status](https://coveralls.io/repos/github/jaywcjlove/store.js/badge.svg?branch=master)](https://coveralls.io/github/jaywcjlove/store.js?branch=master) [![GitHub issues](https://img.shields.io/github/issues/jaywcjlove/store.js.svg)](https://github.com/jaywcjlove/store.js/issues) [![GitHub forks](https://img.shields.io/github/forks/jaywcjlove/store.js.svg)](https://github.com/jaywcjlove/store.js/network) [![GitHub stars](https://img.shields.io/github/stars/jaywcjlove/store.js.svg)](https://github.com/jaywcjlove/store.js/stargazers) [![](https://img.shields.io/github/release/jaywcjlove/store.js.svg)](https://github.com/jaywcjlove/store.js/releases) [![store.js](https://jaywcjlove.github.io/sb/lang/english.svg)](./README.md)
+[![Downloads](https://img.shields.io/npm/dm/storejs.svg?style=flat)](https://www.npmjs.com/package/storejs)
+[![Build and test storejs](https://github.com/jaywcjlove/store.js/actions/workflows/ci.yml/badge.svg)](https://github.com/jaywcjlove/store.js/actions/workflows/ci.yml)
+[![Coverage Status](https://jaywcjlove.github.io/store.js/badges.svg)](https://jaywcjlove.github.io/store.js/lcov-report/)
+[![README.md](https://jaywcjlove.github.io/sb/lang/english.svg)](./README.md)
 
 
 本地存储localStorage的封装，提供简单的API，没有依赖，压缩只有 2.08kb(gzipped: 0.97kb)。
@@ -276,3 +280,11 @@ store.onStorage(function(type){
 `JSON.stringify(localStorage).length` 当前占用多大容量  
 
 [检测localstore容量上限](https://arty.name/localstorage.html)  
+
+## Related
+
+- [cookiejs](https://github.com/jaywcjlove/cookie.js) 🍪 一个简单，轻量级的JavaScript API，用于处理浏览器cookie ，它易于上传和使用，具有合理的占用空间（~2kb）（gzip压缩：0.84kb），并且没有依赖性。 它不应该干扰任何JavaScript库或框架。
+
+### License
+
+Licensed under the MIT License.
