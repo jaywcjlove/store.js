@@ -25,6 +25,57 @@ display: none
 margin: 0 .2em .25em -1.6em;
 vertical-align: middle
 }
+.wmde-markdown h1,.wmde-markdown h2,.wmde-markdown h3,.wmde-markdown h4,.wmde-markdown h5,.wmde-markdown h6 {
+font-weight: 600;
+line-height: 1.25;
+margin-bottom: 16px;
+margin-top: 24px
+}
+.wmde-markdown h1 .anchor,.wmde-markdown h2 .anchor,.wmde-markdown h3 .anchor,.wmde-markdown h4 .anchor,.wmde-markdown h5 .anchor,.wmde-markdown h6 .anchor {
+float: left;
+padding-right: 4px;
+margin-left: -20px;
+line-height: 1
+}
+.wmde-markdown h1 .octicon-link,.wmde-markdown h2 .octicon-link,.wmde-markdown h3 .octicon-link,.wmde-markdown h4 .octicon-link,.wmde-markdown h5 .octicon-link,.wmde-markdown h6 .octicon-link {
+visibility: hidden;
+vertical-align: middle
+}
+.wmde-markdown h1:hover .octicon-link,.wmde-markdown h2:hover .octicon-link,.wmde-markdown h3:hover .octicon-link,.wmde-markdown h4:hover .octicon-link,.wmde-markdown h5:hover .octicon-link,.wmde-markdown h6:hover .octicon-link {
+visibility: visible
+}
+.github-corner:hover .octo-arm {
+-webkit-animation: octocat-wave .56s ease-in-out;
+animation: octocat-wave .56s ease-in-out
+}
+@-webkit-keyframes octocat-wave {
+0%, to {
+-webkit-transform: rotate(0);
+transform: rotate(0);
+}
+20%, 60% {
+-webkit-transform: rotate(-25deg);
+transform: rotate(-25deg);
+}
+40%, 80% {
+-webkit-transform: rotate(10deg);
+transform: rotate(10deg);
+}
+}
+@keyframes octocat-wave {
+0%, to {
+-webkit-transform: rotate(0);
+transform: rotate(0)
+}
+20%, 60% {
+-webkit-transform: rotate(-25deg);
+transform: rotate(-25deg);
+}
+40%, 80% {
+-webkit-transform: rotate(10deg);
+transform: rotate(10deg);
+}
+}
 .wmde-markdown {
 font-size: 16px;
 line-height: 1.5;
@@ -332,7 +383,7 @@ color: #0a53c1;
     <style></style>
   </head>
   <body><div class="wmde-markdown">
-    <h2>JavaScript localStorage</h2>
+    <h2 id="javascript-localstorage"><a class="anchor" aria-hidden="true" tabindex="-1" href="#javascript-localstorage"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>JavaScript localStorage</h2>
     <p>
       <a href="https://www.npmjs.com/package/storejs"><img src="https://img.shields.io/npm/dm/storejs.svg?style=flat" alt="Downloads"></a>
       <a href="https://jaywcjlove.github.io/store.js/lcov-report/"><img src="https://jaywcjlove.github.io/store.js/badges.svg" alt="Coverage Status"></a> <a href="https://github.com/jaywcjlove/store.js/stargazers"><img src="https://img.shields.io/github/stars/jaywcjlove/store.js.svg" alt="GitHub stars"></a> <a href="https://github.com/jaywcjlove/store.js/releases"><img src="https://img.shields.io/github/release/jaywcjlove/store.js.svg" alt=""></a> <a href="./README-zh.md"><img src="https://jaywcjlove.github.io/sb/lang/chinese.svg" alt="store.js"></a>
@@ -343,7 +394,7 @@ color: #0a53c1;
     </blockquote>
     <p><strong>Features:</strong></p>
     <p>🚀 Has no dependencies<br>🌱 Works in all browsers<br>🔥 Heavily tested<br>📦 Supports AMD/CommonJS<br>💥 <a href="dist/store.min.js">store.min.js</a> 2.08kb(gzipped: 0.97kb)</p>
-    <h2>Usage</h2>
+    <h2 id="usage"><a class="anchor" aria-hidden="true" tabindex="-1" href="#usage"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Usage</h2>
     <p>Installed via <a href="https://www.npmjs.com/package/storejs">npm</a>. You will need <code>Node.js</code> installed on your system.</p>
     <pre class="language-bash"><code class="language-bash">$ <span class="token function">npm</span> <span class="token function">install</span> storejs --save
 </code></pre>
@@ -357,7 +408,7 @@ color: #0a53c1;
   <span class="token function">store</span><span class="token punctuation">(</span><span class="token string">'test'</span><span class="token punctuation">,</span> <span class="token string">'tank'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>script</span><span class="token punctuation">></span></span>
 </code></pre>
-    <h2>Basic Usage</h2>
+    <h2 id="basic-usage"><a class="anchor" aria-hidden="true" tabindex="-1" href="#basic-usage"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Basic Usage</h2>
     <pre class="language-js"><code class="language-js"><span class="token function">store</span><span class="token punctuation">(</span>key<span class="token punctuation">,</span> data<span class="token punctuation">)</span><span class="token punctuation">;</span>                 <span class="token comment">// Single storage string data</span>
 <span class="token function">store</span><span class="token punctuation">(</span><span class="token punctuation">{</span>key<span class="token operator">:</span> data<span class="token punctuation">,</span> key2<span class="token operator">:</span> data2<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// Bulk storage of multiple string data</span>
 <span class="token function">store</span><span class="token punctuation">(</span>key<span class="token punctuation">)</span><span class="token punctuation">;</span>              <span class="token comment">// Get `key` string data</span>
@@ -391,18 +442,18 @@ store<span class="token punctuation">.</span><span class="token method function 
   <span class="token keyword control-flow">return</span> <span class="token string">'逐个更改数据'</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span>
 </code></pre>
-    <h2>API</h2>
-    <h3>set</h3>
+    <h2 id="api"><a class="anchor" aria-hidden="true" tabindex="-1" href="#api"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>API</h2>
+    <h3 id="set"><a class="anchor" aria-hidden="true" tabindex="-1" href="#set"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>set</h3>
     <p>Store or delete string data individually <code>store.set(key, data[, overwrite]);</code>. Same effect <code>store(key, data);</code>.</p>
     <pre class="language-js"><code class="language-js">store<span class="token punctuation">.</span><span class="token method function property-access">set</span><span class="token punctuation">(</span><span class="token string">'wcj'</span><span class="token punctuation">,</span> <span class="token string">'1'</span><span class="token punctuation">)</span>   <span class="token comment">//⇒  1</span>
 store<span class="token punctuation">.</span><span class="token method function property-access">set</span><span class="token punctuation">(</span><span class="token string">'wcj'</span><span class="token punctuation">)</span>        <span class="token comment">//⇒  Delete `wcj` and string data</span>
 </code></pre>
-    <h3>get</h3>
+    <h3 id="get"><a class="anchor" aria-hidden="true" tabindex="-1" href="#get"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>get</h3>
     <p>Get the string data of the <code>key</code> <code>store.get(key[, alt])</code>. Same effect <code>store(key)</code>.</p>
     <pre class="language-js"><code class="language-js">store<span class="token punctuation">.</span><span class="token method function property-access">get</span><span class="token punctuation">(</span><span class="token string">'wcj1'</span><span class="token punctuation">)</span> <span class="token comment">// Get the string data of `wcj1`</span>
 <span class="token function">store</span><span class="token punctuation">(</span><span class="token string">'wcj1'</span><span class="token punctuation">)</span>     <span class="token comment">// Same function as above</span>
 </code></pre>
-    <h3>setAll</h3>
+    <h3 id="setall"><a class="anchor" aria-hidden="true" tabindex="-1" href="#setall"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>setAll</h3>
     <p>Bulk storage of multiple string data <code>store.setAll(data[, overwrite])</code>. Same effect <code>store({key: data, key2: data});</code>.</p>
     <pre class="language-js"><code class="language-js">store<span class="token punctuation">.</span><span class="token method function property-access">setAll</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
   <span class="token string">"wcj1"</span><span class="token operator">:</span> <span class="token number">123</span><span class="token punctuation">,</span>
@@ -415,37 +466,37 @@ store<span class="token punctuation">.</span><span class="token method function 
 <span class="token comment">//  1⇒ "w2"</span>
 <span class="token comment">//  2⇒ "w3"</span>
 </code></pre>
-    <h3><del>getAll</del> 🔫</h3>
+    <h3 id="getall-"><a class="anchor" aria-hidden="true" tabindex="-1" href="#getall-"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a><del>getAll</del> 🔫</h3>
     <p>Get all key/data <del><code>store.getAll()</code></del>. Same effect <code>store()</code>.</p>
     <pre class="language-js"><code class="language-js">store<span class="token punctuation">.</span><span class="token method function property-access">getAll</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">// ⇒ JSON</span>
 <span class="token function">store</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">// Same function as above</span>
 </code></pre>
-    <h3>clear</h3>
+    <h3 id="clear"><a class="anchor" aria-hidden="true" tabindex="-1" href="#clear"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>clear</h3>
     <p>Clear all key/data. <code>store.clear()</code></p>
     <p>⚠️ Deprecate <del><code>store(false)</code></del> because it is easy to empty the library because of passing in a null value or reporting an error</p>
     <pre class="language-js"><code class="language-js">store<span class="token punctuation">.</span><span class="token method function property-access">clear</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 </code></pre>
-    <h3>keys</h3>
+    <h3 id="keys"><a class="anchor" aria-hidden="true" tabindex="-1" href="#keys"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>keys</h3>
     <p>Return an array of all <code>keys</code>. <code>store.keys()</code>.</p>
     <pre class="language-js"><code class="language-js">store<span class="token punctuation">.</span><span class="token method function property-access">keys</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">//⇒ ["w1", "w2", "w3"]</span>
 </code></pre>
-    <h3>has</h3>
+    <h3 id="has"><a class="anchor" aria-hidden="true" tabindex="-1" href="#has"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>has</h3>
     <p>Judge whether it exists, return true/false <code>store.has(key)</code>.</p>
     <pre class="language-js"><code class="language-js">store<span class="token punctuation">.</span><span class="token method function property-access">has</span><span class="token punctuation">(</span><span class="token string">'w1'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//⇒ true</span>
 </code></pre>
-    <h3>remove</h3>
+    <h3 id="remove"><a class="anchor" aria-hidden="true" tabindex="-1" href="#remove"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>remove</h3>
     <p>Delete key string data including key <code>store.remove(key)</code></p>
     <pre class="language-js"><code class="language-js">store<span class="token punctuation">.</span><span class="token method function property-access">remove</span><span class="token punctuation">(</span><span class="token string">'w1'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// Delete w1 and return the value of w1</span>
 <span class="token function">store</span><span class="token punctuation">(</span><span class="token string">'w1'</span><span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">)</span>   <span class="token comment">// So also delete w1</span>
 </code></pre>
-    <h3>forEach</h3>
+    <h3 id="foreach"><a class="anchor" aria-hidden="true" tabindex="-1" href="#foreach"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>forEach</h3>
     <p>Loop traversal, return <code>false</code> to end the traversal</p>
     <pre class="language-js"><code class="language-js">store<span class="token punctuation">.</span><span class="token method function property-access">forEach</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">k<span class="token punctuation">,</span> d</span><span class="token punctuation">)</span> <span class="token arrow operator">=></span> <span class="token punctuation">{</span>
   <span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span>k<span class="token punctuation">,</span> d<span class="token punctuation">)</span><span class="token punctuation">;</span>
   <span class="token keyword control-flow">if</span> <span class="token punctuation">(</span>k<span class="token operator">==</span> <span class="token number">3</span><span class="token punctuation">)</span> <span class="token keyword control-flow">return</span> <span class="token boolean">false</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
-    <h2>Storage Event</h2>
+    <h2 id="storage-event"><a class="anchor" aria-hidden="true" tabindex="-1" href="#storage-event"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Storage Event</h2>
     <p>Responding to storage changes with the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API/Using_the_Web_Storage_API#Responding_to_storage_changes_with_the_StorageEvent">StorageEvent</a></p>
     <pre class="language-js"><code class="language-js"><span class="token keyword control-flow">if</span> <span class="token punctuation">(</span><span class="token dom variable">window</span><span class="token punctuation">.</span><span class="token property-access">addEventListener</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token dom variable">window</span><span class="token punctuation">.</span><span class="token method function property-access">addEventListener</span><span class="token punctuation">(</span><span class="token string">'storage'</span><span class="token punctuation">,</span> handleStorage<span class="token punctuation">,</span><span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -488,20 +539,20 @@ store<span class="token punctuation">.</span><span class="token method function 
         </tr>
       </tbody>
     </table>
-    <h2>Chained Call</h2>
+    <h2 id="chained-call"><a class="anchor" aria-hidden="true" tabindex="-1" href="#chained-call"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Chained Call</h2>
     <pre class="language-js"><code class="language-js">store<span class="token punctuation">.</span><span class="token method function property-access">set</span><span class="token punctuation">(</span><span class="token string">'ad'</span><span class="token punctuation">,</span> <span class="token number">234</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token method function property-access">get</span><span class="token punctuation">(</span><span class="token string">'ad'</span><span class="token punctuation">)</span>
 </code></pre>
-    <h2>TODO</h2>
+    <h2 id="todo"><a class="anchor" aria-hidden="true" tabindex="-1" href="#todo"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>TODO</h2>
     <ul class="contains-task-list">
       <li class="task-list-item"><input type="checkbox" disabled> <code>store.get([key,key2])</code> Get method, return json</li>
       <li class="task-list-item"><input type="checkbox" disabled> <code>store([key,key2])</code> Get method, return json</li>
       <li class="task-list-item"><input type="checkbox" disabled> <code>onStorage</code> Method test cases, and implementation</li>
     </ul>
-    <h2>Related</h2>
+    <h2 id="related"><a class="anchor" aria-hidden="true" tabindex="-1" href="#related"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Related</h2>
     <ul>
       <li><a href="https://github.com/jaywcjlove/cookie.js">cookiejs</a> 🍪 A simple, lightweight JavaScript API for handling browser cookies , it is easy to pick up and use, has a reasonable footprint(~2kb, gzipped: 0.95kb), and has no dependencies. It should not interfere with any JavaScript libraries or frameworks.</li>
     </ul>
-    <h3>License</h3>
+    <h3 id="license"><a class="anchor" aria-hidden="true" tabindex="-1" href="#license"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>License</h3>
     <p>Licensed under the MIT License.</p>
   </div></body>
 </html>
