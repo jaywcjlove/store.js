@@ -10,7 +10,7 @@ require('colors-cli/toxic');
 const watchOptions = {
   input: 'src/main.js',
   output: [
-    { file: 'dist/store.common.js', name: 'store', format: 'cjs', banner: banner.multibanner() },
+    { file: 'dist/store.common.js', name: 'store', format: 'cjs', exports: 'default', banner: banner.multibanner() },
     { file: 'dist/store.js', name: 'store', format: 'umd', banner: banner.multibanner() },
     { file: 'dist/store.esm.js', name: 'store', format: 'es', banner: banner.multibanner() },
     {
@@ -25,6 +25,7 @@ const watchOptions = {
     nodeResolve(), // so Rollup can find `ms`
     commonjs(), // so Rollup can convert `ms` to an ES module
     babel({
+      babelHelpers: 'bundled',
       exclude: 'node_modules/**', // 只编译我们的源代码
     }),
   ],
