@@ -1,4 +1,4 @@
-name: Build and test storejs
+name: Build & Test
 on:
   push:
     branches:
