@@ -9,6 +9,9 @@ JavaScript localStorage
 
 本地存储localStorage的封装，提供简单的API，没有依赖，压缩只有 2.08kb(gzipped: 0.97kb)。
 
+> 老的 [v1](https://raw.githack.com/jaywcjlove/store.js/doc-v1.1/index.html) 版本。 [文档预览](https://raw.githack.com/jaywcjlove/store.js/doc-v1.1/index.html)。
+
+
 ## 安装
 
 ```bash
