@@ -32,6 +32,12 @@
     "dist/*.js",
     "types/index.d.ts"
   ],
+  "markdown-to-html": {
+    "reurls": {
+      "README-zh.md": "index.zh.html",
+      "README.md": "index.html"
+    }
+  },
   "devDependencies": {
     "@babel/cli": "7.15.7",
     "@babel/core": "7.15.5",
