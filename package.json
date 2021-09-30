@@ -34,8 +34,8 @@
   ],
   "markdown-to-html": {
     "reurls": {
-      "README-zh.md": "index.zh.html",
-      "README.md": "index.html"
+      "./README-zh.md": "index.zh.html",
+      "./README.md": "index.html"
     }
   },
   "devDependencies": {
