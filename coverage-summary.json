@@ -1,3 +1,3 @@
-{"total": {"lines":{"total":81,"covered":78,"skipped":0,"pct":96.29},"statements":{"total":105,"covered":102,"skipped":0,"pct":97.14},"functions":{"total":19,"covered":18,"skipped":0,"pct":94.73},"branches":{"total":59,"covered":55,"skipped":0,"pct":93.22}}
+{"total": {"lines":{"total":81,"covered":78,"skipped":0,"pct":96.29},"statements":{"total":105,"covered":102,"skipped":0,"pct":97.14},"functions":{"total":19,"covered":18,"skipped":0,"pct":94.73},"branches":{"total":59,"covered":55,"skipped":0,"pct":93.22},"branchesTrue":{"total":0,"covered":0,"skipped":0,"pct":"Unknown"}}
 ,"/home/runner/work/store.js/store.js/src/main.js": {"lines":{"total":81,"covered":78,"skipped":0,"pct":96.29},"functions":{"total":19,"covered":18,"skipped":0,"pct":94.73},"statements":{"total":105,"covered":102,"skipped":0,"pct":97.14},"branches":{"total":59,"covered":55,"skipped":0,"pct":93.22}}
 }
