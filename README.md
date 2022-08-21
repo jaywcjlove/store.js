@@ -37,7 +37,7 @@ Or manually download and link `storejs` in your HTML, It can also be downloaded 
 CDN: [UNPKG](https://unpkg.com/storejs/dist/) | [jsDelivr](https://cdn.jsdelivr.net/npm/storejs) | [Githack](https://raw.githack.com/jaywcjlove/store.js/master/dist/store.min.js) | [Statically](https://cdn.statically.io/gh/jaywcjlove/store.js/master/dist/store.min.js) | [bundle.run](https://bundle.run/storejs)
 
 ```html
-<script src="https://unpkg.com/cookiejs/dist/cookie.min.js"></script>
+<script src="https://unpkg.com/storejs/dist/store.js"></script>
 <script type="text/javascript">
   store('test', 'tank');
 </script>
