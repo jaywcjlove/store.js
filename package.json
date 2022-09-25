@@ -51,7 +51,7 @@
     "@type-challenges/utils": "0.1.1",
     "bannerjs": "2.0.1",
     "colors-cli": "1.0.28",
-    "rollup": "2.56.3",
+    "rollup": "2.79.1",
     "rollup-plugin-terser": "7.0.2",
     "typescript": "4.4.3",
     "tsbb": "3.3.7",
