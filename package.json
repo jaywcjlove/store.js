@@ -1,6 +1,6 @@
 {
   "name": "storejs",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "Local storage localstorage package provides a simple API",
   "homepage": "https://jaywcjlove.github.io/store.js/",
   "author": "kenny wang <wowohoo@qq.com>",
