@@ -50,7 +50,7 @@
     "@rollup/plugin-node-resolve": "^15.0.1",
     "@rollup/plugin-terser": "^0.4.0",
     "@type-challenges/utils": "0.1.1",
-    "bannerjs": "2.0.1",
+    "bannerjs": "2.1.0",
     "colors-cli": "^1.0.29",
     "rollup": "^3.17.3",
     "tsbb": "^3.7.9",
