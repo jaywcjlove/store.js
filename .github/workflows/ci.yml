@@ -5,57 +5,64 @@ on:
       - master
 jobs:
   build-storejs:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - uses: actions/setup-node@v2
-      with:
-        node-version: 14
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          registry-url: 'https://registry.npmjs.org'
 
-    - run: npm install
-    - run: npm run build
-    - run: npm run coverage
+      - run: npm install
+      - run: npm run build
+      - run: npm run coverage
 
-    - run: npm i coverage-badges-cli markdown-to-html-cli -g
-    - run: coverage-badges
-    - run: markdown-to-html --output coverage/index.html
-    - run: markdown-to-html --source README-zh.md --output coverage/index.zh.html
+      - run: npm i coverage-badges-cli markdown-to-html-cli -g
+      - run: coverage-badges
+      - run: markdown-to-html --output coverage/index.html
+      - run: markdown-to-html --source README-zh.md --output coverage/index.zh.html
 
-    - name: Deploy
-      uses: peaceiris/actions-gh-pages@v3
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./coverage
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./coverage
 
-    - name: Create Tag
-      id: create_tag
-      uses: jaywcjlove/create-tag-action@v1.2.1
-      with:
-        token: ${{ secrets.GITHUB_TOKEN }}
-        package-path: ./package.json
+      - name: Create Tag
+        id: create_tag
+        uses: jaywcjlove/create-tag-action@main
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          package-path: ./package.json
 
-    - name: Generate Changelog
-      id: changelog
-      uses: jaywcjlove/changelog-generator@v1.4.6
-      with:
-        token: ${{ secrets.GITHUB_TOKEN }}
-        head-ref: ${{steps.create_tag.outputs.version}}
-        filter-author: (小弟调调™|Renovate Bot)
-        filter: '[R|r]elease[d]\s+[v|V]\d(\.\d+){0,2}'
+      - name: Generate Changelog
+        id: changelog
+        uses: jaywcjlove/changelog-generator@main
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          head-ref: ${{steps.create_tag.outputs.version}}
+          filter-author: (小弟调调™|Renovate Bot)
+          filter: '[R|r]elease[d]\s+[v|V]\d(\.\d+){0,2}'
 
-    - name: Create Release
-      uses: ncipollo/release-action@v1
-      if: steps.create_tag.outputs.successful
-      with:
-        name: ${{ steps.create_tag.outputs.version }}
-        tag: ${{ steps.create_tag.outputs.version }}
-        token: ${{ secrets.GITHUB_TOKEN }}
-        body: |
-          [![](https://img.shields.io/badge/Open%20in-unpkg-blue)](https://uiwjs.github.io/npm-unpkg/#/pkg/coverage-badges-cli@${{steps.changelog.outputs.version}}/file/README.md)
+      - name: Create Release
+        uses: ncipollo/release-action@v1
+        if: steps.create_tag.outputs.successful
+        with:
+          name: ${{ steps.create_tag.outputs.version }}
+          tag: ${{ steps.create_tag.outputs.version }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+          body: |
+            [![](https://img.shields.io/badge/Open%20in-unpkg-blue)](https://uiwjs.github.io/npm-unpkg/#/pkg/coverage-badges-cli@${{steps.changelog.outputs.version}}/file/README.md)
 
-          ${{ steps.changelog.outputs.compareurl }}
-          
-          ${{ steps.changelog.outputs.changelog }}
+            ${{ steps.changelog.outputs.compareurl }}
+            
+            ${{ steps.changelog.outputs.changelog }}
 
-    - run: npm install @jsdevtools/npm-publish -g
-    - run: npm-publish --token="${{ secrets.NPM_TOKEN }}" ./package.json
+      # - run: npm install @jsdevtools/npm-publish -g
+      # - run: npm-publish --token="${{ secrets.NPM_TOKEN }}" ./package.json
+
+      - name: 📦 storejs publish to NPM
+        run: npm publish
+        continue-on-error: true
+        env:
+          NODE_AUTH_TOKEN: '${{ secrets.NPM_TOKEN }}'
