@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">97.14% </span>
+                <span class="strong">90.17% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>102/105</span>
+                <span class='fraction'>101/112</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">93.22% </span>
+                <span class="strong">93.33% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>55/59</span>
+                <span class='fraction'>56/60</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">94.73% </span>
+                <span class="strong">81.81% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>18/19</span>
+                <span class='fraction'>18/22</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">96.29% </span>
+                <span class="strong">88.76% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>78/81</span>
+                <span class='fraction'>79/89</span>
             </div>
         
             
@@ -201,9 +201,17 @@
 <a name='L136'></a><a href='#L136'>136</a>
 <a name='L137'></a><a href='#L137'>137</a>
 <a name='L138'></a><a href='#L138'>138</a>
-<a name='L139'></a><a href='#L139'>139</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L139'></a><a href='#L139'>139</a>
+<a name='L140'></a><a href='#L140'>140</a>
+<a name='L141'></a><a href='#L141'>141</a>
+<a name='L142'></a><a href='#L142'>142</a>
+<a name='L143'></a><a href='#L143'>143</a>
+<a name='L144'></a><a href='#L144'>144</a>
+<a name='L145'></a><a href='#L145'>145</a>
+<a name='L146'></a><a href='#L146'>146</a>
+<a name='L147'></a><a href='#L147'>147</a>
+<a name='L148'></a><a href='#L148'>148</a>
+<a name='L149'></a><a href='#L149'>149</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">38x</span>
 <span class="cline-any cline-yes">38x</span>
 <span class="cline-any cline-yes">22x</span>
@@ -226,11 +234,23 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -339,9 +359,7 @@
 <span class="cline-any cline-yes">8x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">var storage = window.localStorage;
-&nbsp;
-function isJSON(obj) {
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">function isJSON(obj) {
   obj = JSON.stringify(obj);
   if (!/^\{[\s\S]*\}$/.test(obj)) {
     return false;
@@ -361,21 +379,33 @@ function isFunction(value) { return ({}).toString.call(value) === "[object Funct
 function isArray(value) { return Object.prototype.toString.call(value) === "[object Array]"; }
 // https://github.com/jaywcjlove/store.js/pull/8
 // Error: QuotaExceededError
-function dealIncognito(storage) {
+function dealIncognito(storage = window.localStorage) {
   var _KEY = '_Is_Incognit', _VALUE = 'yes';
-  try { storage.setItem(_KEY, _VALUE) }
-  catch (e) {
-<span class="cstat-no" title="statement not covered" >    if (e.name === 'QuotaExceededError') {</span>
-      var _nothing = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >fu</span>nction () { };</span>
-<span class="cstat-no" title="statement not covered" >      storage.__proto__ = { setItem: _nothing, getItem: _nothing, removeItem: _nothing, clear: _nothing };</span>
+  try {
+    storage.setItem(_KEY, _VALUE);
+    storage.removeItem(_KEY);
+  } catch (e) {
+<span class="cstat-no" title="statement not covered" >    Storage.prototype._data = {};</span>
+<span class="cstat-no" title="statement not covered" >    Storage.prototype.setItem = <span class="fstat-no" title="function not covered" >fu</span>nction (id, val) {</span>
+<span class="cstat-no" title="statement not covered" >      return this._data[id] = String(val);</span>
+    };
+<span class="cstat-no" title="statement not covered" >    Storage.prototype.getItem = <span class="fstat-no" title="function not covered" >fu</span>nction (id) {</span>
+<span class="cstat-no" title="statement not covered" >      return this._data.hasOwnProperty(id) ? this._data[id] : undefined;</span>
+    };
+<span class="cstat-no" title="statement not covered" >    Storage.prototype.removeItem = <span class="fstat-no" title="function not covered" >fu</span>nction (id) {</span>
+<span class="cstat-no" title="statement not covered" >      return delete this._data[id];</span>
+    };
+<span class="cstat-no" title="statement not covered" >    Storage.prototype.clear = <span class="fstat-no" title="function not covered" >fu</span>nction () {</span>
+<span class="cstat-no" title="statement not covered" >      return this._data = {};</span>
     }
+<span class="cstat-no" title="statement not covered" >    storage = Storage;</span>
   }
-  finally { <span class="missing-if-branch" title="else path not taken" >E</span>if (storage.getItem(_KEY) === _VALUE) storage.removeItem(_KEY); }
+  finally { <span class="missing-if-branch" title="if path not taken" >I</span>if (storage.getItem(_KEY) === _VALUE) <span class="cstat-no" title="statement not covered" >storage.removeItem(_KEY); </span>}
   return storage;
 }
 &nbsp;
 // deal QuotaExceededError if user use incognito mode in browser
-storage = dealIncognito(storage);
+const storage = dealIncognito();
 &nbsp;
 function Store() {
   if (!(this instanceof Store)) {
@@ -484,7 +514,7 @@ export default store;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-03-01T13:43:52.132Z
+                at 2023-03-29T17:20:40.635Z
             </div>
         <script src="prettify.js"></script>
         <script>
