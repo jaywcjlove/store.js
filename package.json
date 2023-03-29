@@ -1,6 +1,6 @@
 {
   "name": "storejs",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "description": "Local storage localstorage package provides a simple API",
   "homepage": "https://jaywcjlove.github.io/store.js/",
   "author": "kenny wang <wowohoo@qq.com>",
@@ -32,12 +32,6 @@
     "dist/*.js",
     "types/index.d.ts"
   ],
-  "markdown-to-html": {
-    "reurls": {
-      "./README-zh.md": "index.zh.html",
-      "./README.md": "index.html"
-    }
-  },
   "devDependencies": {
     "@babel/cli": "^7.21.0",
     "@babel/core": "^7.21.0",
