@@ -1,5 +1,3 @@
-var storage = window.localStorage;
-
 function isJSON(obj) {
   obj = JSON.stringify(obj);
   if (!/^\{[\s\S]*\}$/.test(obj)) {
@@ -20,21 +18,33 @@ function isFunction(value) { return ({}).toString.call(value) === "[object Funct
 function isArray(value) { return Object.prototype.toString.call(value) === "[object Array]"; }
 // https://github.com/jaywcjlove/store.js/pull/8
 // Error: QuotaExceededError
-function dealIncognito(storage) {
+function dealIncognito(storage = window.localStorage) {
   var _KEY = '_Is_Incognit', _VALUE = 'yes';
-  try { storage.setItem(_KEY, _VALUE) }
-  catch (e) {
-    if (e.name === 'QuotaExceededError') {
-      var _nothing = function () { };
-      storage.__proto__ = { setItem: _nothing, getItem: _nothing, removeItem: _nothing, clear: _nothing };
+  try {
+    storage.setItem(_KEY, _VALUE);
+    storage.removeItem(_KEY);
+  } catch (e) {
+    Storage.prototype._data = {};
+    Storage.prototype.setItem = function (id, val) {
+      return this._data[id] = String(val);
+    };
+    Storage.prototype.getItem = function (id) {
+      return this._data.hasOwnProperty(id) ? this._data[id] : undefined;
+    };
+    Storage.prototype.removeItem = function (id) {
+      return delete this._data[id];
+    };
+    Storage.prototype.clear = function () {
+      return this._data = {};
     }
+    storage = Storage;
   }
   finally { if (storage.getItem(_KEY) === _VALUE) storage.removeItem(_KEY); }
   return storage;
 }
 
 // deal QuotaExceededError if user use incognito mode in browser
-storage = dealIncognito(storage);
+const storage = dealIncognito();
 
 function Store() {
   if (!(this instanceof Store)) {

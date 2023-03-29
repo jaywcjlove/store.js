@@ -53,7 +53,7 @@
     "bannerjs": "2.0.1",
     "colors-cli": "^1.0.29",
     "rollup": "^3.17.3",
-    "tsbb": "^3.7.9",
+    "tsbb": "^4.0.5",
     "zlib": "1.0.5"
   },
   "dependencies": {}
