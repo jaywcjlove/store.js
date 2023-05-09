@@ -21,6 +21,10 @@ function isArray(value) { return Object.prototype.toString.call(value) === "[obj
 function dealIncognito(storage = window.localStorage) {
   var _KEY = '_Is_Incognit', _VALUE = 'yes';
   try {
+    // NOTE: set default storage when not passed in
+    if (!storage) {
+      storage = window.localStorage;
+    }
     storage.setItem(_KEY, _VALUE);
     storage.removeItem(_KEY);
   } catch (e) {
