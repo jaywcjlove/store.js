@@ -23,16 +23,16 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">89.47% </span>
+                <span class="strong">89.56% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>102/114</span>
+                <span class='fraction'>103/115</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">91.93% </span>
+                <span class="strong">91.8% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>57/62</span>
+                <span class='fraction'>56/61</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">87.91% </span>
+                <span class="strong">88.04% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>80/91</span>
+                <span class='fraction'>81/92</span>
             </div>
         
             
@@ -215,7 +215,8 @@
 <a name='L150'></a><a href='#L150'>150</a>
 <a name='L151'></a><a href='#L151'>151</a>
 <a name='L152'></a><a href='#L152'>152</a>
-<a name='L153'></a><a href='#L153'>153</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L153'></a><a href='#L153'>153</a>
+<a name='L154'></a><a href='#L154'>154</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">38x</span>
 <span class="cline-any cline-yes">38x</span>
 <span class="cline-any cline-yes">22x</span>
@@ -240,11 +241,12 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -387,30 +389,31 @@ function isFunction(value) { return ({}).toString.call(value) === "[object Funct
 function isArray(value) { return Object.prototype.toString.call(value) === "[object Array]"; }
 // https://github.com/jaywcjlove/store.js/pull/8
 // Error: QuotaExceededError
-function dealIncognito(storage = window.localStorage) {
+function dealIncognito(storage) {
   var _KEY = '_Is_Incognit', _VALUE = 'yes';
   try {
     // NOTE: set default storage when not passed in
-    <span class="missing-if-branch" title="if path not taken" >I</span>if (!storage) {
-<span class="cstat-no" title="statement not covered" >      storage = window.localStorage;</span>
+    <span class="missing-if-branch" title="else path not taken" >E</span>if (!storage) {
+      storage = window.localStorage;
     }
     storage.setItem(_KEY, _VALUE);
     storage.removeItem(_KEY);
   } catch (e) {
-<span class="cstat-no" title="statement not covered" >    Storage.prototype._data = {};</span>
-<span class="cstat-no" title="statement not covered" >    Storage.prototype.setItem = <span class="fstat-no" title="function not covered" >fu</span>nction (id, val) {</span>
-<span class="cstat-no" title="statement not covered" >      return this._data[id] = String(val);</span>
+    var inMemoryStorage = <span class="cstat-no" title="statement not covered" >{};</span>
+<span class="cstat-no" title="statement not covered" >    inMemoryStorage._data = {};</span>
+<span class="cstat-no" title="statement not covered" >    inMemoryStorage.setItem = <span class="fstat-no" title="function not covered" >fu</span>nction (id, val) {</span>
+<span class="cstat-no" title="statement not covered" >      return inMemoryStorage._data[id] = String(val);</span>
     };
-<span class="cstat-no" title="statement not covered" >    Storage.prototype.getItem = <span class="fstat-no" title="function not covered" >fu</span>nction (id) {</span>
-<span class="cstat-no" title="statement not covered" >      return this._data.hasOwnProperty(id) ? this._data[id] : undefined;</span>
+<span class="cstat-no" title="statement not covered" >    inMemoryStorage.getItem = <span class="fstat-no" title="function not covered" >fu</span>nction (id) {</span>
+<span class="cstat-no" title="statement not covered" >      return inMemoryStorage._data.hasOwnProperty(id) ? inMemoryStorage._data[id] : undefined;</span>
     };
-<span class="cstat-no" title="statement not covered" >    Storage.prototype.removeItem = <span class="fstat-no" title="function not covered" >fu</span>nction (id) {</span>
-<span class="cstat-no" title="statement not covered" >      return delete this._data[id];</span>
+<span class="cstat-no" title="statement not covered" >    inMemoryStorage.removeItem = <span class="fstat-no" title="function not covered" >fu</span>nction (id) {</span>
+<span class="cstat-no" title="statement not covered" >      return delete inMemoryStorage._data[id];</span>
     };
-<span class="cstat-no" title="statement not covered" >    Storage.prototype.clear = <span class="fstat-no" title="function not covered" >fu</span>nction () {</span>
-<span class="cstat-no" title="statement not covered" >      return this._data = {};</span>
+<span class="cstat-no" title="statement not covered" >    inMemoryStorage.clear = <span class="fstat-no" title="function not covered" >fu</span>nction () {</span>
+<span class="cstat-no" title="statement not covered" >      return inMemoryStorage._data = {};</span>
     }
-<span class="cstat-no" title="statement not covered" >    storage = Storage;</span>
+<span class="cstat-no" title="statement not covered" >    storage = inMemoryStorage;</span>
   }
   finally { <span class="missing-if-branch" title="if path not taken" >I</span>if (storage.getItem(_KEY) === _VALUE) <span class="cstat-no" title="statement not covered" >storage.removeItem(_KEY); </span>}
   return storage;
@@ -526,7 +529,7 @@ export default store;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-05-09T06:22:21.130Z
+                at 2023-05-10T16:40:10.271Z
             </div>
         <script src="prettify.js"></script>
         <script>
