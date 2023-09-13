@@ -10,7 +10,7 @@ require('colors-cli/toxic');
 const watchOptions = {
   input: 'src/main.js',
   output: [
-    { file: 'dist/store.common.js', name: 'store', format: 'cjs', exports: 'default', banner: banner.multibanner() },
+    { file: 'dist/store.cjs.js', name: 'store', format: 'cjs', exports: 'default', banner: banner.multibanner() },
     { file: 'dist/store.js', name: 'store', format: 'umd', banner: banner.multibanner() },
     { file: 'dist/store.esm.js', name: 'store', format: 'es', banner: banner.multibanner() },
     {

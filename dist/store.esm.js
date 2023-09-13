@@ -1,5 +1,5 @@
 /**!
- * storejs v2.0.3
+ * storejs v2.0.5
  * Local storage localstorage package provides a simple API
  * 
  * Copyright (c) 2023 kenny wang <wowohoo@qq.com>
@@ -36,28 +36,32 @@ function isArray(value) {
 }
 // https://github.com/jaywcjlove/store.js/pull/8
 // Error: QuotaExceededError
-function dealIncognito() {
-  var storage = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : window.localStorage;
+function dealIncognito(storage) {
   var _KEY = '_Is_Incognit',
     _VALUE = 'yes';
   try {
+    // NOTE: set default storage when not passed in
+    if (!storage) {
+      storage = window.localStorage;
+    }
     storage.setItem(_KEY, _VALUE);
     storage.removeItem(_KEY);
   } catch (e) {
-    Storage.prototype._data = {};
-    Storage.prototype.setItem = function (id, val) {
-      return this._data[id] = String(val);
+    var inMemoryStorage = {};
+    inMemoryStorage._data = {};
+    inMemoryStorage.setItem = function (id, val) {
+      return inMemoryStorage._data[id] = String(val);
     };
-    Storage.prototype.getItem = function (id) {
-      return this._data.hasOwnProperty(id) ? this._data[id] : undefined;
+    inMemoryStorage.getItem = function (id) {
+      return inMemoryStorage._data.hasOwnProperty(id) ? inMemoryStorage._data[id] : undefined;
     };
-    Storage.prototype.removeItem = function (id) {
-      return delete this._data[id];
+    inMemoryStorage.removeItem = function (id) {
+      return delete inMemoryStorage._data[id];
     };
-    Storage.prototype.clear = function () {
-      return this._data = {};
+    inMemoryStorage.clear = function () {
+      return inMemoryStorage._data = {};
     };
-    storage = Storage;
+    storage = inMemoryStorage;
   } finally {
     if (storage.getItem(_KEY) === _VALUE) storage.removeItem(_KEY);
   }
