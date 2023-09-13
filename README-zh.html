@@ -1,0 +1,440 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript localStorage JavaScript localStorage 2.0.6</title>
+    <meta name="description" content="本地存储localStorage的封装，提供简单的API，没有依赖，压缩只有 2.08kb(gzipped: 0.97kb)。">
+    <meta name="keywords" content="storejs,store,storage,local,localstorage">
+    <link rel="stylesheet" type="text/css" href="css/main.css?v=1.27.0">
+    <link rel="stylesheet" type="text/css" href="css/tocbot.css?v=1.27.0">
+    <link rel="stylesheet" type="text/css" href="css/media.css?v=1.27.0">
+    <link rel="stylesheet" type="text/css" href="css/sidebar.css?v=1.27.0">
+    <link rel="stylesheet" type="text/css" href="css/copy.css?v=1.27.0">
+    <link rel="stylesheet" type="text/css" href="css/demo-preview.css?v=1.27.0">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🍪</text></svg>" type="image/x-icon">
+    <script src="js/copy.js?v=1.27.0"></script>
+    <script src="js/dark-mode.js?v=1.27.0"></script>
+    <script src="js/markdown-style.js?v=1.27.0"></script>
+  </head>
+  <body id="idoctotop"><a href="#idoctotop" class="gototop">top</a>
+    <header class="header">
+      <article class="inner warpper"><a class="logo" href="index.html"><img alt="JavaScript localStorage <sup>2.0.6</sup> logo" src="data:image/png;base64,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">
+<span class="title">JavaScript localStorage <sup>2.0.6</sup></span></a>
+        <div class="content">
+          <ul class="menu">
+            <li><a href="https://jaywcjlove.github.io/cookie.js/" target="" class="">Cookie</a></li>
+          </ul><a href="https://github.com/jaywcjlove/store.js.git" target="_blank" rel="noopener noreferrer" title="Github" name="Github" class="github"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+            </svg></a>
+          <dark-mode permanent=""></dark-mode>
+        </div>
+      </article>
+    </header>
+    <div class="warpper-content warpper">
+      <markdown-style>
+        <h1 id="javascript-localstorage"><a aria-hidden="true" tabindex="-1" href="#javascript-localstorage" class="anchor"><span class="icon icon-link"></span></a>JavaScript localStorage</h1>
+        <p>
+          <a href="https://www.npmjs.com/package/storejs"><img src="https://img.shields.io/npm/dm/storejs.svg?style=flat" alt="Downloads"></a>
+          <a href="https://github.com/jaywcjlove/store.js/actions/workflows/ci.yml"><img src="https://github.com/jaywcjlove/store.js/actions/workflows/ci.yml/badge.svg" alt="Build and test storejs"></a>
+          <a href="https://jaywcjlove.github.io/store.js/lcov-report/"><img src="https://jaywcjlove.github.io/store.js/badges.svg" alt="Coverage Status"></a>
+          <a href="./index.html"><img src="https://jaywcjlove.github.io/sb/lang/english.svg" alt="README.md"></a>
+        </p>
+        <p>本地存储localStorage的封装，提供简单的API，没有依赖，压缩只有 2.08kb(gzipped: 0.97kb)。</p>
+        <blockquote>
+          <p>老的 <a href="https://raw.githack.com/jaywcjlove/store.js/doc-v1.1/index.html">v1</a> 版本。 <a href="https://raw.githack.com/jaywcjlove/store.js/doc-v1.1/index.html">文档预览</a>。</p>
+        </blockquote>
+        <h2 id="安装"><a aria-hidden="true" tabindex="-1" href="#安装" class="anchor"><span class="icon icon-link"></span></a>安装</h2>
+        <pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># npm 安装</span>
+</span><span class="code-line line-number" line="2"><span class="token function">npm</span> <span class="token function">install</span> storejs
+</span></code><input type="hidden" value="# npm 安装
+npm install storejs
+"><div onclick="copied(this)" class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+        <p>生成压缩文件和开发模式</p>
+        <pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1">$ <span class="token function">npm</span> run build    <span class="token comment"># 生成带UMD的js原文件 以及 min.js</span>
+</span><span class="code-line line-number" line="2">$ <span class="token function">npm</span> run <span class="token function">watch</span>    <span class="token comment"># 监听文件改变自动压缩生成js</span>
+</span></code><input type="hidden" value="$ npm run build    # 生成带UMD的js原文件 以及 min.js
+$ npm run watch    # 监听文件改变自动压缩生成js
+"><div onclick="copied(this)" class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+        <h2 id="测试"><a aria-hidden="true" tabindex="-1" href="#测试" class="anchor"><span class="icon icon-link"></span></a>测试</h2>
+        <pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1">$ <span class="token function">npm</span> <span class="token builtin class-name">test</span>
+</span><span class="code-line line-number" line="2">$ <span class="token function">npm</span> run ssr
+</span><span class="code-line line-number" line="3">
+</span><span class="code-line line-number" line="4"><span class="token comment"># 浏览器打开 http://localhost:1987/test/test.html</span>
+</span></code><input type="hidden" value="$ npm test
+$ npm run ssr
+
+# 浏览器打开 http://localhost:1987/test/test.html
+"><div onclick="copied(this)" class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+        <h1 id="使用"><a aria-hidden="true" tabindex="-1" href="#使用" class="anchor"><span class="icon icon-link"></span></a>使用</h1>
+        <p>或者在您的HTML中手动下载并引入 <strong>store.min.js</strong>，你也可以通过 <a href="https://unpkg.com/storejs/dist/">UNPKG</a> 进行下载：</p>
+        <pre class="language-html"><code class="language-html code-highlight"><span class="code-line line-number" line="1"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>script</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>https://unpkg.com/storejs/dist/store.min.js<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token script"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>script</span><span class="token punctuation">></span></span>
+</span><span class="code-line line-number" line="2"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>script</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>text/javascript<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript">
+</span></span></span><span class="code-line line-number" line="3"><span class="token script"><span class="token language-javascript">  <span class="token function">store</span><span class="token punctuation">(</span><span class="token string">"test"</span><span class="token punctuation">,</span><span class="token string">"tank"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span></span></span><span class="code-line line-number" line="4"><span class="token script"><span class="token language-javascript"></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>script</span><span class="token punctuation">></span></span>
+</span></code><input type="hidden" value="<script src=&#x22;https://unpkg.com/storejs/dist/store.min.js&#x22;></script>
+<script type=&#x22;text/javascript&#x22;>
+  store(&#x22;test&#x22;,&#x22;tank&#x22;);
+</script>
+"><div onclick="copied(this)" class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+        <p>or</p>
+        <pre class="language-js"><code class="language-js code-highlight"><span class="code-line line-number" line="1"><span class="token keyword">var</span> store <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'storejs'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="2"><span class="token function">store</span><span class="token punctuation">(</span><span class="token string">"test"</span><span class="token punctuation">,</span><span class="token string">"tank"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span></code><input type="hidden" value="var store = require(&#x27;storejs&#x27;);
+store(&#x22;test&#x22;,&#x22;tank&#x22;);
+"><div onclick="copied(this)" class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+        <p>⚠️ 原生方法调用获取数据，因为为了存储 JSON 对象，所以会先通过 JSON.stringify() 方法，将对象转换为一个 JSON 字符串</p>
+        <pre class="language-js"><code class="language-js code-highlight"><span class="code-line line-number" line="1"><span class="token known-class-name class-name">JSON</span><span class="token punctuation">.</span><span class="token method function property-access">parse</span><span class="token punctuation">(</span><span class="token dom variable">localStorage</span><span class="token punctuation">.</span><span class="token method function property-access">getItem</span><span class="token punctuation">(</span><span class="token string">'test'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+</span></code><input type="hidden" value="JSON.parse(localStorage.getItem(&#x27;test&#x27;))
+"><div onclick="copied(this)" class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+        <h2 id="本地存储apis"><a aria-hidden="true" tabindex="-1" href="#本地存储apis" class="anchor"><span class="icon icon-link"></span></a>本地存储APIs</h2>
+        <pre class="language-js"><code class="language-js code-highlight"><span class="code-line line-number" line="1"><span class="token function">store</span><span class="token punctuation">(</span>key<span class="token punctuation">,</span> data<span class="token punctuation">)</span><span class="token punctuation">;</span>                 <span class="token comment">//单个存储字符串数据</span>
+</span><span class="code-line line-number" line="2"><span class="token function">store</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token literal-property property">key</span><span class="token operator">:</span> data<span class="token punctuation">,</span> <span class="token literal-property property">key2</span><span class="token operator">:</span> data2<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">//批量存储多个字符串数据</span>
+</span><span class="code-line line-number" line="3"><span class="token function">store</span><span class="token punctuation">(</span>key<span class="token punctuation">)</span><span class="token punctuation">;</span>               <span class="token comment">//获取key的字符串数据</span>
+</span><span class="code-line line-number" line="4"><span class="token function">store</span><span class="token punctuation">(</span><span class="token string">"?key"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>            <span class="token comment">//判断key是否存在</span>
+</span><span class="code-line line-number" line="5"><span class="token function">store</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>                  <span class="token comment">//获取所有key/data</span>
+</span><span class="code-line line-number" line="6"><span class="token comment">//store(false);🔫         //（弃用）因为传入空值 或者报错很容易清空库</span>
+</span><span class="code-line line-number" line="7"><span class="token comment">//store(key,false); 🔫    //（弃用）删除key包括key的字符串数据, 当val 为 0的时候无法存储...</span>
+</span><span class="code-line line-number" line="8">
+</span><span class="code-line line-number" line="9">store<span class="token punctuation">.</span><span class="token method function property-access">set</span><span class="token punctuation">(</span>key<span class="token punctuation">,</span> data<span class="token punctuation">[</span><span class="token punctuation">,</span> overwrite<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token comment">// === store(key, data);</span>
+</span><span class="code-line line-number" line="10">store<span class="token punctuation">.</span><span class="token method function property-access">set</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token literal-property property">key</span><span class="token operator">:</span> data<span class="token punctuation">,</span> <span class="token literal-property property">key2</span><span class="token operator">:</span> data2<span class="token punctuation">}</span><span class="token punctuation">)</span>   <span class="token comment">// === store({key: data, key2: data});</span>
+</span><span class="code-line line-number" line="11">store<span class="token punctuation">.</span><span class="token method function property-access">get</span><span class="token punctuation">(</span>key<span class="token punctuation">[</span><span class="token punctuation">,</span> alt<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>                <span class="token comment">// === store(key);</span>
+</span><span class="code-line line-number" line="12">store<span class="token punctuation">.</span><span class="token method function property-access">get</span><span class="token punctuation">(</span><span class="token string">"?key"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>                    <span class="token comment">// 判断key是否存在</span>
+</span><span class="code-line line-number" line="13">store<span class="token punctuation">.</span><span class="token method function property-access">get</span><span class="token punctuation">(</span><span class="token string">"key1"</span><span class="token punctuation">,</span> <span class="token string">"key2"</span><span class="token punctuation">,</span> <span class="token string">"key3"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token comment">// 获取 `key1`,`key2`,`key3` 数据</span>
+</span><span class="code-line line-number" line="14">store<span class="token punctuation">.</span><span class="token method function property-access">remove</span><span class="token punctuation">(</span>key<span class="token punctuation">)</span><span class="token punctuation">;</span>                  <span class="token comment">//===store(key,false)</span>
+</span><span class="code-line line-number" line="15">store<span class="token punctuation">.</span><span class="token method function property-access">clear</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>                      <span class="token comment">//清空所有key/data</span>
+</span><span class="code-line line-number" line="16">store<span class="token punctuation">.</span><span class="token method function property-access">keys</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>                       <span class="token comment">//返回所有key的数组</span>
+</span><span class="code-line line-number" line="17">store<span class="token punctuation">.</span><span class="token method function property-access">forEach</span><span class="token punctuation">(</span>callback<span class="token punctuation">)</span><span class="token punctuation">;</span>            <span class="token comment">//循环遍历，返回false结束遍历</span>
+</span><span class="code-line line-number" line="18">store<span class="token punctuation">.</span><span class="token method function property-access">search</span><span class="token punctuation">(</span>string<span class="token punctuation">)</span><span class="token punctuation">;</span>                <span class="token comment">//搜索方法</span>
+</span><span class="code-line line-number" line="19">
+</span><span class="code-line line-number" line="20">store<span class="token punctuation">.</span><span class="token method function property-access">has</span><span class="token punctuation">(</span>key<span class="token punctuation">)</span><span class="token punctuation">;</span>         <span class="token comment">//⇒判断是否存在返回true/false          </span>
+</span><span class="code-line line-number" line="21">
+</span><span class="code-line line-number" line="22"><span class="token comment">//⇒ 提供callback方法处理数据</span>
+</span><span class="code-line line-number" line="23"><span class="token function">store</span><span class="token punctuation">(</span><span class="token string">"test"</span><span class="token punctuation">,</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">key<span class="token punctuation">,</span>val</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+</span><span class="code-line line-number" line="24">  <span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span>val<span class="token punctuation">)</span><span class="token comment">//这里处理 通过test获取的数据</span>
+</span><span class="code-line line-number" line="25">  <span class="token keyword control-flow">return</span> <span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">,</span><span class="token number">5</span><span class="token punctuation">]</span><span class="token comment">//返回数据并存储</span>
+</span><span class="code-line line-number" line="26"><span class="token punctuation">}</span><span class="token punctuation">)</span>
+</span><span class="code-line line-number" line="27">
+</span><span class="code-line line-number" line="28"><span class="token function">store</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">"key"</span><span class="token punctuation">,</span><span class="token string">"key2"</span><span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">key</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+</span><span class="code-line line-number" line="29">  <span class="token comment">//获取多个key的数据处理，return 并保存；</span>
+</span><span class="code-line line-number" line="30">  <span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span><span class="token string">"key:"</span><span class="token punctuation">,</span>key<span class="token punctuation">)</span>
+</span><span class="code-line line-number" line="31">  <span class="token keyword control-flow">return</span> <span class="token string">"逐个更改数据"</span>
+</span><span class="code-line line-number" line="32"><span class="token punctuation">}</span><span class="token punctuation">)</span>
+</span><span class="code-line line-number" line="33">
+</span><span class="code-line line-number" line="34"><span class="token comment">// 即创建/更新/删除数据项时，触发该事件</span>
+</span><span class="code-line line-number" line="35">store<span class="token punctuation">.</span><span class="token method function property-access">onStorage</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">key<span class="token punctuation">,</span>val</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+</span><span class="code-line line-number" line="36">  <span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span><span class="token string">'onStorage:'</span><span class="token punctuation">,</span>key<span class="token punctuation">,</span>val<span class="token punctuation">)</span>
+</span><span class="code-line line-number" line="37"><span class="token punctuation">}</span><span class="token punctuation">)</span>
+</span></code><input type="hidden" value="store(key, data);                 //单个存储字符串数据
+store({key: data, key2: data2});  //批量存储多个字符串数据
+store(key);               //获取key的字符串数据
+store(&#x22;?key&#x22;);            //判断key是否存在
+store();                  //获取所有key/data
+//store(false);🔫         //（弃用）因为传入空值 或者报错很容易清空库
+//store(key,false); 🔫    //（弃用）删除key包括key的字符串数据, 当val 为 0的时候无法存储...
+
+store.set(key, data[, overwrite]);    // === store(key, data);
+store.set({key: data, key2: data2})   // === store({key: data, key2: data});
+store.get(key[, alt]);                // === store(key);
+store.get(&#x22;?key&#x22;);                    // 判断key是否存在
+store.get(&#x22;key1&#x22;, &#x22;key2&#x22;, &#x22;key3&#x22;);    // 获取 &#x60;key1&#x60;,&#x60;key2&#x60;,&#x60;key3&#x60; 数据
+store.remove(key);                  //===store(key,false)
+store.clear();                      //清空所有key/data
+store.keys();                       //返回所有key的数组
+store.forEach(callback);            //循环遍历，返回false结束遍历
+store.search(string);                //搜索方法
+
+store.has(key);         //⇒判断是否存在返回true/false          
+
+//⇒ 提供callback方法处理数据
+store(&#x22;test&#x22;,function(key,val){
+  console.log(val)//这里处理 通过test获取的数据
+  return [3,4,5]//返回数据并存储
+})
+
+store([&#x22;key&#x22;,&#x22;key2&#x22;],function(key){
+  //获取多个key的数据处理，return 并保存；
+  console.log(&#x22;key:&#x22;,key)
+  return &#x22;逐个更改数据&#x22;
+})
+
+// 即创建/更新/删除数据项时，触发该事件
+store.onStorage(function(key,val){
+  console.log(&#x27;onStorage:&#x27;,key,val)
+})
+"><div onclick="copied(this)" class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+        <h3 id="set"><a aria-hidden="true" tabindex="-1" href="#set" class="anchor"><span class="icon icon-link"></span></a>set</h3>
+        <p>单个存储或删除字符串数据<br><code>store.set(key, data[, overwrite]);</code><br>效果相同<code>store(key, data);</code></p>
+        <pre class="language-js"><code class="language-js code-highlight"><span class="code-line line-number" line="1">store<span class="token punctuation">.</span><span class="token method function property-access">set</span><span class="token punctuation">(</span><span class="token string">"wcj"</span><span class="token punctuation">,</span><span class="token string">"1"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment">//⇒  1</span>
+</span><span class="code-line line-number" line="2">store<span class="token punctuation">.</span><span class="token method function property-access">set</span><span class="token punctuation">(</span><span class="token string">"wcj"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>       <span class="token comment">//⇒  删除wcj及字符串数据</span>
+</span></code><input type="hidden" value="store.set(&#x22;wcj&#x22;,&#x22;1&#x22;);   //⇒  1
+store.set(&#x22;wcj&#x22;);       //⇒  删除wcj及字符串数据
+"><div onclick="copied(this)" class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+        <h3 id="setall-"><a aria-hidden="true" tabindex="-1" href="#setall-" class="anchor"><span class="icon icon-link"></span></a><del>setAll</del> 🔫</h3>
+        <blockquote>
+          <p>使用 <code>store.set({key: data, key2: data2})</code> 代替</p>
+        </blockquote>
+        <p>批量存储多个字符串数据<br><code>store.setAll(data[, overwrite])</code><br>效果相同<code>store({key: data, key2: data});</code></p>
+        <pre class="language-js"><code class="language-js code-highlight"><span class="code-line line-number" line="1">store<span class="token punctuation">.</span><span class="token method function property-access">setAll</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+</span><span class="code-line line-number" line="2">    <span class="token string-property property">"wcj1"</span><span class="token operator">:</span><span class="token number">123</span><span class="token punctuation">,</span>
+</span><span class="code-line line-number" line="3">    <span class="token string-property property">"wcj2"</span><span class="token operator">:</span><span class="token number">345</span>
+</span><span class="code-line line-number" line="4"><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 存储两条字符串数据</span>
+</span><span class="code-line line-number" line="5">
+</span><span class="code-line line-number" line="6">store<span class="token punctuation">.</span><span class="token method function property-access">setAll</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">"w1"</span><span class="token punctuation">,</span><span class="token string">"w2"</span><span class="token punctuation">,</span><span class="token string">"w3"</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="7"><span class="token comment">// 存储三条字符串数据 </span>
+</span><span class="code-line line-number" line="8"><span class="token comment">//  0⇒ "w1"</span>
+</span><span class="code-line line-number" line="9"><span class="token comment">//  1⇒ "w2"</span>
+</span><span class="code-line line-number" line="10"><span class="token comment">//  2⇒ "w3"</span>
+</span></code><input type="hidden" value="store.setAll({
+    &#x22;wcj1&#x22;:123,
+    &#x22;wcj2&#x22;:345
+}); // 存储两条字符串数据
+
+store.setAll([&#x22;w1&#x22;,&#x22;w2&#x22;,&#x22;w3&#x22;]);
+// 存储三条字符串数据 
+//  0⇒ &#x22;w1&#x22;
+//  1⇒ &#x22;w2&#x22;
+//  2⇒ &#x22;w3&#x22;
+"><div onclick="copied(this)" class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+        <h3 id="get"><a aria-hidden="true" tabindex="-1" href="#get" class="anchor"><span class="icon icon-link"></span></a>get</h3>
+        <p>获取key的字符串数据<br><code>store.get(key[, alt])</code><br>效果相同<code>store(key)</code></p>
+        <pre class="language-js"><code class="language-js code-highlight"><span class="code-line line-number" line="1">store<span class="token punctuation">.</span><span class="token method function property-access">get</span><span class="token punctuation">(</span><span class="token string">"wcj1"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 获取wcj1的字符串数据</span>
+</span><span class="code-line line-number" line="2"><span class="token function">store</span><span class="token punctuation">(</span><span class="token string">"wcj1"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 功能同上</span>
+</span></code><input type="hidden" value="store.get(&#x22;wcj1&#x22;); // 获取wcj1的字符串数据
+store(&#x22;wcj1&#x22;); // 功能同上
+"><div onclick="copied(this)" class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+        <h3 id="getall-"><a aria-hidden="true" tabindex="-1" href="#getall-" class="anchor"><span class="icon icon-link"></span></a><del>getAll</del> 🔫</h3>
+        <blockquote>
+          <p><code>store()</code> 和 <code>store.get()</code> 代替</p>
+        </blockquote>
+        <p>获取所有 key/data <code>store.getAll()</code><br>与效果相同<code>store()</code></p>
+        <pre class="language-js"><code class="language-js code-highlight"><span class="code-line line-number" line="1">store<span class="token punctuation">.</span><span class="token method function property-access">getAll</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//⇒JSON</span>
+</span><span class="code-line line-number" line="2"><span class="token function">store</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//功能同上</span>
+</span></code><input type="hidden" value="store.getAll(); //⇒JSON
+store(); //功能同上
+"><div onclick="copied(this)" class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+        <h3 id="clear"><a aria-hidden="true" tabindex="-1" href="#clear" class="anchor"><span class="icon icon-link"></span></a>clear</h3>
+        <p>清空所有 <code>key/data</code> <code>store.clear()</code></p>
+        <p>⚠️ 弃用 <del>store(false)</del> 因为传入空值 或者报错很容易清空库</p>
+        <pre class="language-js"><code class="language-js code-highlight"><span class="code-line line-number" line="1">store<span class="token punctuation">.</span><span class="token method function property-access">clear</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//</span>
+</span></code><input type="hidden" value="store.clear(); //
+"><div onclick="copied(this)" class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+        <h3 id="keys"><a aria-hidden="true" tabindex="-1" href="#keys" class="anchor"><span class="icon icon-link"></span></a>keys</h3>
+        <p>返回所有 <code>key</code> 的数组 <code>store.keys()</code></p>
+        <pre class="language-js"><code class="language-js code-highlight"><span class="code-line line-number" line="1">store<span class="token punctuation">.</span><span class="token method function property-access">keys</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//⇒["w1", "w2", "w3"]</span>
+</span></code><input type="hidden" value="store.keys(); //⇒[&#x22;w1&#x22;, &#x22;w2&#x22;, &#x22;w3&#x22;]
+"><div onclick="copied(this)" class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+        <h3 id="search"><a aria-hidden="true" tabindex="-1" href="#search" class="anchor"><span class="icon icon-link"></span></a>search</h3>
+        <p>搜索方法 <code>store.search(string)</code></p>
+        <pre class="language-js"><code class="language-js code-highlight"><span class="code-line line-number" line="1">store<span class="token punctuation">.</span><span class="token method function property-access">search</span><span class="token punctuation">(</span><span class="token string">'key'</span><span class="token punctuation">)</span> <span class="token comment">//⇒ {"key":"keytest","key1":{"a":1},"key2":"逐个更改数据"}</span>
+</span></code><input type="hidden" value="store.search(&#x27;key&#x27;) //⇒ {&#x22;key&#x22;:&#x22;keytest&#x22;,&#x22;key1&#x22;:{&#x22;a&#x22;:1},&#x22;key2&#x22;:&#x22;逐个更改数据&#x22;}
+"><div onclick="copied(this)" class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+        <h3 id="has"><a aria-hidden="true" tabindex="-1" href="#has" class="anchor"><span class="icon icon-link"></span></a>has</h3>
+        <p>判断是否存在返回 <code>true/false</code> <code>store.has(key)</code></p>
+        <pre class="language-js"><code class="language-js code-highlight"><span class="code-line line-number" line="1">store<span class="token punctuation">.</span><span class="token method function property-access">has</span><span class="token punctuation">(</span><span class="token string">"w1"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//⇒true</span>
+</span></code><input type="hidden" value="store.has(&#x22;w1&#x22;); //⇒true
+"><div onclick="copied(this)" class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+        <h3 id="remove"><a aria-hidden="true" tabindex="-1" href="#remove" class="anchor"><span class="icon icon-link"></span></a>remove</h3>
+        <p>删除key包括key的字符串数据 <code>store.remove(key)</code></p>
+        <pre class="language-js"><code class="language-js code-highlight"><span class="code-line line-number" line="1">store<span class="token punctuation">.</span><span class="token method function property-access">remove</span><span class="token punctuation">(</span><span class="token string">"w1"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//删除w1 返回 w1的value</span>
+</span><span class="code-line line-number" line="2">
+</span><span class="code-line line-number" line="3"><span class="token function">store</span><span class="token punctuation">(</span><span class="token string">"w1"</span><span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//这样也是 删除w1</span>
+</span></code><input type="hidden" value="store.remove(&#x22;w1&#x22;); //删除w1 返回 w1的value
+
+store(&#x22;w1&#x22;, false); //这样也是 删除w1
+"><div onclick="copied(this)" class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+        <h3 id="foreach"><a aria-hidden="true" tabindex="-1" href="#foreach" class="anchor"><span class="icon icon-link"></span></a>forEach</h3>
+        <p>循环遍历，返回 <code>false</code> 结束遍历</p>
+        <pre class="language-js"><code class="language-js code-highlight"><span class="code-line line-number" line="1">store<span class="token punctuation">.</span><span class="token method function property-access">forEach</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">k<span class="token punctuation">,</span>d</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+</span><span class="code-line line-number" line="2">  <span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span>k<span class="token punctuation">,</span> d<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="3">  <span class="token keyword control-flow">if</span> <span class="token punctuation">(</span>k<span class="token operator">==</span> <span class="token number">3</span><span class="token punctuation">)</span> <span class="token keyword control-flow">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="4"><span class="token punctuation">}</span><span class="token punctuation">)</span>
+</span></code><input type="hidden" value="store.forEach(function(k,d){
+  console.log(k, d);
+  if (k== 3) return false;
+})
+"><div onclick="copied(this)" class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+        <h3 id="定时清除"><a aria-hidden="true" tabindex="-1" href="#定时清除" class="anchor"><span class="icon icon-link"></span></a>定时清除</h3>
+        <p>(做个笔记，未来将定时清除封装起来，有思路)</p>
+        <pre class="language-js"><code class="language-js code-highlight"><span class="code-line line-number" line="1"><span class="token keyword control-flow">if</span> <span class="token punctuation">(</span><span class="token operator">+</span><span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">></span> <span class="token operator">+</span><span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token number">2014</span><span class="token punctuation">,</span> <span class="token number">11</span><span class="token punctuation">,</span> <span class="token number">30</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line line-number" line="2">  <span class="token dom variable">localStorage</span><span class="token punctuation">.</span><span class="token method function property-access">removeItem</span><span class="token punctuation">(</span><span class="token string">"c"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token comment">//清除c的值</span>
+</span><span class="code-line line-number" line="3">  <span class="token comment">// or localStorage.clear();</span>
+</span><span class="code-line line-number" line="4"><span class="token punctuation">}</span>
+</span></code><input type="hidden" value="if (+new Date() > +new Date(2014, 11, 30)) {
+  localStorage.removeItem(&#x22;c&#x22;);    //清除c的值
+  // or localStorage.clear();
+}
+"><div onclick="copied(this)" class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+        <h2 id="storage事件"><a aria-hidden="true" tabindex="-1" href="#storage事件" class="anchor"><span class="icon icon-link"></span></a>storage事件</h2>
+        <p>不知为毛不支持参看下面 <a href="#onstorage">onStorage</a> =><s>HTML5的本地存储，还提供了一个storage事件，可以对键值对的改变进行监听，使用方法如下：</s></p>
+        <pre class="language-js"><code class="language-js code-highlight"><span class="code-line line-number" line="1"><span class="token keyword control-flow">if</span><span class="token punctuation">(</span><span class="token dom variable">window</span><span class="token punctuation">.</span><span class="token property-access">addEventListener</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+</span><span class="code-line line-number" line="2">  <span class="token dom variable">window</span><span class="token punctuation">.</span><span class="token method function property-access">addEventListener</span><span class="token punctuation">(</span><span class="token string">"storage"</span><span class="token punctuation">,</span>handle_storage<span class="token punctuation">,</span><span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="3"><span class="token punctuation">}</span><span class="token keyword control-flow">else</span> <span class="token keyword control-flow">if</span><span class="token punctuation">(</span><span class="token dom variable">window</span><span class="token punctuation">.</span><span class="token property-access">attachEvent</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+</span><span class="code-line line-number" line="4">  <span class="token dom variable">window</span><span class="token punctuation">.</span><span class="token method function property-access">attachEvent</span><span class="token punctuation">(</span><span class="token string">"onstorage"</span><span class="token punctuation">,</span>handle_storage<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="5"><span class="token punctuation">}</span>
+</span><span class="code-line line-number" line="6"><span class="token keyword">function</span> <span class="token function">handle_storage</span><span class="token punctuation">(</span><span class="token parameter">e</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+</span><span class="code-line line-number" line="7">  <span class="token keyword control-flow">if</span><span class="token punctuation">(</span><span class="token operator">!</span>e<span class="token punctuation">)</span><span class="token punctuation">{</span>e<span class="token operator">=</span><span class="token dom variable">window</span><span class="token punctuation">.</span><span class="token property-access">event</span><span class="token punctuation">;</span><span class="token punctuation">}</span>
+</span><span class="code-line line-number" line="8">  <span class="token comment">//showStorage();</span>
+</span><span class="code-line line-number" line="9"><span class="token punctuation">}</span>
+</span></code><input type="hidden" value="if(window.addEventListener){
+  window.addEventListener(&#x22;storage&#x22;,handle_storage,false);
+}else if(window.attachEvent){
+  window.attachEvent(&#x22;onstorage&#x22;,handle_storage);
+}
+function handle_storage(e){
+  if(!e){e=window.event;}
+  //showStorage();
+}
+"><div onclick="copied(this)" class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+        <p>对于事件变量e，是一个StorageEvent对象，提供了一些实用的属性，可以很好的观察键值对的变化，如下表：</p>
+        <table>
+          <thead>
+            <tr>
+              <th>Property</th>
+              <th>Type</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>key</td>
+              <td>String</td>
+              <td>The named key that was added, removed, or moddified</td>
+            </tr>
+            <tr>
+              <td>oldValue</td>
+              <td>Any</td>
+              <td>The previous value(now overwritten), or null if a new item was added</td>
+            </tr>
+            <tr>
+              <td>newValue</td>
+              <td>Any</td>
+              <td>The new value, or null if an item was added</td>
+            </tr>
+            <tr>
+              <td>url/uri</td>
+              <td>String</td>
+              <td>The page that called the method that triggered this change</td>
+            </tr>
+          </tbody>
+        </table>
+        <h2 id="链式书写"><a aria-hidden="true" tabindex="-1" href="#链式书写" class="anchor"><span class="icon icon-link"></span></a>链式书写</h2>
+        <pre class="language-js"><code class="language-js code-highlight"><span class="code-line line-number" line="1">store<span class="token punctuation">.</span><span class="token method function property-access">set</span><span class="token punctuation">(</span><span class="token string">'ad'</span><span class="token punctuation">,</span><span class="token number">234</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token method function property-access">get</span><span class="token punctuation">(</span><span class="token string">'ad'</span><span class="token punctuation">)</span>
+</span><span class="code-line line-number" line="2">
+</span><span class="code-line line-number" line="3">store<span class="token punctuation">.</span><span class="token method function property-access">onStorage</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">type</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+</span><span class="code-line line-number" line="4"> <span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span><span class="token string">'type:'</span><span class="token punctuation">,</span>type<span class="token punctuation">)</span>
+</span><span class="code-line line-number" line="5"><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token method function property-access">set</span><span class="token punctuation">(</span><span class="token string">'wcj'</span><span class="token punctuation">,</span><span class="token number">12</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token method function property-access">clear</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token method function property-access">get</span><span class="token punctuation">(</span><span class="token string">'wcj'</span><span class="token punctuation">)</span>
+</span><span class="code-line line-number" line="6"><span class="token comment">//⇒ type: set</span>
+</span><span class="code-line line-number" line="7"><span class="token comment">//⇒ type: clear</span>
+</span><span class="code-line line-number" line="8"><span class="token comment">//⇒ type: set</span>
+</span></code><input type="hidden" value="store.set(&#x27;ad&#x27;,234).get(&#x27;ad&#x27;)
+
+store.onStorage(function(type){
+ console.log(&#x27;type:&#x27;,type)
+}).set(&#x27;wcj&#x27;,12).clear().get(&#x27;wcj&#x27;)
+//⇒ type: set
+//⇒ type: clear
+//⇒ type: set
+"><div onclick="copied(this)" class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+        <h2 id="todo"><a aria-hidden="true" tabindex="-1" href="#todo" class="anchor"><span class="icon icon-link"></span></a>TODO</h2>
+        <ul class="contains-task-list">
+          <li class="task-list-item"><input type="checkbox" disabled> <code>store.get([key,key2])</code> 获取方法，返回json</li>
+          <li class="task-list-item"><input type="checkbox" disabled> <code>store([key,key2])</code> 获取方法，返回json</li>
+          <li class="task-list-item"><input type="checkbox" disabled> <code>onStorage</code> 方法测试用例，以及实现</li>
+        </ul>
+        <h2 id="兼容"><a aria-hidden="true" tabindex="-1" href="#兼容" class="anchor"><span class="icon icon-link"></span></a>兼容</h2>
+        <p>来源：<a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/sessionStorage">sessionStorage</a> <a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage">localStorage</a></p>
+        <table>
+          <thead>
+            <tr>
+              <th>特性</th>
+              <th>Chrome</th>
+              <th>Firefox (Gecko)</th>
+              <th>Internet Explorer</th>
+              <th>Opera</th>
+              <th>Safari (WebKit)</th>
+              <th>iPhone(IOS)</th>
+              <th>Android</th>
+              <th>Opera Mobile</th>
+              <th>Window Phone</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>localStorage</td>
+              <td>4+</td>
+              <td>3.5+</td>
+              <td>8+</td>
+              <td>10.50+</td>
+              <td>4+</td>
+              <td>3.2+</td>
+              <td>2.1+</td>
+              <td>11+</td>
+              <td>8+</td>
+            </tr>
+            <tr>
+              <td>sessionStorage</td>
+              <td>5+</td>
+              <td>2+</td>
+              <td>8+</td>
+              <td>10.50+</td>
+              <td>4+</td>
+              <td>3.2+</td>
+              <td>2.1+</td>
+              <td>11+</td>
+              <td>8+</td>
+            </tr>
+          </tbody>
+        </table>
+        <h2 id="本地存储大小"><a aria-hidden="true" tabindex="-1" href="#本地存储大小" class="anchor"><span class="icon icon-link"></span></a>本地存储大小</h2>
+        <p><code>JSON.stringify(localStorage).length</code> 当前占用多大容量</p>
+        <p><a href="https://arty.name/localstorage.html">检测localstore容量上限</a></p>
+        <h2 id="related"><a aria-hidden="true" tabindex="-1" href="#related" class="anchor"><span class="icon icon-link"></span></a>Related</h2>
+        <ul>
+          <li><a href="https://github.com/jaywcjlove/cookie.js">cookiejs</a> 🍪 一个简单，轻量级的JavaScript API，用于处理浏览器cookie ，它易于上传和使用，具有合理的占用空间（~2kb）（gzip压缩：0.84kb），并且没有依赖性。 它不应该干扰任何JavaScript库或框架。</li>
+        </ul>
+        <h3 id="license"><a aria-hidden="true" tabindex="-1" href="#license" class="anchor"><span class="icon icon-link"></span></a>License</h3>
+        <p>Licensed under the MIT License.</p>
+        <script src="https://giscus.app/client.js" data-repo="jaywcjlove/store.js" data-repo-id="MDEwOlJlcG9zaXRvcnkyNjgwMTc1Nw==" data-category="Q&#x26;A" data-category-id="DIC_kwDOAZj2Xc4CZRcC" data-mapping="pathname" data-strict="0" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="dark" data-lang="zh-CN" data-loading="lazy" crossorigin="anonymous" async></script>
+        <div class=".giscus"></div>
+      </markdown-style>
+      <nav class="tocs">
+        <aside class="inner toc">
+          <ol class="tocs-list">
+            <li><a href="#安装" class="tocs-link">安装</a></li>
+            <li><a href="#测试" class="tocs-link">测试</a></li>
+            <li><a href="#本地存储apis" class="tocs-link">本地存储APIs</a>
+              <ol class="tocs-list is-collapsed">
+                <li><a href="#set" class="tocs-link">set</a></li>
+                <li><a href="#setall-" class="tocs-link">setAll 🔫</a></li>
+                <li><a href="#get" class="tocs-link">get</a></li>
+                <li><a href="#getall-" class="tocs-link">getAll 🔫</a></li>
+                <li><a href="#clear" class="tocs-link">clear</a></li>
+                <li><a href="#keys" class="tocs-link">keys</a></li>
+                <li><a href="#search" class="tocs-link">search</a></li>
+                <li><a href="#has" class="tocs-link">has</a></li>
+                <li><a href="#remove" class="tocs-link">remove</a></li>
+                <li><a href="#foreach" class="tocs-link">forEach</a></li>
+                <li><a href="#定时清除" class="tocs-link">定时清除</a></li>
+              </ol>
+            </li>
+            <li><a href="#storage事件" class="tocs-link">storage事件</a></li>
+            <li><a href="#链式书写" class="tocs-link">链式书写</a></li>
+            <li><a href="#todo" class="tocs-link">TODO</a></li>
+            <li><a href="#兼容" class="tocs-link">兼容</a></li>
+            <li><a href="#本地存储大小" class="tocs-link">本地存储大小</a></li>
+            <li><a href="#related" class="tocs-link">Related</a>
+              <ol class="tocs-list is-collapsed">
+                <li><a href="#license" class="tocs-link">License</a></li>
+              </ol>
+            </li>
+          </ol>
+        </aside>
+      </nav>
+    </div>
+    <script src="js/demo-preview.js?v=1.27.0"></script>
+    <div class="footer warpper">Released under the MIT License. Copyright © 2023 Kenny Wong<br>Generated by <a href="https://github.com/jaywcjlove/idoc" target="_blank">idoc</a> v1.27.0</div>
+    <script src="js/tocbot.js?v=1.27.0"></script>
+  </body>
+</html>
