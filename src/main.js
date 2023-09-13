@@ -67,7 +67,8 @@ Store.prototype = {
     return this;
   },
   get: function (key) {
-    if (!key) {
+    // Return all entries if no key
+    if (key === undefined) {
       var ret = {};
       this.forEach((key, val) => ret[key] = val);
       return ret;
