@@ -17,9 +17,6 @@ jobs:
       - run: npm run build
       - run: npm run coverage
 
-      - name: Create Coverage Badges
-        uses: jaywcjlove/coverage-badges-cli@main
-
       - name: Create idoc config.
         run: |
           cat > idoc.yml << EOF
@@ -51,6 +48,11 @@ jobs:
 
       - run: cp -rp coverage/lcov-report build
       
+      - name: Create Coverage Badges
+        uses: jaywcjlove/coverage-badges-cli@main
+        with:
+          output: build/badges.svg
+
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
