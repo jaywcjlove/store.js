@@ -1,5 +1,5 @@
 /**!
- * storejs v2.0.5
+ * storejs v2.0.6
  * Local storage localstorage package provides a simple API
  * 
  * Copyright (c) 2023 kenny wang <wowohoo@qq.com>
@@ -91,7 +91,8 @@
       return this;
     },
     get: function get(key) {
-      if (!key) {
+      // Return all entries if no key
+      if (key === undefined) {
         var ret = {};
         this.forEach(function (key, val) {
           return ret[key] = val;
