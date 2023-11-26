@@ -3,6 +3,7 @@
   "version": "2.0.6",
   "description": "Local storage localstorage package provides a simple API",
   "homepage": "https://jaywcjlove.github.io/store.js/",
+  "funding": "https://jaywcjlove.github.io/#/sponsor",
   "author": "kenny wang <wowohoo@qq.com>",
   "license": "MIT",
   "main": "dist/store.cjs.js",
