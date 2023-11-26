@@ -87,7 +87,7 @@ jobs:
           tag: ${{ steps.create_tag.outputs.version }}
           token: ${{ secrets.GITHUB_TOKEN }}
           body: |
-            [![](https://img.shields.io/badge/Open%20in-unpkg-blue)](https://uiwjs.github.io/npm-unpkg/#/pkg/coverage-badges-cli@${{steps.changelog.outputs.version}}/file/README.md)
+            [![Buy me a coffee](https://img.shields.io/badge/Buy%20me%20a%20coffee-048754?logo=buymeacoffee)](https://jaywcjlove.github.io/#/sponsor) [![](https://img.shields.io/badge/Open%20in-unpkg-blue)](https://uiwjs.github.io/npm-unpkg/#/pkg/coverage-badges-cli@${{steps.changelog.outputs.version}}/file/README.md)
 
             ${{ steps.changelog.outputs.compareurl }}
             
