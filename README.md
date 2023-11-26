@@ -210,6 +210,17 @@ store.set('ad', 234).get('ad')
 
 - [cookiejs](https://github.com/jaywcjlove/cookie.js) 🍪 A simple, lightweight JavaScript API for handling browser cookies , it is easy to pick up and use, has a reasonable footprint(~2kb, gzipped: 0.95kb), and has no dependencies. It should not interfere with any JavaScript libraries or frameworks.
 
+## Contributors
+
+As always, thanks to our amazing contributors!
+
+<a href="https://github.com/jaywcjlove/store.js/graphs/contributors">
+  <img src="https://jaywcjlove.github.io/store.js/CONTRIBUTORS.svg" />
+</a>
+
+Made with [action-contributors](https://github.com/jaywcjlove/github-action-contributors).
+
+
 ### License
 
 Licensed under the MIT License.
