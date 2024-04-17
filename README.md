@@ -65,6 +65,7 @@ store.clear();                        // Clean all key/data
 store.keys();                         // Returns an array of all the keys
 store.forEach(callback);              // Loop traversal, return false to end traversal
 store.search(string);                 // Search method
+store.len();                          // Returns store length
 
 store.has(key); //⇒ Determine if there is a return true/false
 
@@ -158,6 +159,14 @@ Delete key string data including key `store.remove(key)`
 ```js
 store.remove('w1');  // Delete w1 and return the value of w1
 store('w1', false)   // So also delete w1
+```
+
+### len
+
+Returns the length of the store `store.len()`
+
+```js
+store.len();  //⇒ 10
 ```
 
 ### forEach

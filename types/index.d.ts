@@ -30,6 +30,8 @@ declare class Store {
   search(keyword: string): Record<string, any>
 
   clear(): Store
+
+  len(): number
 }
 
 declare let s: typeof store & Store
