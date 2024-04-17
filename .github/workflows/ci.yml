@@ -10,10 +10,10 @@ jobs:
       contents: write
       id-token: write
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: 20
           registry-url: 'https://registry.npmjs.org'
 
       - run: npm install
@@ -47,7 +47,7 @@ jobs:
             async: true
           EOF
 
-      - run: npm install idoc@1.27.0 -g
+      - run: npm install idoc@1 -g
       - run: idoc
 
       - run: cp -rp coverage/lcov-report build
