@@ -4,7 +4,7 @@ const nodeResolve = require('@rollup/plugin-node-resolve');
 const commonjs = require('@rollup/plugin-commonjs');
 const terser = require('@rollup/plugin-terser');
 const banner = require('bannerjs');
-const zlib = require('zlib');
+const pako = require('pako');
 require('colors-cli/toxic');
 
 // see below for details on the options
@@ -60,11 +60,9 @@ const inputOptions = {
 
 function report(result, outpath, extra) {
   const code = result.output[0].code;
-  zlib.gzip(code, (_err, zipped) => {
-    if (_err) return reject(_err);
-    extra = `(gzipped: ${getSize(zipped).green_bt})`;
-    console.log(`${(outpath).blue_bt} ${getSize(code).green_bt + (extra || '')}`);
-  });
+  const compressed = pako.deflate(code);
+  extra = ` (gzipped: ${(compressed.length / 1024).toFixed(2).green_bt} kb)`
+  console.log(`${(outpath).blue_bt} ${getSize(code).green_bt + (extra || '')}`);
 }
 
 function getSize(code) {

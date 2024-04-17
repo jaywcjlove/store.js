@@ -47,9 +47,8 @@
     "@type-challenges/utils": "0.1.1",
     "bannerjs": "2.0.1",
     "colors-cli": "^1.0.29",
+    "pako": "^2.1.0",
     "rollup": "^3.17.3",
-    "tsbb": "^4.0.5",
-    "zlib": "1.0.5"
-  },
-  "dependencies": {}
+    "tsbb": "^4.0.5"
+  }
 }
