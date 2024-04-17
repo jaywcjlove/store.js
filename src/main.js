@@ -119,6 +119,9 @@ Store.prototype = {
       if (arr[i].indexOf(str) > -1) dt[arr[i]] = this.get(arr[i]);
     }
     return dt;
+  },
+  len: function () {
+    return storage.length;
   }
 }
 

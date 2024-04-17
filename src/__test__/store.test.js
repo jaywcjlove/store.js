@@ -151,3 +151,12 @@ test('Test Change localstorage', () => {
   })).toEqual(store);
   expect(store.get()).toEqual({ "name6": 123, "name6,name7": "keytest", "test": [3, 4, 5] });
 });
+
+test('Get store length', () => {
+  store.clear()
+  store.set('name6', 'value6')
+  store.set('name7', 'value7')
+  expect(store.len()).toEqual(2);
+  store.clear()
+  expect(store.len()).toEqual(0);
+});
