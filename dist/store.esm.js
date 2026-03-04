@@ -1,11 +1,13 @@
-/**!
- * storejs v2.0.7
- * Local storage localstorage package provides a simple API
+/**! 
+ * storejs v2.1.0 
+ * Local storage localstorage package provides a simple API 
  * 
- * Copyright (c) 2024 kenny wang <wowohoo@qq.com>
- * https://jaywcjlove.github.io/store.js/
+ * Copyright (c) 2026 kenny wang <wowohoo@qq.com> 
+ * https://github.com/jaywcjlove/store.js.git 
  * 
- * Licensed under the MIT license.
+ * @website: https://jaywcjlove.github.io/store.js/
+ 
+ * Licensed under the MIT license 
  */
 
 function isJSON(obj) {
