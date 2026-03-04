@@ -1,5 +1,5 @@
 /**! 
- * storejs v2.1.0 
+ * storejs v2.1.1 
  * Local storage localstorage package provides a simple API 
  * 
  * Copyright (c) 2026 kenny wang <wowohoo@qq.com> 
